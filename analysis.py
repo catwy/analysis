@@ -11,6 +11,8 @@ def keyrace(office, folder1, folder2):
         ms = json.load(f1)
         ms['RaceID'] = ""
 
+        dict = {"A":"RaceDetails", "B": "Candidates"}
+
         for file in os.listdir(folder2):
             filename = os.path.basename(file)
             if ("race_" in filename) & (office in filename) & ("RaceDetails" in filename):
@@ -65,9 +67,10 @@ if __name__ == '__main__':
     dir5 = '/Users/yuwang/Documents/research/research/timing/git/mayors/schema'
 
     master = keyrace("Mayor", dir5, dir3)
-    for x in master['RaceID']:
+    for x in master["CANDIDATES"]:
         print(x)
-        raw_input("Enter")
+    with open('ddS.json', 'w') as outfile:
+        json.dump(master, outfile)
 
 
 '''
