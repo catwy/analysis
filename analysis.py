@@ -6,27 +6,32 @@ import numpy
 import pandas
 from collections import defaultdict
 
-def keyrace(office, folder1, folder2):
-    with open(os.path.join(folder1, 'race.json')) as f1:
-        ms = json.load(f1)
-        ms['RaceID'] = "99999999"
-        print(ms)
-        for file in os.listdir(folder2):
-            filename = os.path.basename(file)
-            if ("race_" in filename) & (office in filename) & ( ("RaceDetails" in filename) | ( "Candidates" in filename)):
-                x = re.findall(r'\d+', str(filename))
-                i = x[1]
-                with open(os.path.join(folder2, file)) as f2:
-                    son = json.load(f2)
-                    son['RaceID'] = i
-                    print(son)
-                    raw_input("Enter")
-                    dd = defaultdict(list)
-                    for d in (ms, son):  # you can list as many input dicts as you want here
-                        for key, value in d.iteritems():
-                            dd[key].append(value)
-                    ms = dd
-    return ms
+def json2csv(count, file1, csvs):
+    # file1 is a loaded json file
+    file2 = open(csvs, 'a')
+    csvwriter = csv.writer(file2)
+    if count == 0: # write columns
+       header = file1.keys()
+       csvwriter.writerow(header)
+       count += 1
+    if count == 1: # skip columns
+       csvwriter.writerow(file1.values())
+    file2.close()
+
+def key_race_details(folder, office, csvs):
+    if os.path.exists(csvs):
+        os.remove(csvs)
+    count = 0
+    for file in os.listdir(folder):
+        filename = os.path.basename(file)
+        if ("race_" in filename) & (office in filename) & ("RaceDetails" in filename):
+            x = re.findall(r'\d+', str(filename))
+            i = x[1]
+            with open(os.path.join(folder, file)) as f2:
+                son = json.load(f2)
+                son['RaceID'] = i
+            json2csv(count, son, csvs)
+            count += 1
 
 
 
@@ -42,14 +47,31 @@ if __name__ == '__main__':
     dir4 = '/Users/yuwang/Documents/research/research/timing/git/campaigns/schema'
     dir5 = '/Users/yuwang/Documents/research/research/timing/git/mayors/schema'
 
-    master = keyrace("Mayor", dir5, dir3)
-    #for x in master["RaceID"]:
-    #    print(x)
-    with open('ddS.json', 'w') as outfile:
-        json.dump(master, outfile)
+
+    key_race_details(dir3,'Mayor', 'test.csv')
+    #json2csv(0, "race_WorcesterMayor_1988_561866_RaceDetails.json", "test.csv")
+
 
 
 '''
+def keyrace(office, folder1, folder2):
+    for file in os.listdir(folder2):
+        filename = os.path.basename(file)
+        if ("race_" in filename) & (office in filename) & ("RaceDetails" in filename):
+            x = re.findall(r'\d+', str(filename))
+            i = x[1]
+            with open(os.path.join(folder2, file)) as f2:
+                son = json.load(f2)
+                son['RaceID'] = i
+                print(son['RaceID'])
+                raw_input("Enter")
+                dd = defaultdict(list)
+                for d in (ms, son):  # you can list as many input dicts as you want here
+                    for key, value in d.iteritems():
+                        dd[key].append(value)
+                ms = dd
+    return ms
+
 def keyrace(office, folder):
     Iterate all the files in the folder
     if filename contains "race_", "Mayor", "RaceDetails"
