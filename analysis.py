@@ -8,28 +8,47 @@ from collections import defaultdict
 
 def keyrace(office, folder1, folder2):
     with open(os.path.join(folder1, 'race.json')) as f1:
-        ms1 = json.load(f1)
-        ms1['RaceID'] = ""
+        ms = json.load(f1)
+        ms['RaceID'] = ""
 
         for file in os.listdir(folder2):
             filename = os.path.basename(file)
             if ("race_" in filename) & (office in filename) & ("RaceDetails" in filename):
                 x = re.findall(r'\d+', str(filename))
                 i = x[1]
-
                 with open(os.path.join(folder2, file)) as f2:
-                    ms2 = json.load(f2)
-                    ms2['RaceID'] = i
+                    son = json.load(f2)
+                    son['RaceID'] = i
 
                     dd = defaultdict(list)
-                    for d in (ms1, ms2):  # you can list as many input dicts as you want here
+                    for d in (ms, son):  # you can list as many input dicts as you want here
                         for key, value in d.iteritems():
                             dd[key].append(value)
-                    ms1 = dd
-                    for x in ms1:
-                        print("mm",ms1['RaceID'])
-                        raw_input("Enter")
-    return ms1
+                            with open('dd.json', 'w') as outfile:
+                                json.dump(dd, outfile)
+                    with open('dd.json') as infile:
+                        ms = json.load(infile)
+
+
+        for file in os.listdir(folder2):
+            filename = os.path.basename(file)
+            if ("race_" in filename) & (office in filename) & ("Candidates" in filename):
+                x = re.findall(r'\d+', str(filename))
+                i = x[1]
+                with open(os.path.join(folder2, file)) as f2:
+                    son = json.load(f2)
+                    son['RaceID'] = i
+
+                    dd = defaultdict(list)
+                    for d in (ms, son):  # you can list as many input dicts as you want here
+                        for key, value in d.iteritems():
+                            dd[key].append(value)
+                            with open('dd.json', 'w') as outfile:
+                                json.dump(dd, outfile)
+                    with open('dd.json') as infile:
+                        ms = json.load(infile)
+
+    return ms
 
 
 
@@ -41,11 +60,15 @@ if __name__ == '__main__':
     dir0 = '/Users/yuwang/Documents/research/research/timing/git'
     dir1 = '/Users/yuwang/Documents/research/research/timing/git/analysis'
     dir2 = '/Users/yuwang/Documents/research/research/timing/git/campaigns/data'
-    dir3 = '/Users/yuwang/Documents/research/research/timing/git/mayors/data'
+    dir3 = '/Users/yuwang/Documents/research/research/timing/git/mayors_test/data'
     dir4 = '/Users/yuwang/Documents/research/research/timing/git/campaigns/schema'
     dir5 = '/Users/yuwang/Documents/research/research/timing/git/mayors/schema'
 
-    keyrace("Mayor", dir5, dir3)
+    master = keyrace("Mayor", dir5, dir3)
+    for x in master['RaceID']:
+        print(x)
+        raw_input("Enter")
+
 
 '''
 def keyrace(office, folder):
