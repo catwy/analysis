@@ -99,35 +99,29 @@ def clean_null(df, cols, null_words):
     print 'After clean_null:', len(df['Name'])
     return df
 
-def remove_u(v):
+def remove_u(v, null_list):
     # clean up the u'kk' into kk
-    v1 = v.split("u'",1)[1]
-    v2 = v1.split("'",1)[0]
+    v2 = ""
+    if v not in null_list:
+        v1 = v.split("u'",1)[1]
+        v2 = v1.split("'",1)[0]
     return v2
 
-def split_left(v):
-    # decompose the string v into two parts and keep the left
+def split_twos(v, keyword, left_or_right, null_list):
+    # left_or_right = 0 if left, = 1 if right
     v = str(v)
-    left = ""
-    if (v is not "") & (v != "nan"):
-        left = v.split("u'text':", 1)[1]
-        left = remove_u(left)
-    return left
+    outcome = ""
+    if v not in null_list:
+        outcome = v.split(keyword, 1)[left_or_right]
+    return outcome
 
-def split_right(v):
-    # decompose the string v into two parts and keep the left
-    v = str(v)
-    right = ""
-    if (v is not "") & (v != "nan"):
-        right = v.split("u'link':", 1)[1]
-        right = remove_u(right)
-    return right
 
 def split_two(df, dic):
-    # apply split_left and split_right to selected columns in data frame df
     for key, value in dic.iteritems():
-        df[value[0]] = df[key].apply(split_left)
-        df[value[1]] = df[key].apply(split_right)
+        df[value[0]] = df[key].apply(lambda x: split_twos(x, "u'text':",1,["","nan"]))
+        df[value[0]] = df[value[0]].apply(lambda x: remove_u(x, [""]))
+        df[value[1]] = df[key].apply(lambda x: split_twos(x, "u'link':",1,["","nan"]))
+        df[value[1]] = df[value[1]].apply(lambda x: remove_u(x, [""]))
     return df
 
 def clean_up(s):
@@ -135,33 +129,16 @@ def clean_up(s):
     x = ''.join(ascii_part).strip()
     return ' '.join(x.split())
 
-def split_votes(v):
-    # split the votes and share apart and keep the "votes"
-    v = str(v)
-    votes = v.split("(",1)[0]
-    votes = clean_up(votes)
-    return votes
-
-def split_share(v):
-    v = str(v)
-    if v != "":
-        share = v.split("(",1)[1]
-        share = share.split("%",1)[0]
-    else:
-        share = ""
-    return share
-
 def split_votes_share(df, dic):
     for key, value in dic.iteritems():
-        df[value[0]] = df[key].apply(split_votes)
-        df[value[1]] = df[key].apply(split_share)
+        df[value[0]] = df[key].apply(lambda x: split_twos(x, "(", 0, []))
+        df[value[0]] = df[value[0]].apply(clean_up)
+        df[value[1]] = df[key].apply(lambda x: split_twos(x, "(", 1, [""]))
+        df[value[1]] = df[value[1]].apply(lambda x: split_twos(df[value[1]], "%",1,[""]))
     return df
 
 def split_turnout(v):
-    v = str(v)
-    turnout = ""
-    if "%" in v:
-        turnout = v.split("%",1)[0]
+    turnout = split_twos(v, "%", 0, [""])
     return turnout
 
 def clean_csv(file):
@@ -222,7 +199,8 @@ if __name__ == '__main__':
             'Append0':['Types','v7']}
     df = split_two(df, dics)
 
-    list = dics.keys()+['Filing Deadline','Last Modified', 'Polls Open','v1','v2','v3','v4','v5','v6','v7']
+    list = dics.keys()+['Filing Deadline','Last Modified', 'Polls Open',
+                        'v1','v2','v3','v4','v5','v6','v7']
     df = dropcols(df, list)
 
     dic = {'Offices':'Office', 'Polls Closes':'Polls Close', "Term Starts":"Term Start",
@@ -237,7 +215,7 @@ if __name__ == '__main__':
     df['Source'] = df['Source'].apply(lambda x: x.replace("[Link]",""))
 
     df.loc[df['Type']=="", 'Type'] = df['Turnout']
-    df['Turnout'] = df['Turnout'].apply(lambda x: split_turnout(x))
+    df['Turnout'] = df['Turnout'].apply(lambda x: split_twos(x, "%", 0, [""]))
 
 
 
