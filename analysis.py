@@ -2,6 +2,7 @@ import os
 import re
 import csv
 import json
+import datetime
 import collections
 import numpy as np
 import pandas as pd
@@ -137,10 +138,6 @@ def split_votes_share(df, dic):
         df[value[1]] = df[value[1]].apply(lambda x: split_twos(df[value[1]], "%",1,[""]))
     return df
 
-def split_turnout(v):
-    turnout = split_twos(v, "%", 0, [""])
-    return turnout
-
 def clean_csv(file):
     # This is to load a csv file with different number of columns in each row
     lines = list(csv.reader(open(file)))
@@ -156,6 +153,26 @@ def clean_csv(file):
     df = pd.read_csv(file, names=header)
     df.drop(df.head(1).index, inplace=True)
     return df
+
+def date_yr_mon(df, dic):
+    for key, value in dic.iteritems():
+        df[key] = df[key].apply(lambda x: split_twos(x, "-", 0, [""]))
+        df[key] = df[key].apply(lambda x: x.replace("00,","01,"))
+        df[key] = df[key].apply(lambda x: "January" + x if x.isdigit() else x)
+        df[key+'_test'] = pd.to_datetime(df[key], errors='coerce')
+        df[value[0]] = df[key + '_test'].apply(lambda x: x.year)
+        #df[value[0]] = df[key+'_test'].apply(lambda x: split_twos(x,"-",0,[""]))
+        df[value[1]] = df[key + '_test'].apply(lambda x: x.month)
+        #df[value[1]] = df[key+'_test'].apply(lambda x: split_twos(split_twos(x,"-",0,[""]),"-",0,[""]))
+
+        df = df.drop(key+'_test', 1)
+    return df
+
+def parent(string):
+    array = re.split(r'[>]', string)
+    c = len(array)
+    return c
+
 
 if __name__ == '__main__':
     #======================================================#
@@ -216,10 +233,23 @@ if __name__ == '__main__':
 
     df.loc[df['Type']=="", 'Type'] = df['Turnout']
     df['Turnout'] = df['Turnout'].apply(lambda x: split_twos(x, "%", 0, [""]))
+    df['Turnout'] = df['Turnout'].apply(lambda x: x if x[0].isdigit() else "")
+
+    dic = {"Term Start": ["Term Start Year", "Term Start Month"],
+           "Term End": ["Term End Year", "Term End Month"],
+           "Polls Close": ["Poll Year", "Poll Month"]}
+
+    df = date_yr_mon(df,dic)
+
+    df['c'] = df['Parent'].apply(lambda x: parent(x))
+
+    #df = df.drop('Parents_splits', 1)
 
 
+    df.to_csv("test3.csv")
 
     print df.head(10)
+
 
 
 '''
