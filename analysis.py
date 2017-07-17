@@ -2,7 +2,7 @@ import os
 import re
 import csv
 import json
-import datetime
+import time
 import collections
 import numpy as np
 import pandas as pd
@@ -78,19 +78,6 @@ def key_race_details2(folder, office, csvs, key):
     f2.close()
 
 
-def extract_1int(v):
-    # find the number in string v, suited for one integer only
-    x = re.findall(r'\d+', v)
-    w = None
-    if x:
-       w = x[0]
-    return w
-
-def dropcols(df, list):
-    for x in list:
-        df = df.drop(x,1)
-    return df
-
 def clean_null(df, cols, null_words):
     # To remove rows if a certain column contains elements in the list of null words
     # df is a loaded csv file, i.e. df = pd.read_csv(file.csv)
@@ -100,35 +87,14 @@ def clean_null(df, cols, null_words):
     print 'After clean_null:', len(df['Name'])
     return df
 
-def remove_u(v, null_list):
-    # clean up the u'kk' into kk, remove u'text' and u'link' in a clever way
-    v = str(v)
-    v2 = ""
-    if v not in null_list:
-        v1 = v.split("u'",1)[1]
-        v2 = v1.split("'",1)[0]
-    return v2
-
-
-def split_twos(v, keyword, left_or_right, null_list):
-    # left_or_right = 0 if left, = 1 if right
-    v = str(v)
-    outcome = ""
-    if v not in null_list:
-        outcome = v.split(keyword, 1)[left_or_right]
-    return outcome
-
-
 def split_two(df, dic):
     for key, value in dic.iteritems():
         df['temp1'],df[value[0]] = df[key].str.split("u'text':").str
         df[value[0]], df['temp1'] = df[value[0]].str.split("', u'link':").str
         df[value[0]] = df[value[0]].str.replace("u'",'')
-
         df['temp1'],df[value[1]] = df[key].str.split("u'link':").str
         df[value[1]] = df[value[1]].str.replace("u'",'')
-        df[value[1]] = df[value[1]].str.replace("'\}\]", '')
-
+        df[value[1]], df['temp1'] = df[value[1]].str.split("'\}").str
         df = df.drop('temp1', 1)
     return df
 
@@ -137,14 +103,6 @@ def clean_up(s):
     ascii_part = [c for c in s if ord(c) < 128]
     x = ''.join(ascii_part).strip()
     return ' '.join(x.split())
-
-def split_votes_share(df, dic):
-    for key, value in dic.iteritems():
-        df[value[0]] = df[key].apply(lambda x: split_twos(x, "(", 0, []))
-        df[value[0]] = df[value[0]].apply(clean_up)
-        df[value[1]] = df[key].apply(lambda x: split_twos(x, "(", 1, [""]))
-        df[value[1]] = df[value[1]].apply(lambda x: split_twos(df[value[1]], "%",1,[""]))
-    return df
 
 def clean_csv(file):
     # This is to load a csv file with different number of columns in each row
@@ -164,20 +122,35 @@ def clean_csv(file):
 
 def date_yr_mon(df, dic):
     for key, value in dic.iteritems():
-        df[key] = df[key].apply(lambda x: split_twos(x, "-", 0, [""]))
-        df[key] = df[key].apply(lambda x: x.replace("00,","01,"))
-        df[key] = df[key].apply(lambda x: "January" + x if x.isdigit() else x)
+        df[key] = df[key].str.replace('(?:-).*','')
+        df[key] = df[key].str.replace("00,","01,")
+        df.ix[df[key].str.startswith('(\d+)'), key] = "January" + df[key].astype(str)
         df[key+'_test'] = pd.to_datetime(df[key], errors='coerce')
         df[value[0]] = df[key + '_test'].apply(lambda x: x.year)
         df[value[1]] = df[key + '_test'].apply(lambda x: x.month)
-        df = df.drop(key+'_test', 1)
+        df = df.drop([key,key+'_test'], 1)
     return df
 
-def parent(string):
-    array = re.split(r'[>]', string)
-    c = len(array)
-    return c
+def state_county_city(df):
+    df['count'] = df['Parent'].str.count('>')
+    df['c1'], df['c2'], df['c3'], df['c4'], df['c5'], df['c6'], df['c7'] = df['Parent'].str.split('>').str
+    dic = {6: ['c3', 'c5', 'c6'], 5: ['c3', 'c5', 'c5'], 4: ['c3', 'c4', 'c4']}
+    df['State'] = df['County'] = df['City'] = ""
+    for key, value in dic.iteritems():
+        df.ix[df['count'] == key, 'State'] = df[value[0]]
+        df.ix[df['count'] == key, 'County'] = df[value[1]]
+        df.ix[df['count'] == key, 'City'] = df[value[2]]
+    list = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6', 'c7','Parent','count']
+    df = df.drop(list, 1)
+    return df
 
+def split_votes_share(df, dic):
+    for key, value in dic.iteritems():
+        df[value[0]], df[value[1]] = df[key].str.split("(").str
+        df[value[0]] = df[value[0]].apply(clean_up)
+        df[value[1]], df['temp'] = df[value[1]].str.split("%").str
+        df = df.drop('temp', 1)
+    return df
 
 if __name__ == '__main__':
     #======================================================#
@@ -208,6 +181,7 @@ if __name__ == '__main__':
     #======================================================#
     #    Data Frame Setup and Cleaning for Race Details 1  #
     #======================================================#
+    start = time.time()
     df = clean_csv('key_race_details.csv')
 
     dics = {'Contributor': ['Contributor Name', 'ContributorID'],
@@ -223,7 +197,7 @@ if __name__ == '__main__':
 
     list = dics.keys()+['Filing Deadline','Last Modified', 'Polls Open',
                         'v1','v2','v3','v4','v5','v6','v7']
-    df = dropcols(df, list)
+    df = df.drop(list,1)
 
     dic = {'Offices':'Office', 'Polls Closes':'Polls Close', "Term Starts":"Term Start",
            'Term Ends':'Term End','Types':'Type'}
@@ -234,38 +208,29 @@ if __name__ == '__main__':
     for x in list:
         df[x] = df[x].str.extract('(\d+)', expand = False)
 
-    df['Source'] = df['Source'].str.replace('\[Link\]',"") # needs further work to improve the pattern of match
+    df['Source'] = df['Source'].str.replace('\[Link\]',"")
 
     df.loc[df['Type']=="", 'Type'] = df['Turnout']
-    df['Turnout'] = df['Turnout'].str.extract('(\d+.\d+)').astype(float)
+    df['Turnout'] = df['Turnout'].str.extract('(\d+.\d+)', expand = False).astype(float)
 
     dic = {"Term Start": ["Term Start Year", "Term Start Month"],
            "Term End": ["Term End Year", "Term End Month"],
            "Polls Close": ["Poll Year", "Poll Month"]}
-
     df = date_yr_mon(df,dic)
 
-    df['count'] = df['Parent'].str.count('>')
-    df['c1'], df['c2'], df['c3'], df['c4'], df['c5'], df['c6'], df['c7'] = df['Parent'].str.split('>').str
-    dic = {6:['c3','c5','c6'], 5:['c3','c5','c5'], 4:['c3','c4','c4']}
-    df['State'] = df['County'] = df['City'] = ""
-    for key,value in dic.iteritems():
-        df.ix[df['count'] == key, 'State'] = df[value[0]]
-        df.ix[df['count'] == key, 'County'] = df[value[1]]
-        df.ix[df['count'] == key, 'City'] = df[value[2]]
-    list = ['c1','c2','c3','c4','c5','c6','c7']
-    df = dropcols(df, list)
+    df = state_county_city(df)
 
     df.to_csv("test3.csv")
 
     print df.head(10)
-    raw_input("Enter")
+    end = time.time()
+    print("Race Details 1 is finished", end-start, 'elapsed')
 
 
     #======================================================#
     #    Data Frame Setup and Cleaning for Race Details 2  #
     #======================================================#
-
+    start = time.time()
     df = pd.read_csv('key_race_details2.csv')
     df = clean_null(df, 'Name', ["{u'text': u'', u'link': u''}"])
 
@@ -284,13 +249,17 @@ if __name__ == '__main__':
 
     list = ["Votes_Share", "Photo","Entry Date", "Margin", "Predict Avg.",
             "Cash On Hand", "Name", "Certified Votes", "Party", "Website", "v1", "v2"]
-    df = dropcols(df, list)
+    df = df.drop(list,1)
 
     dic = {'Names':'Name', 'Partys':'Party'}
     for key, value in dic.iteritems():
         df = df.rename(columns={key: value})
 
-    print df.head()
+    df.to_csv("test4.csv")
+
+    print df.head(13)
+    end = time.time()
+    print ("Race Details 2 is finished", end-start, 'elapsed')
 
 
 
