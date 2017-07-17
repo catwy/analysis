@@ -101,12 +101,14 @@ def clean_null(df, cols, null_words):
     return df
 
 def remove_u(v, null_list):
-    # clean up the u'kk' into kk
+    # clean up the u'kk' into kk, remove u'text' and u'link' in a clever way
+    v = str(v)
     v2 = ""
     if v not in null_list:
         v1 = v.split("u'",1)[1]
         v2 = v1.split("'",1)[0]
     return v2
+
 
 def split_twos(v, keyword, left_or_right, null_list):
     # left_or_right = 0 if left, = 1 if right
@@ -119,11 +121,17 @@ def split_twos(v, keyword, left_or_right, null_list):
 
 def split_two(df, dic):
     for key, value in dic.iteritems():
-        df[value[0]] = df[key].apply(lambda x: split_twos(x, "u'text':",1,["","nan"]))
-        df[value[0]] = df[value[0]].apply(lambda x: remove_u(x, [""]))
-        df[value[1]] = df[key].apply(lambda x: split_twos(x, "u'link':",1,["","nan"]))
-        df[value[1]] = df[value[1]].apply(lambda x: remove_u(x, [""]))
+        df['temp1'],df[value[0]] = df[key].str.split("u'text':").str
+        df[value[0]], df['temp1'] = df[value[0]].str.split("', u'link':").str
+        df[value[0]] = df[value[0]].str.replace("u'",'')
+
+        df['temp1'],df[value[1]] = df[key].str.split("u'link':").str
+        df[value[1]] = df[value[1]].str.replace("u'",'')
+        df[value[1]] = df[value[1]].str.replace("'\}\]", '')
+
+        df = df.drop('temp1', 1)
     return df
+
 
 def clean_up(s):
     ascii_part = [c for c in s if ord(c) < 128]
@@ -161,10 +169,7 @@ def date_yr_mon(df, dic):
         df[key] = df[key].apply(lambda x: "January" + x if x.isdigit() else x)
         df[key+'_test'] = pd.to_datetime(df[key], errors='coerce')
         df[value[0]] = df[key + '_test'].apply(lambda x: x.year)
-        #df[value[0]] = df[key+'_test'].apply(lambda x: split_twos(x,"-",0,[""]))
         df[value[1]] = df[key + '_test'].apply(lambda x: x.month)
-        #df[value[1]] = df[key+'_test'].apply(lambda x: split_twos(split_twos(x,"-",0,[""]),"-",0,[""]))
-
         df = df.drop(key+'_test', 1)
     return df
 
@@ -227,13 +232,12 @@ if __name__ == '__main__':
 
     list = ['ContributorID']
     for x in list:
-        df[x] = df[x].apply(extract_1int)
+        df[x] = df[x].str.extract('(\d+)', expand = False)
 
-    df['Source'] = df['Source'].apply(lambda x: x.replace("[Link]",""))
+    df['Source'] = df['Source'].str.replace('\[Link\]',"") # needs further work to improve the pattern of match
 
     df.loc[df['Type']=="", 'Type'] = df['Turnout']
-    df['Turnout'] = df['Turnout'].apply(lambda x: split_twos(x, "%", 0, [""]))
-    df['Turnout'] = df['Turnout'].apply(lambda x: x if x[0].isdigit() else "")
+    df['Turnout'] = df['Turnout'].str.extract('(\d+.\d+)').astype(float)
 
     dic = {"Term Start": ["Term Start Year", "Term Start Month"],
            "Term End": ["Term End Year", "Term End Month"],
@@ -241,18 +245,23 @@ if __name__ == '__main__':
 
     df = date_yr_mon(df,dic)
 
-    df['c'] = df['Parent'].apply(lambda x: parent(x))
-
-    #df = df.drop('Parents_splits', 1)
-
+    df['count'] = df['Parent'].str.count('>')
+    df['c1'], df['c2'], df['c3'], df['c4'], df['c5'], df['c6'], df['c7'] = df['Parent'].str.split('>').str
+    dic = {6:['c3','c5','c6'], 5:['c3','c5','c5'], 4:['c3','c4','c4']}
+    df['State'] = df['County'] = df['City'] = ""
+    for key,value in dic.iteritems():
+        df.ix[df['count'] == key, 'State'] = df[value[0]]
+        df.ix[df['count'] == key, 'County'] = df[value[1]]
+        df.ix[df['count'] == key, 'City'] = df[value[2]]
+    list = ['c1','c2','c3','c4','c5','c6','c7']
+    df = dropcols(df, list)
 
     df.to_csv("test3.csv")
 
     print df.head(10)
+    raw_input("Enter")
 
 
-
-'''
     #======================================================#
     #    Data Frame Setup and Cleaning for Race Details 2  #
     #======================================================#
@@ -268,7 +277,7 @@ if __name__ == '__main__':
 
     list = ['CandID','PartyID']
     for x in list:
-        df[x] = df[x].apply(extract_1int)
+        df[x] = df[x].str.extract('(\d+)', expand = False)
 
     dics = {'Votes_Share':['Votes','Share']}
     df = split_votes_share(df,dics)
@@ -282,7 +291,7 @@ if __name__ == '__main__':
         df = df.rename(columns={key: value})
 
     print df.head()
-'''
+
 
 
 
