@@ -6,7 +6,7 @@ import time
 import collections
 import numpy as np
 import pandas as pd
-from collections import defaultdict
+
 
 # Merge Race Details
 def json2csv(count, file1, csvs):
@@ -44,8 +44,6 @@ def json2csv2(count, file1, csvs, key):
     file2.close()
 
 def key_race_details(folder, office, csvs):
-    #if os.path.exists(csvs):
-    #    os.remove(csvs)
     count = 0
     for file in os.listdir(folder):
         filename = os.path.basename(file)
@@ -60,8 +58,6 @@ def key_race_details(folder, office, csvs):
     f2.close()
 
 def key_race_details2(folder, office, csvs, key):
-    #if os.path.exists(csvs):
-    #    os.remove(csvs)
     count = 0
     for file in os.listdir(folder):
         filename = os.path.basename(file)
@@ -234,38 +230,84 @@ def setup_race_details2():
     print ("Race Details 2 is finished", end - start, 'elapsed')
     return df
 
+# Check if the shares add up to 100 per race.
 def check_shares_sum():
-    def add_shares():
+
+    # add up the shares in a file which contains votes, shares, per election
+    def add_shares(df_race2):
         df_race2['Share'] = df_race2['Share'].astype(float)
         df = df_race2.groupby(['RaceID'])['Share'].sum().reset_index()
         df['Index'] = range(df.shape[0])
-        df.to_csv("test5.csv")
+        # df.to_csv("test5.csv")
         for x in [10, 50, 90, 98, 101, 1000]:
             print "<", x, len(df[(df['Share'] < x)])
-        df = df[df['Share'] < 50]
-        return df
+        df_race2_wrong_shares = df[df['Share'] < 50]
+        return df_race2_wrong_shares
 
-    def shares_wrong_big():
-        df['RaceID'] = df['RaceID'].astype(int)
+    # return a full list of incorrect races
+    def shares_wrong_big(df_race2_wrong_shares, df_race, df_race2):
+        # df is part of df_race2 with incorrect shares
+        df_race2_wrong_shares['RaceID'] = df_race2_wrong_shares['RaceID'].astype(int)
         df_race['RaceID'] = df_race['RaceID'].astype(int)
-        df2 = df_race.merge(df, left_on='RaceID', right_on='RaceID', how='outer')
-        df3 = df_race2.merge(df2, left_on='RaceID', right_on='RaceID', how='outer')
-        df3['Share_y'] = df3['Share_y'].astype(str)
-        df3 = df3[df3['Share_y'].str.contains(r'\d+')]
-        print df3.head(9)
-        df3.to_csv("test6.csv")
-        return df3
+        df = df_race.merge(df_race2_wrong_shares, left_on='RaceID', right_on='RaceID', how='outer')
+        df_wrong_shares_full = df_race2.merge(df, left_on='RaceID', right_on='RaceID', how='outer')
+        df_wrong_shares_full['Share_y'] = df_wrong_shares_full['Share_y'].astype(str)
+        df_wrong_shares_full = df_wrong_shares_full[df_wrong_shares_full['Share_y'].str.contains(r'\d+')]
+        df_wrong_shares_full.to_csv("wrong_shares_full.csv")
+        return df_wrong_shares_full
 
-    def shares_wrong_small():
-        g = df3['RaceID'].unique()
+    # return a list of RaceIDs for incorrect races
+    def shares_wrong_small(df_wrong_shares_full):
+        g = df_wrong_shares_full['RaceID'].unique()
         s = pd.Series(g)
-        s.to_csv('test7.csv')
+        s.to_csv('wrong_shares_raceid.csv')
 
-    df = add_shares()
-    df3 = shares_wrong_big()
-    shares_wrong_small()
-    return df3
+    df_race2_wrong_shares = add_shares(df_race2)
+    df_wrong_shares_full = shares_wrong_big(df_race2_wrong_shares,df_race,df_race2)
+    shares_wrong_small(df_wrong_shares_full)
+    return df_wrong_shares_full
 
+# calculate the unique list of candidates, return their CandID
+def unique_candidates(df_race2):
+    g = df_race2['CandID'].unique()
+    df_unique_CandID = pd.Series(g)
+    print 'number of unique candidates=', len(df_unique_CandID)
+    df_unique_CandID.to_csv('unique_CandID.csv')
+    return df_unique_CandID
+
+def cand_remove(df, list):
+    for x in list:
+        df = df[df['CandID']!= x]
+    return df
+
+# load the list of city names by population size
+def recent_elections():
+    path = r'{}'.format(dir6)
+    df_m = pd.DataFrame()
+    for id in [1,2,3]:
+        df = pd.read_csv(path + "/recent_elections_part{}.txt".format(id), delimiter = ';', header = None)
+        df_m = df_m.append(df)
+    h = df_m.shape[0]
+    df_m['CityID'] = range(h)
+    dic = {0: 'web', 1: 'city', 2: "state", 3: 'partisan', 4: 'note'}
+    for key, value in dic.iteritems():
+        df_m = df_m.rename(columns={key: value})
+    df_m.to_csv('recent_elections.csv')
+    df_m = df_m.drop('note', 1)
+    return df_m
+
+# construct a skeleton to reconcile different city names in population list and ourcampaigns
+def city_name_merge(df_recent, df_race):
+    df_recent['RaceID'] = df_recent['web'].str.extract('(\d+)', expand = False)
+    df_recent['RaceID'] = df_recent['RaceID'].astype(str)
+    df_race['RaceID'] = df_race['RaceID'].astype(str)
+    df = df_recent.merge(df_race, left_on = 'RaceID', right_on = 'RaceID', how = 'outer')
+    df_city = df[['State', 'County', 'City', 'web', 'state', 'city', 'CityID']]
+    df_city['CityID'] = df_city['CityID'].astype(str)
+    df_city = df_city[df_city['CityID'].str.contains('(\d+)')]
+    df_city = df_city[df_city['web'].str.contains('http')]
+    df_city.to_csv('city_name_merge.csv')
+    return df_city
 
 if __name__ == '__main__':
     #======================================================#
@@ -296,55 +338,23 @@ if __name__ == '__main__':
     df_race = setup_race_details()
     df_race2 = setup_race_details2()
     df_shares_wrong = check_shares_sum()
+    df_unique_CandID = unique_candidates(df_race2)
 
-    g = df_race2['CandID'].unique()
-    s = pd.Series(g)
-    print 'number of unique candidates=', len(s)
-    s.to_csv('test8.csv')
-
-    df = df_race2.groupby(['CandID'])['RaceID'].count().reset_index()
-    df.to_csv('test9.csv')
-    df = df[ (df['CandID']!='22593') & (df['CandID']!='191')] #write-in & others
-    print df['RaceID'].describe()
-    print df[df['RaceID']==16]
-    df = df[ df['RaceID']>2]
+    # remove write-in candidates, calculate number of mayor elections per candidates
+    df_non_writein = cand_remove(df_race2, ['22593', '191'])  # write-in & others
+    df = df_non_writein.groupby(['CandID'])['RaceID'].count().reset_index()
     print df['RaceID'].describe()
 
-    df_m1 = pd.read_csv('/Users/yuwang/Documents/research/research/timing/git/mayors/recent_elections_part1.txt', delimiter = ';', header = None)
-    df_m2 = pd.read_csv('/Users/yuwang/Documents/research/research/timing/git/mayors/recent_elections_part2.txt', delimiter = ';', header = None)
-    df_m3 = pd.read_csv('/Users/yuwang/Documents/research/research/timing/git/mayors/recent_elections_part3.txt', delimiter = ';', header = None)
+    df_recent = recent_elections()
+    # calculate the number of cities with at least one ourcampaigns webpage
+    print 'number of cities with at least one election = ', len(df_recent[df_recent['web'].str.contains('http')])
 
-    df_m = df_m1.append(df_m2)
-    df_m = df_m.append(df_m3)
-    h = df_m.shape[0]
-    df_m['CityID'] = range(h)
-    df_m.to_csv('messy.csv')
-    dic = {0: 'web', 1: 'city', 2: "state",
-           3: 'partisan', 4: 'note'}
-    for key, value in dic.iteritems():
-        df_m = df_m.rename(columns={key: value})
+    df_city = city_name_merge(df_recent, df_race)
 
-    print df_m.head()
-    print 'number of cities with at least one election = ', len(df_m[df_m['web'].str.contains('http')])
-
-    df_m['RaceID'] = df_m['web'].str.extract('(\d+)', expand = False)
-
-    df_m = df_m.drop('note',1)
-    df_m = df_m[df_m['web'].str.contains('http')]
-    df_m['RaceID'] = df_m['RaceID'].astype(str)
-    df_race['RaceID'] = df_race['RaceID'].astype(str)
-    df = df_m.merge(df_race, left_on = 'RaceID', right_on = 'RaceID', how = 'outer')
-    df.to_csv('test10.csv')
-
-    df_city = df[['State', 'County', 'City', 'web', 'state', 'city', 'CityID']]
-    df_city['CityID'] = df_city['CityID'].astype(str).copy()
-    df_city = df_city[df_city['CityID'].str.contains('(\d+)')]
-    df_city.to_csv('skeleton.csv')
-
-    df_all = df_race.merge(df_city, left_on = ['State','City'], right_on = ['State', 'City'], how = 'outer')
-    df_all.to_csv('all.csv')
-    df_alls = df_all.groupby(['CityID'])['RaceID'].count().reset_index()
-    print df_alls['RaceID'].describe()
+    # calculate the number of mayoral elections per city
+    df_race_CityID = df_race.merge(df_city, left_on = ['State','City'], right_on = ['State', 'City'], how = 'outer')
+    df_race_CityID = df_race_CityID.groupby(['CityID'])['RaceID'].count().reset_index()
+    print df_race_CityID['RaceID'].describe()
 
 
 
