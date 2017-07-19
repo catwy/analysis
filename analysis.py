@@ -152,6 +152,121 @@ def split_votes_share(df, dic):
         df = df.drop('temp', 1)
     return df
 
+
+def setup_race_details():
+    start = time.time()
+    df = clean_csv('key_race_details.csv')
+
+    dics = {'Contributor': ['Contributor Name', 'ContributorID'],
+            'Data Sources': ['Source', 'Source Link'],
+            'Office': ['Offices', 'v1'],
+            'Parents': ['Parent', 'v2'],
+            'Polls Close': ['Polls Closes', 'v3'],
+            'Term Start': ['Term Starts', 'v5'],
+            'Term End': ['Term Ends', 'v4'],
+            'Type': ['Turnout', 'v6'],
+            'Append0': ['Types', 'v7']}
+    df = split_two(df, dics)
+
+    list = dics.keys() + ['Filing Deadline', 'Last Modified', 'Polls Open',
+                          'v1', 'v2', 'v3', 'v4', 'v5', 'v6', 'v7']
+    df = df.drop(list, 1)
+
+    dic = {'Offices': 'Office', 'Polls Closes': 'Polls Close', "Term Starts": "Term Start",
+           'Term Ends': 'Term End', 'Types': 'Type'}
+    for key, value in dic.iteritems():
+        df = df.rename(columns={key: value})
+
+    list = ['ContributorID']
+    for x in list:
+        df[x] = df[x].str.extract('(\d+)', expand=False)
+
+    df['Source'] = df['Source'].str.replace('\[Link\]', "")
+
+    df.loc[df['Type'] == "", 'Type'] = df['Turnout']
+    df['Turnout'] = df['Turnout'].str.extract('(\d+.\d+)', expand=False).astype(float)
+
+    dic = {"Term Start": ["Term Start Year", "Term Start Month"],
+           "Term End": ["Term End Year", "Term End Month"],
+           "Polls Close": ["Poll Year", "Poll Month"]}
+    df = date_yr_mon(df, dic)
+
+    df = state_county_city(df)
+
+    df.to_csv("test3.csv")
+
+    print df.head(10)
+    end = time.time()
+    print("Race Details 1 is finished", end - start, 'elapsed')
+    return df
+
+
+def setup_race_details2():
+    start = time.time()
+    df = pd.read_csv('key_race_details2.csv')
+    df = clean_null(df, 'Name', ["{u'text': u'', u'link': u''}"])
+
+    dics = {'Name': ['Names', 'CandID'],
+            'Certified Votes': ['Votes_Share', 'v1'],
+            'Party': ['Partys', 'PartyID'],
+            'Website': ['v2', 'Web']}
+    df = split_two(df, dics)
+
+    list = ['CandID', 'PartyID']
+    for x in list:
+        df[x] = df[x].str.extract('(\d+)', expand=False)
+
+    dics = {'Votes_Share': ['Votes', 'Share']}
+    df = split_votes_share(df, dics)
+
+    list = ["Votes_Share", "Photo", "Entry Date", "Margin", "Predict Avg.",
+            "Cash On Hand", "Name", "Certified Votes", "Party", "Website", "v1", "v2"]
+    df = df.drop(list, 1)
+
+    dic = {'Names': 'Name', 'Partys': 'Party'}
+    for key, value in dic.iteritems():
+        df = df.rename(columns={key: value})
+
+    df.to_csv("test4.csv")
+
+    print df.head(13)
+    end = time.time()
+    print ("Race Details 2 is finished", end - start, 'elapsed')
+    return df
+
+def check_shares_sum():
+    def add_shares():
+        df_race2['Share'] = df_race2['Share'].astype(float)
+        df = df_race2.groupby(['RaceID'])['Share'].sum().reset_index()
+        df['Index'] = range(df.shape[0])
+        df.to_csv("test5.csv")
+        for x in [10, 50, 90, 98, 101, 1000]:
+            print "<", x, len(df[(df['Share'] < x)])
+        df = df[df['Share'] < 50]
+        return df
+
+    def shares_wrong_big():
+        df['RaceID'] = df['RaceID'].astype(int)
+        df_race['RaceID'] = df_race['RaceID'].astype(int)
+        df2 = df_race.merge(df, left_on='RaceID', right_on='RaceID', how='outer')
+        df3 = df_race2.merge(df2, left_on='RaceID', right_on='RaceID', how='outer')
+        df3['Share_y'] = df3['Share_y'].astype(str)
+        df3 = df3[df3['Share_y'].str.contains(r'\d+')]
+        print df3.head(9)
+        df3.to_csv("test6.csv")
+        return df3
+
+    def shares_wrong_small():
+        g = df3['RaceID'].unique()
+        s = pd.Series(g)
+        s.to_csv('test7.csv')
+
+    df = add_shares()
+    df3 = shares_wrong_big()
+    shares_wrong_small()
+    return df3
+
+
 if __name__ == '__main__':
     #======================================================#
     #    Initialize Directory and load Data                #
@@ -163,7 +278,7 @@ if __name__ == '__main__':
     dir3 = dir0 + '/mayors/data'
     dir4 = dir0 + '/campaigns/schema'
     dir5 = dir0 + '/mayors/schema'
-
+    dir6 = dir0 + '/mayors'
     '''
     # create a folder for cache
     if not os.path.exists('pdata'):
@@ -178,88 +293,66 @@ if __name__ == '__main__':
     key_race_details2(dir3, 'Mayor', 'key_race_details2.csv', u'Certified Votes')
     '''
 
-    #======================================================#
-    #    Data Frame Setup and Cleaning for Race Details 1  #
-    #======================================================#
-    start = time.time()
-    df = clean_csv('key_race_details.csv')
+    df_race = setup_race_details()
+    df_race2 = setup_race_details2()
+    df_shares_wrong = check_shares_sum()
 
-    dics = {'Contributor': ['Contributor Name', 'ContributorID'],
-            'Data Sources': ['Source', 'Source Link'],
-            'Office': ['Offices', 'v1'],
-            'Parents': ['Parent', 'v2'],
-            'Polls Close':['Polls Closes', 'v3'],
-            'Term Start': ['Term Starts', 'v5'],
-            'Term End':['Term Ends', 'v4'],
-            'Type':['Turnout', 'v6'],
-            'Append0':['Types','v7']}
-    df = split_two(df, dics)
+    g = df_race2['CandID'].unique()
+    s = pd.Series(g)
+    print 'number of unique candidates=', len(s)
+    s.to_csv('test8.csv')
 
-    list = dics.keys()+['Filing Deadline','Last Modified', 'Polls Open',
-                        'v1','v2','v3','v4','v5','v6','v7']
-    df = df.drop(list,1)
+    df = df_race2.groupby(['CandID'])['RaceID'].count().reset_index()
+    df.to_csv('test9.csv')
+    df = df[ (df['CandID']!='22593') & (df['CandID']!='191')] #write-in & others
+    print df['RaceID'].describe()
+    print df[df['RaceID']==16]
+    df = df[ df['RaceID']>2]
+    print df['RaceID'].describe()
 
-    dic = {'Offices':'Office', 'Polls Closes':'Polls Close', "Term Starts":"Term Start",
-           'Term Ends':'Term End','Types':'Type'}
+    df_m1 = pd.read_csv('/Users/yuwang/Documents/research/research/timing/git/mayors/recent_elections_part1.txt', delimiter = ';', header = None)
+    df_m2 = pd.read_csv('/Users/yuwang/Documents/research/research/timing/git/mayors/recent_elections_part2.txt', delimiter = ';', header = None)
+    df_m3 = pd.read_csv('/Users/yuwang/Documents/research/research/timing/git/mayors/recent_elections_part3.txt', delimiter = ';', header = None)
+
+    df_m = df_m1.append(df_m2)
+    df_m = df_m.append(df_m3)
+    h = df_m.shape[0]
+    df_m['CityID'] = range(h)
+    df_m.to_csv('messy.csv')
+    dic = {0: 'web', 1: 'city', 2: "state",
+           3: 'partisan', 4: 'note'}
     for key, value in dic.iteritems():
-        df = df.rename(columns={key: value})
+        df_m = df_m.rename(columns={key: value})
 
-    list = ['ContributorID']
-    for x in list:
-        df[x] = df[x].str.extract('(\d+)', expand = False)
+    print df_m.head()
+    print 'number of cities with at least one election = ', len(df_m[df_m['web'].str.contains('http')])
 
-    df['Source'] = df['Source'].str.replace('\[Link\]',"")
+    df_m['RaceID'] = df_m['web'].str.extract('(\d+)', expand = False)
 
-    df.loc[df['Type']=="", 'Type'] = df['Turnout']
-    df['Turnout'] = df['Turnout'].str.extract('(\d+.\d+)', expand = False).astype(float)
+    df_m = df_m.drop('note',1)
+    df_m = df_m[df_m['web'].str.contains('http')]
+    df_m['RaceID'] = df_m['RaceID'].astype(str)
+    df_race['RaceID'] = df_race['RaceID'].astype(str)
+    df = df_m.merge(df_race, left_on = 'RaceID', right_on = 'RaceID', how = 'outer')
+    df.to_csv('test10.csv')
 
-    dic = {"Term Start": ["Term Start Year", "Term Start Month"],
-           "Term End": ["Term End Year", "Term End Month"],
-           "Polls Close": ["Poll Year", "Poll Month"]}
-    df = date_yr_mon(df,dic)
+    df_city = df[['State', 'County', 'City', 'web', 'state', 'city', 'CityID']]
+    df_city['CityID'] = df_city['CityID'].astype(str).copy()
+    df_city = df_city[df_city['CityID'].str.contains('(\d+)')]
+    df_city.to_csv('skeleton.csv')
 
-    df = state_county_city(df)
-
-    df.to_csv("test3.csv")
-
-    print df.head(10)
-    end = time.time()
-    print("Race Details 1 is finished", end-start, 'elapsed')
+    df_all = df_race.merge(df_city, left_on = ['State','City'], right_on = ['State', 'City'], how = 'outer')
+    df_all.to_csv('all.csv')
+    df_alls = df_all.groupby(['CityID'])['RaceID'].count().reset_index()
+    print df_alls['RaceID'].describe()
 
 
-    #======================================================#
-    #    Data Frame Setup and Cleaning for Race Details 2  #
-    #======================================================#
-    start = time.time()
-    df = pd.read_csv('key_race_details2.csv')
-    df = clean_null(df, 'Name', ["{u'text': u'', u'link': u''}"])
 
-    dics = {'Name':['Names','CandID'],
-            'Certified Votes':['Votes_Share','v1'],
-            'Party':['Partys', 'PartyID'],
-            'Website':['v2','Web']}
-    df = split_two(df, dics)
 
-    list = ['CandID','PartyID']
-    for x in list:
-        df[x] = df[x].str.extract('(\d+)', expand = False)
 
-    dics = {'Votes_Share':['Votes','Share']}
-    df = split_votes_share(df,dics)
 
-    list = ["Votes_Share", "Photo","Entry Date", "Margin", "Predict Avg.",
-            "Cash On Hand", "Name", "Certified Votes", "Party", "Website", "v1", "v2"]
-    df = df.drop(list,1)
 
-    dic = {'Names':'Name', 'Partys':'Party'}
-    for key, value in dic.iteritems():
-        df = df.rename(columns={key: value})
 
-    df.to_csv("test4.csv")
-
-    print df.head(13)
-    end = time.time()
-    print ("Race Details 2 is finished", end-start, 'elapsed')
 
 
 
