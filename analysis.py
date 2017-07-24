@@ -67,9 +67,13 @@ def key_race_details2(folder, office, csvs, key):
             print('race id', i)
             with open(os.path.join(folder, file)) as f2:
                 son = json.load(f2)
-                w = len(son[key])
+                for keys, values in son.items():
+                    if "ertified Votes" in keys:
+                        son['Final Votes'] = son[keys]
+                        del son[keys]
+                w = len(son['Final Votes'])
                 son['RaceID'] = np.repeat(i, [w])
-            json2csv2(count, son, csvs, key)
+            json2csv2(count, son, csvs, 'Final Votes')
             count += 1
     f2.close()
 
@@ -121,10 +125,10 @@ def date_yr_mon(df, dic):
         df[key] = df[key].str.replace('(?:-).*','')
         df[key] = df[key].str.replace("00,","01,")
         df.ix[df[key].str.startswith('(\d+)'), key] = "January" + df[key].astype(str)
-        df[key+'_test'] = pd.to_datetime(df[key], errors='coerce')
-        df[value[0]] = df[key + '_test'].apply(lambda x: x.year)
-        df[value[1]] = df[key + '_test'].apply(lambda x: x.month)
-        df = df.drop([key,key+'_test'], 1)
+        df[key+'_date'] = pd.to_datetime(df[key], errors='coerce')
+        df[value[0]] = df[key + '_date'].apply(lambda x: x.year)
+        df[value[1]] = df[key + '_date'].apply(lambda x: x.month)
+        df = df.drop([key], 1)
     return df
 
 def state_county_city(df):
@@ -189,6 +193,8 @@ def setup_race_details():
 
     df = state_county_city(df)
 
+    df['Term Length'] = df['Term End Year'] - df['Term Start Year']
+
     df.to_csv("test3.csv")
 
     print df.head(10)
@@ -203,7 +209,7 @@ def setup_race_details2():
     df = clean_null(df, 'Name', ["{u'text': u'', u'link': u''}"])
 
     dics = {'Name': ['Names', 'CandID'],
-            'Certified Votes': ['Votes_Share', 'v1'],
+            'Final Votes': ['Votes_Share', 'v1'],
             'Party': ['Partys', 'PartyID'],
             'Website': ['v2', 'Web']}
     df = split_two(df, dics)
@@ -216,7 +222,7 @@ def setup_race_details2():
     df = split_votes_share(df, dics)
 
     list = ["Votes_Share", "Photo", "Entry Date", "Margin", "Predict Avg.",
-            "Cash On Hand", "Name", "Certified Votes", "Party", "Website", "v1", "v2"]
+            "Cash On Hand", "Name", "Final Votes", "Party", "Website", "v1", "v2"]
     df = df.drop(list, 1)
 
     dic = {'Names': 'Name', 'Partys': 'Party'}
@@ -303,7 +309,7 @@ def city_name_merge(df_recent, df_race):
     df_race['RaceID'] = df_race['RaceID'].astype(str)
     df = df_recent.merge(df_race, left_on = 'RaceID', right_on = 'RaceID', how = 'outer')
     df_city = df[['State', 'County', 'City', 'web', 'state', 'city', 'CityID']]
-    df_city['CityID'] = df_city['CityID'].astype(str)
+    df_city.loc[:,'CityID'] = df_city['CityID'].astype(str)
     df_city = df_city[df_city['CityID'].str.contains('(\d+)')]
     df_city = df_city[df_city['web'].str.contains('http')]
     df_city.to_csv('city_name_merge.csv')
@@ -321,7 +327,7 @@ if __name__ == '__main__':
     dir4 = dir0 + '/campaigns/schema'
     dir5 = dir0 + '/mayors/schema'
     dir6 = dir0 + '/mayors'
-    '''
+
     # create a folder for cache
     if not os.path.exists('pdata'):
         os.mkdir('pdata')
@@ -333,10 +339,14 @@ if __name__ == '__main__':
 
     key_race_details(dir3, 'Mayor', 'key_race_details.csv')
     key_race_details2(dir3, 'Mayor', 'key_race_details2.csv', u'Certified Votes')
-    '''
+
 
     df_race = setup_race_details()
     df_race2 = setup_race_details2()
+
+    #======================================================#
+    #    Data Cleaning                                     #
+    #======================================================#
     df_shares_wrong = check_shares_sum()
     df_unique_CandID = unique_candidates(df_race2)
 
@@ -346,15 +356,101 @@ if __name__ == '__main__':
     print df['RaceID'].describe()
 
     df_recent = recent_elections()
-    # calculate the number of cities with at least one ourcampaigns webpage
-    print 'number of cities with at least one election = ', len(df_recent[df_recent['web'].str.contains('http')])
-
     df_city = city_name_merge(df_recent, df_race)
 
+    # df_race_all is the master copy for race_details combined with recent elections
     # calculate the number of mayoral elections per city
-    df_race_CityID = df_race.merge(df_city, left_on = ['State','City'], right_on = ['State', 'City'], how = 'outer')
-    df_race_CityID = df_race_CityID.groupby(['CityID'])['RaceID'].count().reset_index()
+    df_race_all = df_race.merge(df_city, left_on = ['State','City'], right_on = ['State', 'City'], how = 'outer')
+    df_race_CityID = df_race_all.groupby(['CityID'])['RaceID'].count().reset_index()
     print df_race_CityID['RaceID'].describe()
+    df_race_all.to_csv('race_details_all.csv')
+
+    # df_race2_all is the master copy for race_details, race_details2 combined with recent elections
+    df_non_writein.loc[:, 'RaceID'] = df_non_writein['RaceID'].astype(str)
+    df_race_all.loc[:, 'RaceID'] = df_race_all['RaceID'].astype(str)
+    df_race2_all = df_non_writein.merge(df_race_all, left_on = ['RaceID'], right_on = ['RaceID'], how = 'outer')
+    df_race2_CityID = df_race2_all.groupby(['CityID'])['CandID'].count().reset_index()
+    print df_race2_CityID['CandID'].describe()
+    df_race2_all.to_csv('race_details2_all.csv')
+
+    # ====================================================== #
+    #     Summary Statistics for Cities                      #
+    # ====================================================== #
+    stat_city = dict()
+
+    s = len(df_recent['city'])
+    print 'Total Cities', s
+    stat_city['Total Cities'] = s
+
+    s = len(df_recent[df_recent['web'].str.contains('http')])
+    print 'Total Cities with Data', s
+    stat_city['Total Cities with Data'] = s
+
+    df_city['CityID'] = df_city['CityID'].astype(float)
+    s = df_city['CityID'].mean()
+    print 'Avg Ranks', s
+    stat_city['avg Ranks'] = s
+
+    s = df_city['CityID'].median()
+    print 'Median Ranks', s
+    stat_city['Median Ranks'] = s
+
+    df_periods = df_race_all.groupby(['CityID','Term Start Year'])['RaceID'].count().reset_index()
+    print df_periods['RaceID'].describe()
+    df_periods_city = df_periods.groupby(['CityID'])['Term Start Year'].count().reset_index()
+    print df_periods_city['Term Start Year'].describe()
+    s = df_periods_city['Term Start Year'].mean()
+    print 'Avg Election Periods by City:', s
+    stat_city['Avg Election Periods'] = s
+
+    df_elections_city = df_race_all.groupby(['CityID'])['RaceID'].count().reset_index()
+    print df_elections_city['RaceID'].describe()
+    s = df_elections_city['RaceID'].mean()
+    print 'Avg Elections by City:', s
+    stat_city['Avg Elections'] = s
+
+    df_term_city = df_race_all.groupby(['CityID'])['Term Length'].mean().reset_index()
+    s = df_term_city['Term Length'].mean()
+    print 'Avg Term Length:', s
+    stat_city['Avg Term Lengths'] = s
+
+
+    # ====================================================== #
+    #    Summary Statistics for Elections                    #
+    # ====================================================== #
+    stat_election = dict()
+
+    s = df_periods['RaceID'].sum()
+    print 'Elections Covered', s
+    stat_election['Election Covered'] = s
+
+    s = df_periods['RaceID'].count()
+    print 'Number of Election Periods', s
+    stat_election['Election Periods Covered'] = s
+
+    # Mark the terminal election in each election periods
+    df_terminal = df_race2_all.groupby(['CityID', 'Term Start Year'])['Polls Close_date'].max().reset_index()
+    df_terminal = df_terminal.rename(columns={'Polls Close_date': 'Terminal Date'})
+    df_race2_all = df_race2_all.merge(df_terminal, left_on = ['CityID','Term Start Year'], right_on = ['CityID','Term Start Year'], how = 'outer')
+    df_race2_all['Terminal'] = (df_race2_all['Polls Close_date'] == df_race2_all['Terminal Date'])
+
+    # Mark the earliest election period in each city
+
+
+    # First way of telling incumbent/open elections: whether name contains '(I)'
+    df_race2_all['Name Flag'] = (df_race2_all['Name'].str.contains('I')) * 1.0
+    df = df_race2_all.groupby(['CityID', 'Term Start Year'])['Name Flag'].sum().reset_index()
+    df['Incumbent1'] = (df['Name Flag'] > 0.0)
+
+
+
+    # Differentiate Partisan vs Nonpartisan elections
+
+
+
+
+
+
 
 
 
