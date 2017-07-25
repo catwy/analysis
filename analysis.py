@@ -57,7 +57,7 @@ def key_race_details(folder, office, csvs):
             count += 1
     f2.close()
 
-def key_race_details2(folder, office, csvs, key):
+def key_race_details2(folder, office, csvs, key_new):
     count = 0
     for file in os.listdir(folder):
         filename = os.path.basename(file)
@@ -69,11 +69,11 @@ def key_race_details2(folder, office, csvs, key):
                 son = json.load(f2)
                 for keys, values in son.items():
                     if "ertified Votes" in keys:
-                        son['Final Votes'] = son[keys]
+                        son[key_new] = son[keys]
                         del son[keys]
-                w = len(son['Final Votes'])
+                w = len(son[key_new])
                 son['RaceID'] = np.repeat(i, [w])
-            json2csv2(count, son, csvs, 'Final Votes')
+            json2csv2(count, son, csvs, key_new)
             count += 1
     f2.close()
 
@@ -328,6 +328,7 @@ if __name__ == '__main__':
     dir5 = dir0 + '/mayors/schema'
     dir6 = dir0 + '/mayors'
 
+
     # create a folder for cache
     if not os.path.exists('pdata'):
         os.mkdir('pdata')
@@ -338,7 +339,7 @@ if __name__ == '__main__':
 
 
     key_race_details(dir3, 'Mayor', 'key_race_details.csv')
-    key_race_details2(dir3, 'Mayor', 'key_race_details2.csv', u'Certified Votes')
+    key_race_details2(dir3, 'Mayor', 'key_race_details2.csv', 'Final Votes')
 
 
     df_race = setup_race_details()
@@ -428,21 +429,88 @@ if __name__ == '__main__':
     print 'Number of Election Periods', s
     stat_election['Election Periods Covered'] = s
 
-    # Mark the terminal election in each election periods
+    # Mark the terminal election in each election period
     df_terminal = df_race2_all.groupby(['CityID', 'Term Start Year'])['Polls Close_date'].max().reset_index()
-    df_terminal = df_terminal.rename(columns={'Polls Close_date': 'Terminal Date'})
+    df_terminal = df_terminal.rename(columns = {'Polls Close_date': 'Terminal Date'})
     df_race2_all = df_race2_all.merge(df_terminal, left_on = ['CityID','Term Start Year'], right_on = ['CityID','Term Start Year'], how = 'outer')
     df_race2_all['Terminal'] = (df_race2_all['Polls Close_date'] == df_race2_all['Terminal Date'])
 
     # Mark the earliest election period in each city
+    df_early = df_race2_all.groupby(['CityID'])['Term Start Year'].min().reset_index()
+    df_early = df_early.rename(columns = {'Term Start Year': 'Earlist Date'})
+    df_race2_all = df_race2_all.merge(df_early, left_on = ['CityID'], right_on = ['CityID'], how = 'outer')
+    df_race2_all['Earlist'] = (df_race2_all['Term Start Year'] == df_race2_all['Earlist Date'])
 
+    # Mark the winner in the terminal election in each election period
+    df_winner = df_race2_all[df_race2_all['Terminal'] == True]
+    df_winner = df_winner.groupby(['CityID','Term Start Year'])['Votes'].max().reset_index()
+    df_winner = df_winner.rename(columns = {'Votes':'Votes Max'})
+    df_race2_all = df_race2_all.merge(df_winner, left_on = ['CityID','Term Start Year'], right_on = ['CityID','Term Start Year'], how = 'outer')
+    df_race2_all['winner'] = (df_race2_all['Votes'] == df_race2_all['Votes Max'])
+    df_race2_all['winnerID'] = (df_race2_all['Votes'] == df_race2_all['Votes Max']) * 1.0 * df_race2_all['CandID'].astype(float)
 
-    # First way of telling incumbent/open elections: whether name contains '(I)'
+    # First way of differentiating incumbent/open elections: whether name contains '(I)'
     df_race2_all['Name Flag'] = (df_race2_all['Name'].str.contains('I')) * 1.0
     df = df_race2_all.groupby(['CityID', 'Term Start Year'])['Name Flag'].sum().reset_index()
-    df['Incumbent1'] = (df['Name Flag'] > 0.0)
+    df['Incumbent1'] = (df['Name Flag'] > 0.0) * 1.0
+    df_race2_all = df_race2_all.merge(df, left_on = ['CityID', 'Term Start Year'], right_on = ['CityID', 'Term Start Year'], how = 'outer')
 
 
+    # Second way of differentiating incumbent/open elections: whether the winner of last period appears again
+    df_winner_id = df_race2_all[['winnerID', 'CityID', 'Term Start Year']]
+    df_winner_id = df_winner_id.groupby(['CityID', 'Term Start Year'])['winnerID'].max().reset_index()
+    df_winner_id = df_winner_id.sort_values(['CityID','Term Start Year'], ascending = True)
+    df_winner_id['winnerID previous'] = df_winner_id.groupby(['CityID'])['winnerID'].shift(1)
+    df_winner_id = df_winner_id.drop('winnerID', 1)
+
+    df_race2_all = df_race2_all.merge(df_winner_id, left_on = ['CityID','Term Start Year'], right_on = ['CityID','Term Start Year'], how = 'outer')
+    df_race2_all['CandID'] = df_race2_all['CandID'].astype(float)
+    df_race2_all['winnerID previous'] = df_race2_all['winnerID previous'].astype(float)
+    df_race2_all['Matched'] = (df_race2_all['CandID'] == df_race2_all['winnerID previous']) * 1.0
+
+    df = df_race2_all.groupby(['CityID','Term Start Year'])['Matched'].max().reset_index()
+    df = df[df['Matched'] > 0]
+    df = df.rename(columns = {'Matched':'Incumbent2'})
+    df_race2_all = df_race2_all.merge(df, left_on = ['CityID','Term Start Year'], right_on = ['CityID', 'Term Start Year'], how = 'outer')
+    df_race2_all.loc[df_race2_all['Incumbent2'] != 1,'Incumbent2'] = (df_race2_all['Earlist'])* 2.0
+
+    df_race2_all.to_csv('test.csv')
+
+    df = df_race2_all[df_race2_all['Incumbent2'] == 1]
+    df = df.groupby(['CityID','Term Start Year'])['RaceID'].max().reset_index()
+    s = df['Term Start Year'].count()
+    print 'Number of Incumbent Election Periods', s
+    stat_election['Incumbent Election Periods'] = s
+
+    df2 = df_race2_all[df_race2_all['Incumbent2'] == 1]
+    g = df2['RaceID'].unique()
+    s = pd.Series(g).count()
+    print 'Number of Unique Incumbent Candidates', s
+    stat_election['Incumbent Election Candidates'] = s
+
+    df = df_race2_all[df_race2_all['Incumbent2'] == 0]
+    df = df.groupby(['CityID', 'Term Start Year'])['RaceID'].max().reset_index()
+    s = df['Term Start Year'].count()
+    print 'Number of Open Election Periods', s
+    stat_election['Open Election Periods'] = s
+
+    df2 = df_race2_all[df_race2_all['Incumbent2'] == 0]
+    g = df2['RaceID'].unique()
+    s = pd.Series(g).count()
+    print 'Number of Unique Open Candidates', s
+    stat_election['Open Election Candidates'] = s
+
+    df = df_race2_all[df_race2_all['Incumbent2'] == 2]
+    df = df.groupby(['CityID', 'Term Start Year'])['RaceID'].max().reset_index()
+    s = df['Term Start Year'].count()
+    print 'Number of Unclear Election Periods', s
+    stat_election['Unclear Election Periods'] = s
+
+    df2 = df_race2_all[df_race2_all['Incumbent2'] == 2]
+    g = df2['RaceID'].unique()
+    s = pd.Series(g).count()
+    print 'Number of Unique Unclear Candidates', s
+    stat_election['Unclear Election Candidates'] = s
 
     # Differentiate Partisan vs Nonpartisan elections
 
