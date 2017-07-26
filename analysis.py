@@ -555,18 +555,25 @@ if __name__ == '__main__':
     stat_cand = dict()
 
     df_race_ct = df_unique_CandID
-    dic = {'Open': df_race2_all['Incumbent2'] == 0,
+    dic0 = {'elections':'RaceID', 'election periods':'Term Start Year'}
+    dic1 = {'Open': df_race2_all['Incumbent2'] == 0,
            'Incumbent': (df_race2_all['Incumbent2'] == 1) & (df_race2_all['CandID'] == df_race2_all['winnerID previous']),
-           'Challenger': (df_race2_all['Incumbent2'] == 1) & (df_race2_all['CandID'] != df_race2_all['winnerID previous'])}
-    for label, value in dic.iteritems():
-        df = df_race2_all[value]
-        df = df.groupby(['CandID'])['RaceID'].count().reset_index().rename(columns={'RaceID': label})
-        df_unique_CandID.loc[:, 'CandID'] = df_unique_CandID['CandID'].astype(float).astype(str)
-        df.loc[:, 'CandID'] = df['CandID'].astype(str).astype(str)
-        df2 = df_unique_CandID.merge(df, left_on='CandID', right_on='CandID', how='outer')
-        df2.loc[df2[label].isnull(), label] = 0
-        df_race_ct = df_race_ct.merge(df2, left_on='CandID', right_on='CandID', how='outer')
+           'Challenger': (df_race2_all['Incumbent2'] == 1) & (df_race2_all['CandID'] != df_race2_all['winnerID previous']),
+           'Unclear': df_race2_all['Incumbent2'] == 2}
+    for label0, value0 in dic0.iteritems():
+        for label1, value1 in dic1.iteritems():
+            df = df_race2_all[value1]
+            df = df.groupby(['CandID'])[value0].count().reset_index().rename(columns={value0: label1})
+            df_unique_CandID.loc[:, 'CandID'] = df_unique_CandID['CandID'].astype(float).astype(str)
+            df.loc[:, 'CandID'] = df['CandID'].astype(float).astype(str)
+            df2 = df_unique_CandID.merge(df, left_on='CandID', right_on='CandID', how='outer')
+            df2.loc[df2[label1].isnull(), label1] = 0
+            s = df2[label1].mean()
+            stat_cand['Avg number of {} {}'.format(label1,label0)] = s
+            df_race_ct = df_race_ct.merge(df2, left_on='CandID', right_on='CandID', how='outer')
+
     print df_race_ct.head(10)
+    print stat_cand
 
 
 
