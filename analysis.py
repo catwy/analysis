@@ -275,7 +275,7 @@ def check_shares_sum():
 
 def unique_candidates(df_race2):
     g = df_race2['CandID'].unique()
-    df_unique_CandID = pd.Series(g)
+    df_unique_CandID = pd.DataFrame(pd.Series(g)).rename(columns = {0:'CandID'})
     print 'number of unique candidates=', len(df_unique_CandID)
     df_unique_CandID.to_csv('unique_CandID.csv')
     return df_unique_CandID
@@ -376,6 +376,7 @@ def incumbent_election_v2(df_race2_all):
     df = df.rename(columns = {'Matched':'Incumbent2'})
     df_race2_all = df_race2_all.merge(df, left_on = ['CityID','Term Start Year'], right_on = ['CityID', 'Term Start Year'], how = 'outer')
     df_race2_all.loc[df_race2_all['Incumbent2'] != 1,'Incumbent2'] = (df_race2_all['Earlist'])* 2.0
+    # Incumbent2 = {1:incumbent, 0:open, 2:unclear}
 
     return df_race2_all
 
@@ -546,31 +547,38 @@ if __name__ == '__main__':
     # ====================================================== #
     stat_election = statistics_election(df_periods, df_race2_all)
 
+    # ====================================================== #
+    #    Summary Statistics for Candidates                   #
+    # ====================================================== #
+    #print df_unique_CandID.head(10)
 
+    stat_cand = dict()
 
+    dic = {'Open':df_race2_all['Incumbent2'] == 0}
+    for label, value in dic.iteritems():
+        df = df_race2_all[value]  #df_race2_all['Incumbent2'] == 0
+    df = df.groupby(['CandID'])['RaceID'].count().reset_index().rename(columns={'RaceID': 'Open Races'})
+    df_unique_CandID.loc[:, 'CandID'] = df_unique_CandID['CandID'].astype(float).astype(str)
+    df.loc[:, 'CandID'] = df['CandID'].astype(str).astype(str)
+    df_open = df_unique_CandID.merge(df, left_on='CandID', right_on='CandID', how='outer')
+    df_open.loc[df_open['Open Races'].isnull(), 'Open Races'] = 0
+    print df_open.head(10)
 
+    df = df_race2_all[(df_race2_all['Incumbent2'] == 1) & (df_race2_all['CandID'] == df_race2_all['winnerID previous'])]
+    df = df.groupby(['CandID'])['RaceID'].count().reset_index().rename(columns={'RaceID': 'Incumbent'})
+    df_unique_CandID.loc[:, 'CandID'] = df_unique_CandID['CandID'].astype(float).astype(str)
+    df.loc[:, 'CandID'] = df['CandID'].astype(str).astype(str)
+    df_incumbent = df_unique_CandID.merge(df, left_on='CandID', right_on='CandID', how='outer')
+    df_incumbent.loc[df_incumbent['Incumbent'].isnull(), 'Incumbent'] = 0
+    print df_incumbent.head(10)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    df = df_race2_all[(df_race2_all['Incumbent2'] == 1) & (df_race2_all['CandID'] != df_race2_all['winnerID previous'])]
+    df = df.groupby(['CandID'])['RaceID'].count().reset_index().rename(columns={'RaceID': 'Challenger'})
+    df_unique_CandID.loc[:, 'CandID'] = df_unique_CandID['CandID'].astype(float).astype(str)
+    df.loc[:, 'CandID'] = df['CandID'].astype(str).astype(str)
+    df_challenger = df_unique_CandID.merge(df, left_on='CandID', right_on='CandID', how='outer')
+    df_challenger.loc[df_challenger['Challenger'].isnull(), 'Challenger'] = 0
+    print df_challenger.head(10)
 
 
 
