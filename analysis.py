@@ -466,6 +466,14 @@ def statistics_election(df_periods, df_race2_all):
 
     return stat_election
 
+def select_big_cities(df_race2_all, key, cutoff):
+    df_race2_all.loc[:, key] = df_race2_all[key].astype(float)
+    print len(df_race2_all)
+    df_race2_all = df_race2_all[df_race2_all[key] < cutoff]
+    print len(df_race2_all)
+    df_non_writein = df_race2_all.groupby(['CandID'])['RaceID'].count().reset_index().rename(columns={'RaceID': 'RaceIDs'})
+    return df_race2_all, df_non_writein
+
 if __name__ == '__main__':
     # ====================================================== #
     #    Initialize Directory and load Data                  #
@@ -505,8 +513,8 @@ if __name__ == '__main__':
 
     # Remove write-in candidates, until max number of mayoral elections per candidate is reasonable
     df_non_writein = cand_remove(df_race2, ['22593', '191'])  # write-in & others
-    df = df_non_writein.groupby(['CandID'])['RaceID'].count().reset_index()
-    print df['RaceID'].describe()
+    df_non_writein_id = df_non_writein.groupby(['CandID'])['RaceID'].count().reset_index()
+    print df_non_writein_id['RaceID'].describe()
 
     # Load the list of largest cities and merge the city names with those in ourcampaigns
     df_recent = recent_elections()
@@ -536,7 +544,7 @@ if __name__ == '__main__':
     # Second way of differentiating incumbent/open elections: whether the winner of last period appears again
     df_race2_all = incumbent_election_v2(df_race2_all)
 
-
+    df_race2_all.to_csv('race2_all.csv')
     # ====================================================== #
     #     Summary Statistics for Cities                      #
     # ====================================================== #
@@ -550,11 +558,13 @@ if __name__ == '__main__':
     # ====================================================== #
     #    Summary Statistics for Candidates                   #
     # ====================================================== #
-    #print df_unique_CandID.head(10)
+
+    #df_race2_all, df_non_writein = select_big_cities(df_race2_all, 'CityID', 100)
 
     stat_cand = dict()
 
-    df_race_ct = df_unique_CandID
+    df_race_ct = df_non_writein_id
+    print 'Number of Unique Candidates', len(df_non_writein_id)
     dic0 = {'elections':'RaceID', 'election periods':'Term Start Year'}
     dic1 = {'Open': df_race2_all['Incumbent2'] == 0,
            'Incumbent': (df_race2_all['Incumbent2'] == 1) & (df_race2_all['CandID'] == df_race2_all['winnerID previous']),
@@ -563,16 +573,79 @@ if __name__ == '__main__':
     for label0, value0 in dic0.iteritems():
         for label1, value1 in dic1.iteritems():
             df = df_race2_all[value1]
-            df = df.groupby(['CandID'])[value0].count().reset_index().rename(columns={value0: label1})
-            df_unique_CandID.loc[:, 'CandID'] = df_unique_CandID['CandID'].astype(float).astype(str)
+            df = df.groupby(['CandID'])[value0].nunique().reset_index().rename(columns={value0: '{} {}'.format(label1,label0)})
+            df_non_writein_id.loc[:, 'CandID'] = df_non_writein_id['CandID'].astype(float).astype(str)
             df.loc[:, 'CandID'] = df['CandID'].astype(float).astype(str)
-            df2 = df_unique_CandID.merge(df, left_on='CandID', right_on='CandID', how='outer')
-            df2.loc[df2[label1].isnull(), label1] = 0
-            s = df2[label1].mean()
+            df2 = df_non_writein_id.merge(df, left_on='CandID', right_on='CandID', how='outer')
+            df2.loc[df2['{} {}'.format(label1,label0)].isnull(), '{} {}'.format(label1,label0)] = 0
+            s = df2['{} {}'.format(label1,label0)].mean()
             stat_cand['Avg number of {} {}'.format(label1,label0)] = s
             df_race_ct = df_race_ct.merge(df2, left_on='CandID', right_on='CandID', how='outer')
 
-    print df_race_ct.head(10)
+    df = df_race2_all.groupby(['CandID'])['Term Start Year'].nunique().reset_index()
+    s = df['Term Start Year'].mean()
+    print 'Number of Election Periods Per Candidate', s
+    stat_cand['Number of Election Periods Per Candidate'] = s
+
+    df_winner_list = df_race2_all.groupby(['winnerID'])['Term Start Year'].nunique().reset_index().rename(columns={'winnerID':'CandID','Term Start Year':'Win at once (Wins)'})
+    df_winner_list = df_winner_list[df_winner_list['CandID']>0.0]
+    s = len(df_winner_list)
+    print 'Number of Candidates at least winning once', s
+    stat_cand['Number of Candidates at least winning once'] = s
+    s = df_winner_list['Win at once (Wins)'].mean()
+    print 'Winners: Number of Winning Election Periods', s
+    stat_cand['Winners: Number of Winning Election Periods'] = s
+
+    df_race2_all_winner = df_race2_all.merge(df_winner_list, left_on='CandID', right_on='CandID', how ='right')
+    df = df_race2_all_winner.groupby(['CandID'])['Term Start Year'].nunique().reset_index()
+    s = df['Term Start Year'].mean()
+    print 'Winners: Number of Election Periods', s
+    stat_cand['Winners: Number of Election Periods'] = s
+
+    df = df_race2_all.merge(df_winner_list, left_on = 'CandID', right_on = 'CandID', how = 'outer')
+    df_race_all_loser = df[df['Win at once (Wins)'].isnull()]
+    df_loser_list = df_race_all_loser.groupby(['CandID'])['Term Start Year'].nunique().reset_index()
+    s = len(df_loser_list)
+    print 'Number of Candidates never win', s
+    stat_cand['Number of Candidates never win'] = s
+    s = df_loser_list['Term Start Year'].mean()
+    print 'Losers: Number of Election Periods', s
+    stat_cand['Losers: Number of Election Periods'] = s
+
+    df = df_race2_all_winner[df_race2_all_winner['CandID']==df_race2_all_winner['winnerID']].groupby(['CandID'])['Term Start Year'].min().reset_index()\
+         .rename(columns={'Term Start Year':'First Win Year'})
+    df_winner_win = df_race2_all_winner.merge(df, left_on='CandID', right_on='CandID', how='outer')
+
+    df = df_winner_win[df_winner_win['Term Start Year']<df_winner_win['First Win Year']]
+    df = df.groupby(['CandID'])['Term Start Year'].nunique().reset_index().rename(columns={'Term Start Year':'Win at once (Early Fails)'})
+    df = df_winner_list.merge(df, left_on='CandID', right_on='CandID', how ='left')
+    df.loc[df['Win at once (Early Fails)'].isnull(),'Win at once (Early Fails)'] = 0.0
+    s = df['Win at once (Early Fails)'].mean()
+    print 'Winners: Number of Failed Tries before First Win', s
+    stat_cand['Winners: Number of Failed Tries before First Win'] = s
+
+    df_race_late = df_winner_win[df_winner_win['Term Start Year']>df_winner_win['First Win Year']]
+
+    df = df_race_late.groupby(['CandID'])['Term Start Year'].nunique().reset_index().rename(columns={'Term Start Year':'Win at once (Late Tries)'})
+    df_late = df_winner_list.merge(df, left_on='CandID', right_on='CandID', how ='left')
+    df_late.loc[df_late['Win at once (Late Tries)'].isnull(),'Win at once (Late Tries)'] = 0.0
+    s = df_late['Win at once (Late Tries)'].mean()
+    print 'Winners: Number of Tries After First Win', s
+    stat_cand['Winners: Number of Tries After First Win'] = s
+
+    df = df_race_late[df_race_late['CandID']==df_race_late['winnerID']].groupby(['CandID'])['Term Start Year'].nunique().reset_index().rename(columns={'Term Start Year':'Win at once (Late Wins)'})
+    df_late_win = df_winner_list.merge(df, left_on='CandID', right_on='CandID', how ='left')
+    df_late_win.loc[df_late_win['Win at once (Late Wins)'].isnull(), 'Win at once (Late Wins)'] = 0.0
+    s = df_late_win['Win at once (Late Wins)'].mean()
+    print 'Winners: Number of Wins After First Win', s
+    stat_cand['Winners: Number of Wins After First Win'] = s
+
+    df = df_race_late[df_race_late['CandID'] != df_race_late['winnerID']].groupby(['CandID'])['Term Start Year'].nunique().reset_index().rename(columns={'Term Start Year': 'Win at once (Late Fails)'})
+    df_late_win = df_winner_list.merge(df, left_on='CandID', right_on='CandID', how='left')
+    df_late_win.loc[df_late_win['Win at once (Late Fails)'].isnull(), 'Win at once (Late Fails)'] = 0.0
+    s = df_late_win['Win at once (Late Fails)'].mean()
+    print 'Winners: Number of Fails After First Win', s
+    stat_cand['Winners: Number of Fails After First Win'] = s
     print stat_cand
 
 
