@@ -358,64 +358,64 @@ def incumbent_election_v1(df_race2_all):
     df_race2_all = df_race2_all.merge(df, left_on=['CityID', 'Term Start Year'], right_on=['CityID', 'Term Start Year'], how='outer')
     return df_race2_all
 
-def incumbent_election_v2(df_race2_all):
-    df_winner_id = df_race2_all[['winnerID', 'CityID', 'Term Start Year']]
-    df_winner_id = df_winner_id.groupby(['CityID', 'Term Start Year'])['winnerID'].max().reset_index()
-    df_winner_id = df_winner_id.sort_values(['CityID', 'Term Start Year'], ascending=True)
-    df_winner_id['winnerID previous'] = df_winner_id.groupby(['CityID'])['winnerID'].shift(1)
+def incumbent_election_v2(df_race2_all, distID):
+    df_winner_id = df_race2_all[['winnerID', distID, 'Term Start Year']]
+    df_winner_id = df_winner_id.groupby([distID, 'Term Start Year'])['winnerID'].max().reset_index()
+    df_winner_id = df_winner_id.sort_values([distID, 'Term Start Year'], ascending=True)
+    df_winner_id['winnerID previous'] = df_winner_id.groupby([distID])['winnerID'].shift(1)
     df_winner_id = df_winner_id.drop('winnerID', 1)
 
-    df_race2_all = df_race2_all.merge(df_winner_id, left_on=['CityID', 'Term Start Year'],
-                                      right_on=['CityID', 'Term Start Year'], how='outer')
+    df_race2_all = df_race2_all.merge(df_winner_id, left_on=[distID, 'Term Start Year'],
+                                      right_on=[distID, 'Term Start Year'], how='outer')
     df_race2_all['CandID'] = df_race2_all['CandID'].astype(float)
     df_race2_all['winnerID previous'] = df_race2_all['winnerID previous'].astype(float)
     df_race2_all['Matched'] = (df_race2_all['CandID'] == df_race2_all['winnerID previous']) * 1.0
 
-    df = df_race2_all.groupby(['CityID','Term Start Year'])['Matched'].max().reset_index()
+    df = df_race2_all.groupby([distID,'Term Start Year'])['Matched'].max().reset_index()
     df = df[df['Matched'] > 0]
     df = df.rename(columns = {'Matched':'Incumbent2'})
-    df_race2_all = df_race2_all.merge(df, left_on = ['CityID','Term Start Year'], right_on = ['CityID', 'Term Start Year'], how = 'outer')
+    df_race2_all = df_race2_all.merge(df, left_on = [distID,'Term Start Year'], right_on = [distID, 'Term Start Year'], how = 'outer')
     df_race2_all.loc[df_race2_all['Incumbent2'] != 1,'Incumbent2'] = (df_race2_all['Earlist'])* 2.0
     # Incumbent2 = {1:incumbent, 0:open, 2:unclear}
 
     return df_race2_all
 
-def statistics_city(df_recent, df_city, df_periods, df_race_all):
-    stat_city = dict()
+def statistics_dist(df_recent, df_dist, df_periods, df_race_all, dist, dists, distID):
+    stat_dist = dict()
 
-    s = len(df_recent['city'])
-    print 'Total Cities', s
-    stat_city['Total Cities'] = s
+    s = len(df_recent[dist])
+    print 'Total {}'.format(dists), s
+    stat_dist['Total {}'.format(dists)] = s
 
     s = len(df_recent[df_recent['web'].str.contains('http')])
-    print 'Total Cities with Data', s
-    stat_city['Total Cities with Data'] = s
+    print 'Total {} with Data'.format(dists), s
+    stat_dist['Total {} with Data'.format(dists)] = s
 
-    df_city['CityID'] = df_city['CityID'].astype(float)
-    s = df_city['CityID'].mean()
+    df_dist[distID] = df_dist[distID].astype(float)
+    s = df_dist[distID].mean()
     print 'Avg Ranks', s
-    stat_city['avg Ranks'] = s
+    stat_dist['avg Ranks'] = s
 
-    s = df_city['CityID'].median()
+    s = df_dist[distID].median()
     print 'Median Ranks', s
-    stat_city['Median Ranks'] = s
+    stat_dist['Median Ranks'] = s
 
-    df_periods_city = df_periods.groupby(['CityID'])['Term Start Year'].count().reset_index()
-    s = df_periods_city['Term Start Year'].mean()
-    print 'Avg Election Periods by City:', s
-    stat_city['Avg Election Periods'] = s
+    df_periods_dist = df_periods.groupby([distID])['Term Start Year'].count().reset_index()
+    s = df_periods_dist['Term Start Year'].mean()
+    print 'Avg Election Periods by {}:'.format(dist), s
+    stat_dist['Avg Election Periods'] = s
 
-    df_elections_city = df_race_all.groupby(['CityID'])['RaceID'].count().reset_index()
-    s = df_elections_city['RaceID'].mean()
-    print 'Avg Elections by City:', s
-    stat_city['Avg Elections'] = s
+    df_elections_dist = df_race_all.groupby([distID])['RaceID'].count().reset_index()
+    s = df_elections_dist['RaceID'].mean()
+    print 'Avg Elections by {}:'.format(dist), s
+    stat_dist['Avg Elections'] = s
 
-    df_term_city = df_race_all.groupby(['CityID'])['Term Length'].mean().reset_index()
-    s = df_term_city['Term Length'].mean()
+    df_term_dist = df_race_all.groupby([distID])['Term Length'].mean().reset_index()
+    s = df_term_dist['Term Length'].mean()
     print 'Avg Term Length:', s
-    stat_city['Avg Term Lengths'] = s
+    stat_dist['Avg Term Lengths'] = s
 
-    return stat_city
+    return stat_dist
 
 def statistics_election(df_periods, df_race2_all, keyID):
     stat_election = dict()
@@ -671,13 +671,13 @@ if __name__ == '__main__':
     df_race2_all = incumbent_election_v1(df_race2_all)
 
     # Second way of differentiating incumbent/open elections: whether the winner of last period appears again
-    df_race2_all = incumbent_election_v2(df_race2_all)
+    df_race2_all = incumbent_election_v2(df_race2_all, 'CityID')
 
     df_race2_all.to_csv('race2_all.csv')
     # ====================================================== #
     #     Summary Statistics for Cities                      #
     # ====================================================== #
-    stat_city = statistics_city(df_recent, df_city, df_periods, df_race_all)
+    stat_city = statistics_dist(df_recent, df_city, df_periods, df_race_all, 'city','Cities','CityID')
 
     # ====================================================== #
     #    Summary Statistics for Elections                    #
