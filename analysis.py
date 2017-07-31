@@ -417,7 +417,7 @@ def statistics_city(df_recent, df_city, df_periods, df_race_all):
 
     return stat_city
 
-def statistics_election(df_periods, df_race2_all):
+def statistics_election(df_periods, df_race2_all, keyID):
     stat_election = dict()
 
     s = df_periods['RaceID'].sum()
@@ -429,7 +429,7 @@ def statistics_election(df_periods, df_race2_all):
     stat_election['Election Periods Covered'] = s
 
     df = df_race2_all[df_race2_all['Incumbent2'] == 1]
-    df = df.groupby(['CityID','Term Start Year'])['RaceID'].max().reset_index()
+    df = df.groupby([keyID,'Term Start Year'])['RaceID'].max().reset_index()
     s = df['Term Start Year'].count()
     print 'Number of Incumbent Election Periods', s
     stat_election['Incumbent Election Periods'] = s
@@ -441,7 +441,7 @@ def statistics_election(df_periods, df_race2_all):
     stat_election['Incumbent Election Candidates'] = s
 
     df = df_race2_all[df_race2_all['Incumbent2'] == 0]
-    df = df.groupby(['CityID', 'Term Start Year'])['RaceID'].max().reset_index()
+    df = df.groupby([keyID, 'Term Start Year'])['RaceID'].max().reset_index()
     s = df['Term Start Year'].count()
     print 'Number of Open Election Periods', s
     stat_election['Open Election Periods'] = s
@@ -453,7 +453,7 @@ def statistics_election(df_periods, df_race2_all):
     stat_election['Open Election Candidates'] = s
 
     df = df_race2_all[df_race2_all['Incumbent2'] == 2]
-    df = df.groupby(['CityID', 'Term Start Year'])['RaceID'].max().reset_index()
+    df = df.groupby([keyID, 'Term Start Year'])['RaceID'].max().reset_index()
     s = df['Term Start Year'].count()
     print 'Number of Unclear Election Periods', s
     stat_election['Unclear Election Periods'] = s
@@ -466,10 +466,11 @@ def statistics_election(df_periods, df_race2_all):
 
     return stat_election
 
-def select_big_cities(df_race2_all, key, cutoff):
-    df_race2_all.loc[:, key] = df_race2_all[key].astype(float)
+def select_districts(df_race2_all, key1, cutoff1, key2, cutoff2):
+    df_race2_all.loc[:, key1] = df_race2_all[key1].astype(float)
     print len(df_race2_all)
-    df_race2_all = df_race2_all[df_race2_all[key] < cutoff]
+    df_race2_all = df_race2_all[df_race2_all[key1] < cutoff1]
+    df_race2_all = df_race2_all[df_race2_all[key2] > cutoff2]
     print len(df_race2_all)
     df_non_writein_id = df_race2_all.groupby(['CandID'])['RaceID'].count().reset_index().rename(columns={'RaceID': 'RaceIDs'})
     return df_race2_all, df_non_writein_id
@@ -681,13 +682,13 @@ if __name__ == '__main__':
     # ====================================================== #
     #    Summary Statistics for Elections                    #
     # ====================================================== #
-    stat_election = statistics_election(df_periods, df_race2_all)
+    stat_election = statistics_election(df_periods, df_race2_all, 'CityID')
 
     # ====================================================== #
     #    Summary Statistics for Candidates                   #
     # ====================================================== #
 
-    #df_race2_all, df_non_writein_id = select_big_cities(df_race2_all, 'CityID', 100)
+    #df_race2_all, df_non_writein_id = select_districts(df_race2_all, 'CityID', 100, 'Term Start Year', 1950)
     stat_cand = statistics_candidates()
 
 
