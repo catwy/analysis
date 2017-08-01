@@ -6,129 +6,83 @@ import time
 import collections
 import numpy as np
 import pandas as pd
+from glob import glob
 
 
 # Merge Race Details
-def json2csv(count, file1, csvs):
-    # file1 is a loaded json file
-    file1 = collections.OrderedDict(sorted(file1.items()))
-    file2 = open(csvs, 'a')
-    csvwriter = csv.writer(file2)
-    if count == 0: # write columns
-       header = file1.keys()
-       csvwriter.writerow(header)
-       count += 1
-    if count >= 1: # skip columns
-       csvwriter.writerow(file1.values())
-    file2.close()
+def key_race_details(folder, office, table_title, output_file):
+    content = {}
+    input_file_pattern = '{}/race*{}*{}.json'.format(folder, office, table_title)
+    for filename in glob(input_file_pattern):
+        race_id = re.findall('\d+', filename)[1]
+        with open(filename, 'rb') as fp:
+            son = json.load(fp)
+            n_new_row = None
+            for key, values in son.iteritems():
+                if "ertified Votes" in key:
+                    key = "Votes"
+                key_text = key + '_text'
+                if key_text not in content:
+                    content[key_text] = []
+                content[key_text].extend([v['text'] for v in values])
+                key_link = key + '_link'
+                if key_link not in content:
+                    content[key_link] = []
+                content[key_link].extend([v['link'] for v in values])
+                if n_new_row:
+                    assert n_new_row == len(values)
+                n_new_row = len(values)
+            content['RaceID'] += [race_id] * n_new_row
 
-# Merge Candidates votes in a Race
-def json2csv2(count, file1, csvs, key):
-    # file1 is a loaded json file
-    file1 = collections.OrderedDict(sorted(file1.items()))
-    file2 = open(csvs, 'a')
-    csvwriter = csv.writer(file2)
-    if count == 0:
-        header = file1.keys()
+    header = content.keys()
+    n_row = [len(content[h]) for h in header]
+    assert min(n_row) == max(n_row)
+
+    with open(output_file, 'wb') as fp:
+        csvwriter = csv.writer(fp)
         csvwriter.writerow(header)
-        count += 1
-    if count >= 1:
-        length1 = len(file1)  # number of keys
-        length2 = len(file1[key]) # number of observations
-        for l2 in range(length2):
-            row2 = []
-            for l1 in range(length1):
-                row1 = file1.values()[l1]
-                row2.append(row1[l2])
-            csvwriter.writerow(row2)
-    file2.close()
-
-def key_race_details(folder, office, csvs):
-    count = 0
-    for file in os.listdir(folder):
-        filename = os.path.basename(file)
-        if ("race_" in filename) & (office in filename) & ("RaceDetails" in filename):
-            x = re.findall(r'\d+', str(filename))
-            i = x[1]
-            with open(os.path.join(folder, file)) as f2:
-                son = json.load(f2)
-                son['RaceID'] = i
-            json2csv(count, son, csvs)
-            count += 1
-    f2.close()
-
-def key_race_details2(folder, office, csvs, key_new):
-    count = 0
-    for file in os.listdir(folder):
-        filename = os.path.basename(file)
-        if ("race_" in filename) & (office in filename) & ("Candidates" in filename):
-            x = re.findall(r'\d+', str(filename))
-            i = x[1]
-            print('race id', i)
-            with open(os.path.join(folder, file)) as f2:
-                son = json.load(f2)
-                for keys, values in son.items():
-                    if "ertified Votes" in keys:
-                        son[key_new] = son[keys]
-                        del son[keys]
-                w = len(son[key_new])
-                son['RaceID'] = np.repeat(i, [w])
-            json2csv2(count, son, csvs, key_new)
-            count += 1
-    f2.close()
+        for i in xrange(len(content['RaceID'])):
+            csvwriter.writerow([content[h][i] for h in header])
 
 
-def clean_null(df, cols, null_words):
+def clean_null(df, col, null_words):
     # To remove rows if a certain column contains elements in the list of null words
     # df is a loaded csv file, i.e. df = pd.read_csv(file.csv)
     print 'Before clean_null:', len(df['Name'])
     for x in null_words:
-        df = df[df[cols] != x]
+        df = df[df[col] != x]
     print 'After clean_null:', len(df['Name'])
     return df
 
+
 def split_two(df, dic):
     for key, value in dic.iteritems():
-        df['temp1'],df[value[0]] = df[key].str.split("u'text':").str
+        df['temp1'], df[value[0]] = df[key].str.split("u'text':").str
         df[value[0]], df['temp1'] = df[value[0]].str.split("', u'link':").str
-        df[value[0]] = df[value[0]].str.replace("u'",'')
-        df['temp1'],df[value[1]] = df[key].str.split("u'link':").str
-        df[value[1]] = df[value[1]].str.replace("u'",'')
+        df[value[0]] = df[value[0]].str.replace("u'", '')
+        df['temp1'], df[value[1]] = df[key].str.split("u'link':").str
+        df[value[1]] = df[value[1]].str.replace("u'", '')
         df[value[1]], df['temp1'] = df[value[1]].str.split("'\}").str
         df = df.drop('temp1', 1)
     return df
 
 
-def clean_up(s):
+def keep_ascii(s):
     ascii_part = [c for c in s if ord(c) < 128]
     x = ''.join(ascii_part).strip()
     return ' '.join(x.split())
 
-def clean_csv(file):
-    # This is to load a csv file with different number of columns in each row
-    lines = list(csv.reader(open(file)))
-    header, values = lines[0], lines[1:]
-    w_header = len(header)
-    w_lines = 0
-    for x in lines[1:]:
-        new = len(x)
-        w_lines = max(w_lines, new)
-    if w_lines > w_header:
-        for x in range(w_lines - w_header):
-            header.append("Append{}".format(x))
-    df = pd.read_csv(file, names=header)
-    df.drop(df.head(1).index, inplace=True)
-    return df
 
 def date_yr_mon(df, dic):
     for key, value in dic.iteritems():
-        df[key] = df[key].str.replace('(?:-).*','').str.replace("00,","01,")
+        df[key] = df[key].str.replace('(?:-).*', '').str.replace("00,", "01,")
         df.ix[df[key].str.startswith('(\d+)'), key] = "January" + df[key].astype(str)
-        df[key+'_date'] = pd.to_datetime(df[key], errors='coerce')
+        df[key + '_date'] = pd.to_datetime(df[key], errors='coerce')
         df[value[0]] = df[key + '_date'].apply(lambda x: x.year)
         df[value[1]] = df[key + '_date'].apply(lambda x: x.month)
         df = df.drop([key], 1)
     return df
+
 
 def state_county_city(df):
     df['count'] = df['Parent'].str.count('>')
@@ -139,14 +93,15 @@ def state_county_city(df):
         df.ix[df['count'] == key, 'State'] = df[value[0]]
         df.ix[df['count'] == key, 'County'] = df[value[1]]
         df.ix[df['count'] == key, 'City'] = df[value[2]]
-    list = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6', 'c7','Parent','count']
+    list = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6', 'c7', 'Parent', 'count']
     df = df.drop(list, 1)
     return df
+
 
 def split_votes_share(df, dic):
     for key, value in dic.iteritems():
         df[value[0]], df[value[1]] = df[key].str.split("(").str
-        df[value[0]] = df[value[0]].apply(clean_up)
+        df[value[0]] = df[value[0]].apply(keep_ascii)
         df[value[1]], df['temp'] = df[value[1]].str.split("%").str
         df = df.drop('temp', 1)
     return df
@@ -154,7 +109,7 @@ def split_votes_share(df, dic):
 
 def setup_race_details():
     start = time.time()
-    df = clean_csv('key_race_details.csv')
+    df = pd.read_csv('key_race_details.csv')
 
     dics = {'Contributor': ['Contributor Name', 'ContributorID'],
             'Data Sources': ['Source', 'Source Link'],
@@ -237,7 +192,6 @@ def setup_race_details2():
 
 
 def check_shares_sum():
-
     # add up the shares in a file which contains votes, shares, per election
     def add_shares(df_race2):
         df_race2['Share'] = df_race2['Share'].astype(float)
@@ -268,27 +222,30 @@ def check_shares_sum():
         s.to_csv('wrong_shares_raceid.csv')
 
     df_race2_wrong_shares = add_shares(df_race2)
-    df_wrong_shares_full = shares_wrong_big(df_race2_wrong_shares,df_race,df_race2)
+    df_wrong_shares_full = shares_wrong_big(df_race2_wrong_shares, df_race, df_race2)
     shares_wrong_small(df_wrong_shares_full)
     return df_wrong_shares_full
 
+
 def unique_candidates(df_race2):
     g = df_race2['CandID'].unique()
-    df_unique_CandID = pd.DataFrame(pd.Series(g)).rename(columns = {0:'CandID'})
+    df_unique_CandID = pd.DataFrame(pd.Series(g)).rename(columns={0: 'CandID'})
     print 'number of unique candidates=', len(df_unique_CandID)
     df_unique_CandID.to_csv('unique_CandID.csv')
     return df_unique_CandID
 
+
 def cand_remove(df, list):
     for x in list:
-        df = df[df['CandID']!= x]
+        df = df[df['CandID'] != x]
     return df
+
 
 def recent_elections_city():
     path = r'{}'.format(dir6)
     df_m = pd.DataFrame()
-    for id in [1,2,3]:
-        df = pd.read_csv(path + "/recent_elections_part{}.txt".format(id), delimiter = ';', header = None)
+    for id in [1, 2, 3]:
+        df = pd.read_csv(path + "/recent_elections_part{}.txt".format(id), delimiter=';', header=None)
         df_m = df_m.append(df)
     h = df_m.shape[0]
     df_m['CityID'] = range(h)
@@ -299,67 +256,79 @@ def recent_elections_city():
     df_m = df_m.drop('note', 1)
     return df_m
 
+
 def city_name_merge(df_recent, df_race):
-    df_recent['RaceID'] = df_recent['web'].str.extract('(\d+)', expand = False).astype(str)
+    df_recent['RaceID'] = df_recent['web'].str.extract('(\d+)', expand=False).astype(str)
     df_race['RaceID'] = df_race['RaceID'].astype(str)
-    df = df_recent.merge(df_race, left_on = 'RaceID', right_on = 'RaceID', how = 'outer')
+    df = df_recent.merge(df_race, left_on='RaceID', right_on='RaceID', how='outer')
     df_city = df[['State', 'County', 'City', 'web', 'state', 'city', 'CityID']]
-    df_city.loc[:,'CityID'] = df_city['CityID'].astype(str)
+    df_city.loc[:, 'CityID'] = df_city['CityID'].astype(str)
     df_city = df_city[df_city['CityID'].str.contains('(\d+)')]
     df_city = df_city[df_city['web'].str.contains('http')]
     df_city.to_csv('city_name_merge.csv')
     return df_city
 
+
 def race_details_recent(df_race, df_dist, distID, label):
-    df_race_all = df_race.merge(df_dist, left_on = label, right_on = label, how = 'outer')
+    df_race_all = df_race.merge(df_dist, left_on=label, right_on=label, how='outer')
     df_race_distID = df_race_all.groupby([distID])['RaceID'].count().reset_index()
     print df_race_distID['RaceID'].describe()
     df_race_all.to_csv('race_details_all_v0.csv')
     return df_race_all
 
+
 def race_details2_recent(df_non_writein, df_race_all, distID):
     df_non_writein.loc[:, 'RaceID'] = df_non_writein['RaceID'].astype(str)
     df_race_all.loc[:, 'RaceID'] = df_race_all['RaceID'].astype(str)
-    df_race2_all = df_non_writein.merge(df_race_all, left_on = ['RaceID'], right_on = ['RaceID'], how = 'outer')
+    df_race2_all = df_non_writein.merge(df_race_all, left_on=['RaceID'], right_on=['RaceID'], how='outer')
     df_race2_distID = df_race2_all.groupby([distID])['CandID'].count().reset_index()
     print df_race2_distID['CandID'].describe()
     df_race2_all.to_csv('race_details2_all_v0.csv')
     return df_race2_all
 
+
 def terminal_election(df_race2_all, distID):
-    df_terminal = df_race2_all.groupby([distID, 'Term Start Year'])['Polls Close_date'].max().reset_index()\
-                  .rename(columns={'Polls Close_date': 'Terminal Date'})
-    df_race2_all = df_race2_all.merge(df_terminal, left_on=[distID, 'Term Start Year'],right_on=[distID, 'Term Start Year'], how='outer')
+    df_terminal = df_race2_all.groupby([distID, 'Term Start Year'])['Polls Close_date'].max().reset_index() \
+        .rename(columns={'Polls Close_date': 'Terminal Date'})
+    df_race2_all = df_race2_all.merge(df_terminal, left_on=[distID, 'Term Start Year'],
+                                      right_on=[distID, 'Term Start Year'], how='outer')
     df_race2_all['Terminal'] = (df_race2_all['Polls Close_date'] == df_race2_all['Terminal Date'])
     return df_race2_all
 
+
 def early_city(df_race2_all, distID):
-    df_early = df_race2_all.groupby([distID])['Term Start Year'].min().reset_index()\
-               .rename(columns={'Term Start Year': 'Earlist Date'})
+    df_early = df_race2_all.groupby([distID])['Term Start Year'].min().reset_index() \
+        .rename(columns={'Term Start Year': 'Earlist Date'})
     df_race2_all = df_race2_all.merge(df_early, left_on=[distID], right_on=[distID], how='outer')
     df_race2_all['Earlist'] = (df_race2_all['Term Start Year'] == df_race2_all['Earlist Date'])
     return df_race2_all
 
+
 def winner_election_period(df_race2_all, distID):
     df_winner = df_race2_all[df_race2_all['Terminal'] == True]
-    df_winner = df_winner.groupby([distID, 'Term Start Year'])['Votes'].max().reset_index()\
-                .rename(columns={'Votes': 'Votes Max'})
-    df_race2_all = df_race2_all.merge(df_winner, left_on=[distID, 'Term Start Year'],right_on=[distID, 'Term Start Year'], how='outer')
+    df_winner = df_winner.groupby([distID, 'Term Start Year'])['Votes'].max().reset_index() \
+        .rename(columns={'Votes': 'Votes Max'})
+    df_race2_all = df_race2_all.merge(df_winner, left_on=[distID, 'Term Start Year'],
+                                      right_on=[distID, 'Term Start Year'], how='outer')
     df_race2_all['winner'] = (df_race2_all['Votes'] == df_race2_all['Votes Max'])
-    df_race2_all['winnerID'] = (df_race2_all['Votes'] == df_race2_all['Votes Max']) * 1.0 * df_race2_all['CandID'].astype(float)
+    df_race2_all['winnerID'] = (df_race2_all['Votes'] == df_race2_all['Votes Max']) * 1.0 * df_race2_all[
+        'CandID'].astype(float)
     return df_race2_all
+
 
 def incumbent_election_v1(df_race2_all, distID):
     df_race2_all['Name Flag'] = (df_race2_all['Name'].str.contains('I')) * 1.0
     df = df_race2_all.groupby([distID, 'Term Start Year'])['Name Flag'].sum().reset_index()
     df['Incumbent1'] = (df['Name Flag'] > 0.0) * 1.0
-    df_race2_all = df_race2_all.merge(df, left_on=[distID, 'Term Start Year'], right_on=[distID, 'Term Start Year'], how='outer')
+    df_race2_all = df_race2_all.merge(df, left_on=[distID, 'Term Start Year'], right_on=[distID, 'Term Start Year'],
+                                      how='outer')
     return df_race2_all
 
+
 def incumbent_election_v2(df_race2_all, distID):
-    df_winner_id = df_race2_all[['winnerID', distID, 'Term Start Year']]\
-                   .groupby([distID, 'Term Start Year'])['winnerID'].max().reset_index()\
-                   .sort_values([distID, 'Term Start Year'], ascending=True)
+    df_winner_id = df_race2_all[['winnerID', distID, 'Term Start Year']] \
+        .groupby([distID, 'Term Start Year'])['winnerID'].max().reset_index() \
+        .sort_values([distID, 'Term Start Year'], ascending=True)
     df_winner_id['winnerID previous'] = df_winner_id.groupby([distID])['winnerID'].shift(1)
     df_winner_id = df_winner_id.drop('winnerID', 1)
 
@@ -369,14 +338,16 @@ def incumbent_election_v2(df_race2_all, distID):
     df_race2_all['winnerID previous'] = df_race2_all['winnerID previous'].astype(float)
     df_race2_all['Matched'] = (df_race2_all['CandID'] == df_race2_all['winnerID previous']) * 1.0
 
-    df = df_race2_all.groupby([distID,'Term Start Year'])['Matched'].max().reset_index()
+    df = df_race2_all.groupby([distID, 'Term Start Year'])['Matched'].max().reset_index()
     df = df[df['Matched'] > 0]
-    df = df.rename(columns = {'Matched':'Incumbent2'})
-    df_race2_all = df_race2_all.merge(df, left_on = [distID,'Term Start Year'], right_on = [distID, 'Term Start Year'], how = 'outer')
-    df_race2_all.loc[df_race2_all['Incumbent2'] != 1,'Incumbent2'] = (df_race2_all['Earlist'])* 2.0
+    df = df.rename(columns={'Matched': 'Incumbent2'})
+    df_race2_all = df_race2_all.merge(df, left_on=[distID, 'Term Start Year'], right_on=[distID, 'Term Start Year'],
+                                      how='outer')
+    df_race2_all.loc[df_race2_all['Incumbent2'] != 1, 'Incumbent2'] = (df_race2_all['Earlist']) * 2.0
     # Incumbent2 = {1:incumbent, 0:open, 2:unclear}
 
     return df_race2_all
+
 
 def statistics_dist(df_recent, df_dist, df_periods, df_race_all, dist, dists, distID):
     stat_dist = dict()
@@ -415,6 +386,7 @@ def statistics_dist(df_recent, df_dist, df_periods, df_race_all, dist, dists, di
 
     return stat_dist
 
+
 def statistics_election(df_periods, df_race2_all, distID):
     stat_election = dict()
 
@@ -427,7 +399,7 @@ def statistics_election(df_periods, df_race2_all, distID):
     stat_election['Election Periods Covered'] = s
 
     df = df_race2_all[df_race2_all['Incumbent2'] == 1]
-    df = df.groupby([distID,'Term Start Year'])['RaceID'].max().reset_index()
+    df = df.groupby([distID, 'Term Start Year'])['RaceID'].max().reset_index()
     s = df['Term Start Year'].count()
     print 'Number of Incumbent Election Periods', s
     stat_election['Incumbent Election Periods'] = s
@@ -464,14 +436,17 @@ def statistics_election(df_periods, df_race2_all, distID):
 
     return stat_election
 
+
 def select_districts(df_race2_all, key1, cutoff1, key2, cutoff2):
     df_race2_all.loc[:, key1] = df_race2_all[key1].astype(float)
     print len(df_race2_all)
     df_race2_all = df_race2_all[df_race2_all[key1] < cutoff1]
     df_race2_all = df_race2_all[df_race2_all[key2] > cutoff2]
     print len(df_race2_all)
-    df_non_writein_id = df_race2_all.groupby(['CandID'])['RaceID'].count().reset_index().rename(columns={'RaceID': 'RaceIDs'})
+    df_non_writein_id = df_race2_all.groupby(['CandID'])['RaceID'].count().reset_index().rename(
+        columns={'RaceID': 'RaceIDs'})
     return df_race2_all, df_non_writein_id
+
 
 def statistics_candidates():
     def cand_inc_cha_open(df_race2_all, df_non_writein_id):
@@ -486,7 +461,7 @@ def statistics_candidates():
         for label0, value0 in dic0.iteritems():
             for label1, value1 in dic1.iteritems():
                 df = df_race2_all[value1].groupby(['CandID'])[value0].nunique().reset_index().rename(
-                     columns={value0: '{} {}'.format(label1, label0)})
+                    columns={value0: '{} {}'.format(label1, label0)})
                 df_non_writein_id.loc[:, 'CandID'] = df_non_writein_id['CandID'].astype(float).astype(str)
                 df.loc[:, 'CandID'] = df['CandID'].astype(float).astype(str)
                 df2 = df_non_writein_id.merge(df, left_on='CandID', right_on='CandID', how='outer')
@@ -518,10 +493,11 @@ def statistics_candidates():
             .rename(columns={'Term Start Year': 'First Win Year'})
         df_race2_all_winner_1st = df_race2_all_winner.merge(df, left_on='CandID', right_on='CandID', how='outer')
 
-        return s1,s2,s3,s4,s5,df_winner_list, df_race2_all_winner, df_race2_all_loser, df_race2_all_winner_1st
+        return s1, s2, s3, s4, s5, df_winner_list, df_race2_all_winner, df_race2_all_loser, df_race2_all_winner_1st
 
     def win_once_early_fails(df_race2_all_winner_1st, df_winner_list):
-        df = df_race2_all_winner_1st[df_race2_all_winner_1st['Term Start Year'] < df_race2_all_winner_1st['First Win Year']]
+        df = df_race2_all_winner_1st[
+            df_race2_all_winner_1st['Term Start Year'] < df_race2_all_winner_1st['First Win Year']]
         df = df.groupby(['CandID'])['Term Start Year'].nunique().reset_index().rename(
             columns={'Term Start Year': 'Win at once (Early Fails)'})
         df = df_winner_list.merge(df, left_on='CandID', right_on='CandID', how='left')
@@ -553,7 +529,6 @@ def statistics_candidates():
         s = df_late_win['Win at once (Late Fails)'].mean()
         return s
 
-
     stat_cand = dict()
 
     s = len(df_non_writein_id)
@@ -568,7 +543,7 @@ def statistics_candidates():
     cand_inc_cha_open(df_race2_all, df_non_writein_id)
 
     s1, s2, s3, s4, s5, df_winner_list, df_race2_all_winner, df_race2_all_loser, df_race2_all_winner_1st = win_lose(
-    df_race2_all)
+        df_race2_all)
     print 'Number of Candidates at least winning once', s1
     stat_cand['Number of Candidates at least winning once'] = s1
     print 'Winners: Number of Winning Election Periods', s2
@@ -584,7 +559,8 @@ def statistics_candidates():
     print 'Winners: Number of Failed Tries before First Win', s
     stat_cand['Winners: Number of Failed Tries before First Win'] = s
 
-    df_race_late = df_race2_all_winner_1st[df_race2_all_winner_1st['Term Start Year'] > df_race2_all_winner_1st['First Win Year']]
+    df_race_late = df_race2_all_winner_1st[
+        df_race2_all_winner_1st['Term Start Year'] > df_race2_all_winner_1st['First Win Year']]
 
     s = win_once_late_tries(df_race_late, df_winner_list)
     print 'Winners: Number of Tries After First Win', s
@@ -600,6 +576,7 @@ def statistics_candidates():
 
     return stat_cand
 
+
 if __name__ == '__main__':
     # ====================================================== #
     #    Initialize Directory and load Data                  #
@@ -613,7 +590,6 @@ if __name__ == '__main__':
     dir5 = dir0 + '/mayors/schema'
     dir6 = dir0 + '/mayors'
 
-
     # create a folder for cache
     if not os.path.exists('pdata'):
         os.mkdir('pdata')
@@ -622,8 +598,8 @@ if __name__ == '__main__':
     if os.path.exists('key_race_details2.csv'):
         os.remove('key_race_details2.csv')
 
-    key_race_details(dir3, 'Mayor', 'key_race_details.csv')
-    key_race_details2(dir3, 'Mayor', 'key_race_details2.csv', 'Final Votes')
+    key_race_details(dir3, 'Mayor', 'RaceDetails', 'key_race_details.csv')
+    key_race_details(dir3, 'Mayor', 'Candidates', 'key_race_details2.csv')
 
     df_race = setup_race_details()
     df_race2 = setup_race_details2()
@@ -659,10 +635,10 @@ if __name__ == '__main__':
     df_race2_all = terminal_election(df_race2_all, 'CityID')
 
     # Mark the earliest election period in each city
-    df_race2_all = early_city(df_race2_all,'CityID')
+    df_race2_all = early_city(df_race2_all, 'CityID')
 
     # Mark the winner in the terminal election in each election period
-    df_race2_all = winner_election_period(df_race2_all,'CityID')
+    df_race2_all = winner_election_period(df_race2_all, 'CityID')
 
     # First way of differentiating incumbent/open elections: whether name contains '(I)'
     df_race2_all = incumbent_election_v1(df_race2_all, 'CityID')
@@ -674,7 +650,7 @@ if __name__ == '__main__':
     # ====================================================== #
     #     Summary Statistics for Cities                      #
     # ====================================================== #
-    stat_city = statistics_dist(df_recent, df_city, df_periods, df_race_all, 'city','Cities','CityID')
+    stat_city = statistics_dist(df_recent, df_city, df_periods, df_race_all, 'city', 'Cities', 'CityID')
 
     # ====================================================== #
     #    Summary Statistics for Elections                    #
@@ -685,11 +661,5 @@ if __name__ == '__main__':
     #    Summary Statistics for Candidates                   #
     # ====================================================== #
 
-    #df_race2_all, df_non_writein_id = select_districts(df_race2_all, 'CityID', 100, 'Term Start Year', 1950)
+    # df_race2_all, df_non_writein_id = select_districts(df_race2_all, 'CityID', 100, 'Term Start Year', 1950)
     stat_cand = statistics_candidates()
-
-
-
-
-
-
