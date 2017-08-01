@@ -149,6 +149,14 @@ def state(df):
     df = df.drop(list, 1)
     return df
 
+def parent_split(df, dist):
+    if dist == 'City':
+        dm = state_county_city(df)
+    else:
+        dm = state(df)
+    return dm
+
+
 def split_votes_share(df, dic):
     for key, value in dic.iteritems():
         df[value[0]], df[value[1]] = df[key].str.split("(").str
@@ -158,7 +166,7 @@ def split_votes_share(df, dic):
     return df
 
 
-def setup_race_details():
+def setup_race_details(dist):
     start = time.time()
     df = clean_csv('key_race_details.csv')
 
@@ -196,7 +204,7 @@ def setup_race_details():
            "Polls Close": ["Poll Year", "Poll Month"]}
     df = date_yr_mon(df, dic)
 
-    df = state_county_city(df)
+    df = parent_split(df,'City')
 
     df['Term Length'] = df['Term End Year'] - df['Term Start Year']
 
@@ -671,7 +679,7 @@ if __name__ == '__main__':
     key_race_details(dir3, 'Mayor', 'key_race_details.csv')
     key_race_details2(dir3, 'Mayor', 'key_race_details2.csv', 'Final Votes')
 
-    df_race = setup_race_details()
+    df_race = setup_race_details('City')
     df_race2 = setup_race_details2()
 
     # ====================================================== #
