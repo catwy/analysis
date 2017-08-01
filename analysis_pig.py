@@ -122,7 +122,8 @@ def clean_csv(file):
 
 def date_yr_mon(df, dic):
     for key, value in dic.iteritems():
-        df[key] = df[key].str.replace('(?:-).*','').str.replace("00,","01,")
+        df[key] = df[key].str.replace('(?:-).*','')
+        df[key] = df[key].str.replace("00,","01,")
         df.ix[df[key].str.startswith('(\d+)'), key] = "January" + df[key].astype(str)
         df[key+'_date'] = pd.to_datetime(df[key], errors='coerce')
         df[value[0]] = df[key + '_date'].apply(lambda x: x.year)
@@ -300,7 +301,8 @@ def recent_elections_city():
     return df_m
 
 def city_name_merge(df_recent, df_race):
-    df_recent['RaceID'] = df_recent['web'].str.extract('(\d+)', expand = False).astype(str)
+    df_recent['RaceID'] = df_recent['web'].str.extract('(\d+)', expand = False)
+    df_recent['RaceID'] = df_recent['RaceID'].astype(str)
     df_race['RaceID'] = df_race['RaceID'].astype(str)
     df = df_recent.merge(df_race, left_on = 'RaceID', right_on = 'RaceID', how = 'outer')
     df_city = df[['State', 'County', 'City', 'web', 'state', 'city', 'CityID']]
@@ -327,23 +329,23 @@ def race_details2_recent(df_non_writein, df_race_all, distID):
     return df_race2_all
 
 def terminal_election(df_race2_all, distID):
-    df_terminal = df_race2_all.groupby([distID, 'Term Start Year'])['Polls Close_date'].max().reset_index()\
-                  .rename(columns={'Polls Close_date': 'Terminal Date'})
+    df_terminal = df_race2_all.groupby([distID, 'Term Start Year'])['Polls Close_date'].max().reset_index()
+    df_terminal = df_terminal.rename(columns={'Polls Close_date': 'Terminal Date'})
     df_race2_all = df_race2_all.merge(df_terminal, left_on=[distID, 'Term Start Year'],right_on=[distID, 'Term Start Year'], how='outer')
     df_race2_all['Terminal'] = (df_race2_all['Polls Close_date'] == df_race2_all['Terminal Date'])
     return df_race2_all
 
 def early_city(df_race2_all, distID):
-    df_early = df_race2_all.groupby([distID])['Term Start Year'].min().reset_index()\
-               .rename(columns={'Term Start Year': 'Earlist Date'})
+    df_early = df_race2_all.groupby([distID])['Term Start Year'].min().reset_index()
+    df_early = df_early.rename(columns={'Term Start Year': 'Earlist Date'})
     df_race2_all = df_race2_all.merge(df_early, left_on=[distID], right_on=[distID], how='outer')
     df_race2_all['Earlist'] = (df_race2_all['Term Start Year'] == df_race2_all['Earlist Date'])
     return df_race2_all
 
 def winner_election_period(df_race2_all, distID):
     df_winner = df_race2_all[df_race2_all['Terminal'] == True]
-    df_winner = df_winner.groupby([distID, 'Term Start Year'])['Votes'].max().reset_index()\
-                .rename(columns={'Votes': 'Votes Max'})
+    df_winner = df_winner.groupby([distID, 'Term Start Year'])['Votes'].max().reset_index()
+    df_winner = df_winner.rename(columns={'Votes': 'Votes Max'})
     df_race2_all = df_race2_all.merge(df_winner, left_on=[distID, 'Term Start Year'],right_on=[distID, 'Term Start Year'], how='outer')
     df_race2_all['winner'] = (df_race2_all['Votes'] == df_race2_all['Votes Max'])
     df_race2_all['winnerID'] = (df_race2_all['Votes'] == df_race2_all['Votes Max']) * 1.0 * df_race2_all['CandID'].astype(float)
@@ -357,9 +359,9 @@ def incumbent_election_v1(df_race2_all, distID):
     return df_race2_all
 
 def incumbent_election_v2(df_race2_all, distID):
-    df_winner_id = df_race2_all[['winnerID', distID, 'Term Start Year']]\
-                   .groupby([distID, 'Term Start Year'])['winnerID'].max().reset_index()\
-                   .sort_values([distID, 'Term Start Year'], ascending=True)
+    df_winner_id = df_race2_all[['winnerID', distID, 'Term Start Year']]
+    df_winner_id = df_winner_id.groupby([distID, 'Term Start Year'])['winnerID'].max().reset_index()
+    df_winner_id = df_winner_id.sort_values([distID, 'Term Start Year'], ascending=True)
     df_winner_id['winnerID previous'] = df_winner_id.groupby([distID])['winnerID'].shift(1)
     df_winner_id = df_winner_id.drop('winnerID', 1)
 
@@ -485,8 +487,9 @@ def statistics_candidates():
                 'Unclear': df_race2_all['Incumbent2'] == 2}
         for label0, value0 in dic0.iteritems():
             for label1, value1 in dic1.iteritems():
-                df = df_race2_all[value1].groupby(['CandID'])[value0].nunique().reset_index().rename(
-                     columns={value0: '{} {}'.format(label1, label0)})
+                df = df_race2_all[value1]
+                df = df.groupby(['CandID'])[value0].nunique().reset_index().rename(
+                    columns={value0: '{} {}'.format(label1, label0)})
                 df_non_writein_id.loc[:, 'CandID'] = df_non_writein_id['CandID'].astype(float).astype(str)
                 df.loc[:, 'CandID'] = df['CandID'].astype(float).astype(str)
                 df2 = df_non_writein_id.merge(df, left_on='CandID', right_on='CandID', how='outer')
