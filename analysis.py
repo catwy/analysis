@@ -144,8 +144,10 @@ def state_county_city(df):
     return df
 
 def state(df):
-    df['c1'], df['c2'], df['State'], df['c4'] = df['Parent'].str.split('>').str
-    list = ['c1', 'c2', 'c4', 'Parent']
+    df['count'] = df['Parent'].str.count('>')
+    print df['count'].max()
+    df['c1'], df['c2'], df['State'], df['c4'], df['c5'], df['c6'] = df['Parent'].str.split('>').str
+    list = ['c1', 'c2', 'c4', 'c5', 'c6','Parent','count']
     df = df.drop(list, 1)
     return df
 
@@ -170,25 +172,53 @@ def setup_race_details(dist):
     start = time.time()
     df = clean_csv('key_race_details.csv')
 
-    dics = {'Contributor': ['Contributor Name', 'ContributorID'],
-            'Data Sources': ['Source', 'Source Link'],
-            'Office': ['Offices', 'v1'],
-            'Parents': ['Parent', 'v2'],
-            'Polls Close': ['Polls Closes', 'v3'],
-            'Term Start': ['Term Starts', 'v5'],
-            'Term End': ['Term Ends', 'v4'],
-            'Type': ['Turnout', 'v6'],
-            'Append0': ['Types', 'v7']}
-    df = split_two(df, dics)
+    if dist == 'City':
+        dics = {'Contributor': ['Contributor Name', 'ContributorID'],
+                'Data Sources': ['Source', 'Source Link'],
+                'Office': ['Offices', 'v1'],
+                'Parents': ['Parent', 'v2'],
+                'Polls Close': ['Polls Closes', 'v3'],
+                'Term Start': ['Term Starts', 'v5'],
+                'Term End': ['Term Ends', 'v4'],
+                'Type': ['Turnout', 'v6'],
+                'Append0': ['Types', 'v7']}
+        df = split_two(df, dics)
 
-    list = dics.keys() + ['Filing Deadline', 'Last Modified', 'Polls Open',
-                          'v1', 'v2', 'v3', 'v4', 'v5', 'v6', 'v7']
-    df = df.drop(list, 1)
+        list = dics.keys() + ['Filing Deadline', 'Last Modified', 'Polls Open',
+                              'v1', 'v2', 'v3', 'v4', 'v5', 'v6', 'v7']
+        df = df.drop(list, 1)
 
-    dic = {'Offices': 'Office', 'Polls Closes': 'Polls Close', "Term Starts": "Term Start",
-           'Term Ends': 'Term End', 'Types': 'Type'}
-    for key, value in dic.iteritems():
-        df = df.rename(columns={key: value})
+        dic = {'Offices': 'Office', 'Polls Closes': 'Polls Close', "Term Starts": "Term Start",
+               'Term Ends': 'Term End', 'Types': 'Type'}
+        for key, value in dic.iteritems():
+            df = df.rename(columns={key: value})
+
+        df.loc[df['Type'] == "", 'Type'] = df['Turnout']
+        df['Turnout'] = df['Turnout'].str.extract('(\d+.\d+)', expand=False).astype(float)
+    else:
+        dics = {'Contributor': ['Contributor Name', 'ContributorID'],
+                'Data Sources': ['Source', 'Source Link'],
+                'Office': ['Offices', 'v1'],
+                'Parents': ['Parent', 'v2'],
+                'Polls Close': ['Polls Closes', 'v3'],
+                'Term Start': ['Term Starts', 'v5'],
+                'Term End': ['Term Ends', 'v4'],
+                'Turnout': ['Turnouts', 'v6'],
+                'Type': ['Types', 'v7']}
+        df = split_two(df, dics)
+
+        list = dics.keys() + ['Filing Deadline', 'Last Modified', 'Polls Open',
+                              'v1', 'v2', 'v3', 'v4', 'v5', 'v6', 'v7']
+        df = df.drop(list, 1)
+
+        dic = {'Offices': 'Office', 'Polls Closes': 'Polls Close', "Term Starts": "Term Start",
+               'Term Ends': 'Term End', 'Types': 'Type', 'Turnouts':'Turnout'}
+        for key, value in dic.iteritems():
+            df = df.rename(columns={key: value})
+
+        #df.loc[df['Type'] == "", 'Type'] = df['Turnout']
+        df['Turnout'] = df['Turnout'].str.extract('(\d+.\d+)', expand=False).astype(float)
+
 
     list = ['ContributorID']
     for x in list:
@@ -196,15 +226,14 @@ def setup_race_details(dist):
 
     df['Source'] = df['Source'].str.replace('\[Link\]', "")
 
-    df.loc[df['Type'] == "", 'Type'] = df['Turnout']
-    df['Turnout'] = df['Turnout'].str.extract('(\d+.\d+)', expand=False).astype(float)
+
 
     dic = {"Term Start": ["Term Start Year", "Term Start Month"],
            "Term End": ["Term End Year", "Term End Month"],
            "Polls Close": ["Poll Year", "Poll Month"]}
     df = date_yr_mon(df, dic)
 
-    df = parent_split(df,'City')
+    df = parent_split(df,dist)
 
     df['Term Length'] = df['Term End Year'] - df['Term Start Year']
 
@@ -320,7 +349,7 @@ def recent_elections_state():
     df_m = df_m[~df_m[0].isnull()]
     h = df_m.shape[0]
     df_m['StateID'] = range(h)
-    dic = {0: 'ContainerID', 1: 'state', 2: "year", 3: 'note'}
+    dic = {0: 'ContainerID', 1: 'State', 2: "year", 3: 'note'}
     for key, value in dic.iteritems():
         df_m = df_m.rename(columns={key: value})
     df_m.to_csv('recent_elections_state.csv')
@@ -346,7 +375,10 @@ def city_name_merge(df_recent, df_race):
     return df_city
 
 def state_name_merge(df_recent, df_race):
-    df_state = df_recent.merge(df_race, left_on='State', right_on='state', how = 'outer')
+    df_recent.loc[:, 'State'] = df_recent['State'].str.lower().str.strip()
+    df_race.loc[:,'State'] = df_race['State'].str.lower().str.strip()
+    df_state = df_recent.merge(df_race, left_on='State', right_on='State', how = 'outer')
+    df_state = df_state[['State','StateID']]
     df_state.to_csv('state_name_merge.csv')
     return df_state
 
@@ -365,8 +397,8 @@ def race_details_recent(df_race, df_dist, distID, label):
     return df_race_all
 
 def race_details2_recent(df_non_writein, df_race_all, distID):
-    df_non_writein.loc[:, 'RaceID'] = df_non_writein['RaceID'].astype(str)
-    df_race_all.loc[:, 'RaceID'] = df_race_all['RaceID'].astype(str)
+    df_non_writein.loc[:, 'RaceID'] = df_non_writein['RaceID'].astype(float).astype(str)
+    df_race_all.loc[:, 'RaceID'] = df_race_all['RaceID'].astype(float).astype(str)
     df_race2_all = df_non_writein.merge(df_race_all, left_on = ['RaceID'], right_on = ['RaceID'], how = 'outer')
     df_race2_distID = df_race2_all.groupby([distID])['CandID'].count().reset_index()
     print df_race2_distID['CandID'].describe()
@@ -432,9 +464,10 @@ def statistics_dist(df_recent, df_dist, df_periods, df_race_all, dist, dists, di
     print 'Total {}'.format(dists), s
     stat_dist['Total {}'.format(dists)] = s
 
-    s = len(df_recent[df_recent['web'].str.contains('http')])
-    print 'Total {} with Data'.format(dists), s
-    stat_dist['Total {} with Data'.format(dists)] = s
+    if dists == 'city':
+       s = len(df_recent[df_recent['web'].str.contains('http')])
+       print 'Total {} with Data'.format(dists), s
+       stat_dist['Total {} with Data'.format(dists)] = s
 
     df_dist[distID] = df_dist[distID].astype(float)
     s = df_dist[distID].mean()
@@ -671,15 +704,15 @@ if __name__ == '__main__':
         os.remove('key_race_details2.csv')
 
     # Create a dictionary for governor and mayor
-    #dicts = {'key': ['Mayor', 'City', 'CityID','city','Cities' ]}
-    #dicts = {'key': ['Governor', 'State', 'StateID', 'state', 'States']}
+    dicts = ['Mayor', 'City', 'CityID','city','Cities', ['State','City']]
+    #dicts = ['Governor', 'State', 'StateID', 'State', 'States', 'State']
 
+    key_race_details(dir3, dicts[0], 'key_race_details.csv')
+    key_race_details2(dir3, dicts[0], 'key_race_details2.csv', 'Final Votes')
     #key_race_details(dir2,'Governor','key_race_details.csv')
     #key_race_details2(dir2, 'Governor', 'key_race_details2.csv', 'Final Votes')
-    key_race_details(dir3, 'Mayor', 'key_race_details.csv')
-    key_race_details2(dir3, 'Mayor', 'key_race_details2.csv', 'Final Votes')
 
-    df_race = setup_race_details('City')
+    df_race = setup_race_details(dicts[1])
     df_race2 = setup_race_details2()
 
     # ====================================================== #
@@ -697,55 +730,55 @@ if __name__ == '__main__':
     print df_non_writein_id['RaceID'].describe()
 
     # Load the list of largest cities and merge the city names with those in ourcampaigns
-    df_recent = recent_elections('City')
-    df_dist = dist_name_merge(df_recent, df_race,'City')
+    df_recent = recent_elections(dicts[1])
+    df_dist = dist_name_merge(df_recent, df_race,dicts[1])
 
     #df_recent = recent_elections('State')
     #df_dist = dist_name_merge(df_recent, df_race,'State')
 
     # df_race_all is the master copy for race_details combined with recent elections
-    df_race_all = race_details_recent(df_race, df_dist, 'CityID', ['State', 'City'])
+    df_race_all = race_details_recent(df_race, df_dist, dicts[2], dicts[5])
     #df_race_all = race_details_recent(df_race, df_dist, 'StateID', ['State'])
 
     # df_race2_all is the master copy for race_details, race_details2 combined with recent elections
-    df_race2_all = race_details2_recent(df_non_writein, df_race_all, 'CityID')
+    df_race2_all = race_details2_recent(df_non_writein, df_race_all, dicts[2])
     #df_race2_all = race_details2_recent(df_non_writein, df_race_all, 'StateID')
 
     # df_periods is the master copy for [city, election periods]
-    df_periods = df_race_all.groupby(['CityID', 'Term Start Year'])['RaceID'].count().reset_index()
+    df_periods = df_race_all.groupby([dicts[2], 'Term Start Year'])['RaceID'].count().reset_index()
     #df_periods = df_race_all.groupby(['StateID', 'Term Start Year'])['RaceID'].count().reset_index()
 
     # Mark the terminal election in each election period
-    df_race2_all = terminal_election(df_race2_all, 'CityID')
+    df_race2_all = terminal_election(df_race2_all, dicts[2])
     #df_race2_all = terminal_election(df_race2_all, 'StateID')
 
     # Mark the earliest election period in each city
-    df_race2_all = early_dist(df_race2_all,'CityID')
+    df_race2_all = early_dist(df_race2_all,dicts[2])
     #df_race2_all = early_dist(df_race2_all, 'StateID')
 
     # Mark the winner in the terminal election in each election period
-    df_race2_all = winner_election_period(df_race2_all,'CityID')
+    df_race2_all = winner_election_period(df_race2_all,dicts[2])
     #df_race2_all = winner_election_period(df_race2_all, 'StateID')
 
     # First way of differentiating incumbent/open elections: whether name contains '(I)'
-    df_race2_all = incumbent_election_v1(df_race2_all, 'CityID')
+    df_race2_all = incumbent_election_v1(df_race2_all, dicts[2])
     #df_race2_all = incumbent_election_v1(df_race2_all, 'StateID')
 
     # Second way of differentiating incumbent/open elections: whether the winner of last period appears again
-    df_race2_all = incumbent_election_v2(df_race2_all, 'CityID')
+    df_race2_all = incumbent_election_v2(df_race2_all, dicts[2])
     #df_race2_all = incumbent_election_v2(df_race2_all, 'StateID')
 
     df_race2_all.to_csv('race2_all.csv')
     # ====================================================== #
     #     Summary Statistics for Cities                      #
     # ====================================================== #
-    stat_dist = statistics_dist(df_recent, df_dist, df_periods, df_race_all, 'city','Cities','CityID')
+    stat_dist = statistics_dist(df_recent, df_dist, df_periods, df_race_all, dicts[3],dicts[4],dicts[2])
     #stat_dist = statistics_dist(df_recent, df_dist, df_periods, df_race_all, 'state', 'States', 'StateID')
 
     # ====================================================== #
     #    Summary Statistics for Elections                    #
     # ====================================================== #
-    stat_election = statistics_election(df_periods, df_race2_all, 'CityID')
+    stat_election = statistics_election(df_periods, df_race2_all, dicts[2])
     #stat_election = statistics_election(df_periods, df_race2_all, 'StateID')
 
     # ====================================================== #
