@@ -705,12 +705,10 @@ if __name__ == '__main__':
 
     # Create a dictionary for governor and mayor
     dicts = ['Mayor', 'City', 'CityID','city','Cities', ['State','City']]
-    #dicts = ['Governor', 'State', 'StateID', 'State', 'States', 'State']
+    dicts = ['Governor', 'State', 'StateID', 'State', 'States', 'State']
 
     key_race_details(dir3, dicts[0], 'key_race_details.csv')
     key_race_details2(dir3, dicts[0], 'key_race_details2.csv', 'Final Votes')
-    #key_race_details(dir2,'Governor','key_race_details.csv')
-    #key_race_details2(dir2, 'Governor', 'key_race_details2.csv', 'Final Votes')
 
     df_race = setup_race_details(dicts[1])
     df_race2 = setup_race_details2()
@@ -725,61 +723,49 @@ if __name__ == '__main__':
     df_unique_CandID = unique_candidates(df_race2)
 
     # Remove write-in candidates, until max number of mayoral elections per candidate is reasonable
-    df_non_writein = cand_remove(df_race2, ['22593', '191'])  # write-in & others
+    df_non_writein = cand_remove(df_race2, ['22593', '191', '19359', '30530'])  # write-in & others
     df_non_writein_id = df_non_writein.groupby(['CandID'])['RaceID'].count().reset_index()
+    df_non_writein_id = df_non_writein_id.sort_values(['RaceID'], ascending=True)
     print df_non_writein_id['RaceID'].describe()
 
     # Load the list of largest cities and merge the city names with those in ourcampaigns
     df_recent = recent_elections(dicts[1])
     df_dist = dist_name_merge(df_recent, df_race,dicts[1])
 
-    #df_recent = recent_elections('State')
-    #df_dist = dist_name_merge(df_recent, df_race,'State')
-
     # df_race_all is the master copy for race_details combined with recent elections
     df_race_all = race_details_recent(df_race, df_dist, dicts[2], dicts[5])
-    #df_race_all = race_details_recent(df_race, df_dist, 'StateID', ['State'])
 
     # df_race2_all is the master copy for race_details, race_details2 combined with recent elections
     df_race2_all = race_details2_recent(df_non_writein, df_race_all, dicts[2])
-    #df_race2_all = race_details2_recent(df_non_writein, df_race_all, 'StateID')
 
     # df_periods is the master copy for [city, election periods]
     df_periods = df_race_all.groupby([dicts[2], 'Term Start Year'])['RaceID'].count().reset_index()
-    #df_periods = df_race_all.groupby(['StateID', 'Term Start Year'])['RaceID'].count().reset_index()
 
     # Mark the terminal election in each election period
     df_race2_all = terminal_election(df_race2_all, dicts[2])
-    #df_race2_all = terminal_election(df_race2_all, 'StateID')
 
     # Mark the earliest election period in each city
     df_race2_all = early_dist(df_race2_all,dicts[2])
-    #df_race2_all = early_dist(df_race2_all, 'StateID')
 
     # Mark the winner in the terminal election in each election period
     df_race2_all = winner_election_period(df_race2_all,dicts[2])
-    #df_race2_all = winner_election_period(df_race2_all, 'StateID')
 
     # First way of differentiating incumbent/open elections: whether name contains '(I)'
     df_race2_all = incumbent_election_v1(df_race2_all, dicts[2])
-    #df_race2_all = incumbent_election_v1(df_race2_all, 'StateID')
 
     # Second way of differentiating incumbent/open elections: whether the winner of last period appears again
     df_race2_all = incumbent_election_v2(df_race2_all, dicts[2])
-    #df_race2_all = incumbent_election_v2(df_race2_all, 'StateID')
 
     df_race2_all.to_csv('race2_all.csv')
     # ====================================================== #
     #     Summary Statistics for Cities                      #
     # ====================================================== #
     stat_dist = statistics_dist(df_recent, df_dist, df_periods, df_race_all, dicts[3],dicts[4],dicts[2])
-    #stat_dist = statistics_dist(df_recent, df_dist, df_periods, df_race_all, 'state', 'States', 'StateID')
 
     # ====================================================== #
     #    Summary Statistics for Elections                    #
     # ====================================================== #
     stat_election = statistics_election(df_periods, df_race2_all, dicts[2])
-    #stat_election = statistics_election(df_periods, df_race2_all, 'StateID')
 
     # ====================================================== #
     #    Summary Statistics for Candidates                   #
