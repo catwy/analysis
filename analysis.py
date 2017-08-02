@@ -636,7 +636,7 @@ def statistics_candidates():
 
     stat_cand = dict()
 
-    s = len(df_non_writein_id)
+    s = df_non_writein_id['CandID'].nunique()
     print 'Number of Unique Candidates', s
     stat_cand['Number of Unique Candidates'] = len(df_non_writein_id)
 
@@ -705,7 +705,7 @@ if __name__ == '__main__':
 
     # Create a dictionary for governor and mayor
     dicts = ['Mayor', 'City', 'CityID','city','Cities', ['State','City']]
-    dicts = ['Governor', 'State', 'StateID', 'State', 'States', 'State']
+    #dicts = ['Governor', 'State', 'StateID', 'State', 'States', 'State']
 
     key_race_details(dir3, dicts[0], 'key_race_details.csv')
     key_race_details2(dir3, dicts[0], 'key_race_details2.csv', 'Final Votes')
@@ -772,7 +772,23 @@ if __name__ == '__main__':
     # ====================================================== #
 
     #df_race2_all, df_non_writein_id = select_districts(df_race2_all, 'CityID', 100, 'Term Start Year', 1950)
+    '''
+    df_sam = pd.read_excel('Mayoral_candidate_bios.xlsx')
+    print df_sam.head(4)
+    print df_sam['CandID'].nunique()
+    df_sam = df_sam.groupby(['CandID'])['name'].count().reset_index()
+    df_sam = df_sam[['CandID']]
+    df_sam = df_sam[~ df_sam['CandID'].isnull()]
+
+    df_race2_all = df_race2_all.merge(df_sam, left_on='CandID', right_on='CandID', how ='right')
+    df_race2_all.to_csv('test1.csv')
+    df = df_race2_all.groupby(['CandID'])['Term Start Year'].nunique().reset_index()
+    df.to_csv('test2.csv')
+    df_non_writein_id = df_sam
+    '''
+
     stat_cand = statistics_candidates()
+
 
 
 
