@@ -422,48 +422,57 @@ def early_dist(df_race2_all, distID):
 def winner_election_period(df_race2_all, distID):
     df_winner = df_race2_all[df_race2_all['Terminal'] == True]
     df_winner = df_winner.groupby([distID, 'Term Start Year'])['Votes'].max().reset_index()\
-                .rename(columns={'Votes': 'Votes Max'})
+                .rename(columns={'Votes': 'Votes Max Election Period'})
     df_race2_all = df_race2_all.merge(df_winner, left_on=[distID, 'Term Start Year'],right_on=[distID, 'Term Start Year'], how='outer')
-    df_race2_all['winner'] = (df_race2_all['Votes'] == df_race2_all['Votes Max'])
-    df_race2_all['winnerID'] = (df_race2_all['Votes'] == df_race2_all['Votes Max']) * 1.0 * df_race2_all['CandID'].astype(float)
+    df_race2_all['winner'] = (df_race2_all['Votes'] == df_race2_all['Votes Max Election Period']) * 1.0
+    df_race2_all['winnerID'] = df_race2_all['winner'] * df_race2_all['CandID'].astype(float)
     return df_race2_all
 
 def follower_election_period(df_race2_all, distID):
     df_follower = df_race2_all[(df_race2_all['Terminal'] == True) & (df_race2_all['winner'] == False)]
     df_follower = df_follower.groupby([distID,'Term Start Year'])['Votes'].max().reset_index()\
-                  .rename(columns = {'Votes':'Votes 2nd'})
-    df_follower = df_follower[df_follower['Votes 2nd'].str.contains(r'\d+')]
+                  .rename(columns = {'Votes':'Votes 2nd Election Period'})
+    df_follower = df_follower[df_follower['Votes 2nd Election Period'].str.contains(r'\d+')]
     df_race2_all = df_race2_all.merge(df_follower, left_on=[distID, 'Term Start Year'], right_on=[distID, 'Term Start Year'], how='outer')
-    df_race2_all['follower'] = (df_race2_all['Votes']==df_race2_all['Votes 2nd'])
-    df_race2_all['followerID'] = (df_race2_all['Votes'] == df_race2_all['Votes 2nd']) * 1.0 * df_race2_all['CandID'].astype(float)
+    df_race2_all['follower'] = (df_race2_all['Votes']==df_race2_all['Votes 2nd Election Period']) * 1.0
+    df_race2_all['followerID'] = df_race2_all['follower'] * df_race2_all['CandID'].astype(float)
     return df_race2_all
 
-def winner_election(df_race2_all, distID):
-    df_winner = df_race2_all[df_race2_all['Terminal'] == True]
+def key_election(df_race2_all, distID):
+    df_race2_all.loc[:,'Votes']=df_race2_all['Votes'].str.replace(",",'').astype(float)
+    df_key1 = df_race2_all.groupby([distID,'Term Start Year','RaceID'])['Votes'].sum().reset_index()
+    df_key2 = df_key1.groupby([distID, 'Term Start Year'])['Votes'].max().reset_index().rename(columns={'Votes':'Votes Sum Max'})
+    df_key3 = df_key1.merge(df_key2,left_on=[distID,'Term Start Year'],right_on=[distID,'Term Start Year'],how='outer')
+    df_key3['KeyRace'] = (df_key3['Votes']==df_key3['Votes Sum Max'])
+    df_key3['KeyRaceID'] = (df_key3['Votes']==df_key3['Votes Sum Max'])*1.0*df_key3['RaceID'].astype(float)
+    df_key3 = df_key3[['KeyRaceID','Votes Sum Max','KeyRace','RaceID']]
+    df_race2_all = df_race2_all.merge(df_key3,left_on='RaceID',right_on='RaceID',how='outer')
+    return df_race2_all
+
+def winner_key_election(df_race2_all, distID):
+    df_winner = df_race2_all[df_race2_all['KeyRace'] == True]
     df_winner = df_winner.groupby([distID, 'Term Start Year'])['Votes'].max().reset_index()\
-                .rename(columns={'Votes': 'Votes Max'})
+                .rename(columns={'Votes': 'Votes Max Key Race'})
     df_race2_all = df_race2_all.merge(df_winner, left_on=[distID, 'Term Start Year'],right_on=[distID, 'Term Start Year'], how='outer')
-    df_race2_all['winner'] = (df_race2_all['Votes'] == df_race2_all['Votes Max'])
-    df_race2_all['winnerID'] = (df_race2_all['Votes'] == df_race2_all['Votes Max']) * 1.0 * df_race2_all['CandID'].astype(float)
+    df_race2_all['winner_key'] = (df_race2_all['Votes'] == df_race2_all['Votes Max Key Race']) * 1.0
+    df_race2_all['winner_keyID'] = df_race2_all['winner_key'] * df_race2_all['CandID'].astype(float)
     return df_race2_all
 
-def follower_election(df_race2_all, distID):
-    df_follower = df_race2_all[(df_race2_all['Terminal'] == True) & (df_race2_all['winner'] == False)]
+def follower_key_election(df_race2_all, distID):
+    df_follower = df_race2_all[(df_race2_all['KeyRace'] == True) & (df_race2_all['winner_key'] == False)]
     df_follower = df_follower.groupby([distID,'Term Start Year'])['Votes'].max().reset_index()\
-                  .rename(columns = {'Votes':'Votes 2nd'})
+                  .rename(columns = {'Votes':'Votes 2nd Key Race'})
+    df_follower.loc[:,'Votes 2nd Key Race'] = df_follower['Votes 2nd Key Race'].astype(str)
+    df_follower = df_follower[df_follower['Votes 2nd Key Race'].str.contains(r'\d+')]
     df_race2_all = df_race2_all.merge(df_follower, left_on=[distID, 'Term Start Year'], right_on=[distID, 'Term Start Year'], how='outer')
-    df_race2_all['follower'] = (df_race2_all['Votes']==df_race2_all['Votes 2nd'])
-    df_race2_all['followerID'] = (df_race2_all['Votes'] == df_race2_all['Votes 2nd']) * 1.0 * df_race2_all['CandID']
+    df_race2_all['follower_key'] = (df_race2_all['Votes']==df_race2_all['Votes 2nd Key Race'])*1.0
+    df_race2_all['follower_keyID'] = df_race2_all['follower_key'] * df_race2_all['CandID'].astype(float)
     return df_race2_all
 
-
-def win_at_least_once(df_race2_all):
-    df_winner_list = df_race2_all.groupby(['winnerID'])['Term Start Year'].nunique().reset_index().rename(
-                     columns={'winnerID': 'CandID', 'Term Start Year': 'Win at once (Wins)'})
-    df_winner_list = df_winner_list[df_winner_list['CandID'] > 0.0]
-    df_race2_all = df_race2_all.merge(df_winner_list, left_on='CandID', right_on='CandID', how='outer')
-    df_race2_all['Win Ever'] = (~df_race2_all['Win at once (Wins)'].isnull())*1.0
-    df_race2_all = df_race2_all.drop('Win at once (Wins)',1)
+def win_follow_ever(df_race2_all):
+    df = df_race2_all.groupby(['CandID'])['winner','follower','winner_key','follower_key'].max().reset_index()\
+         .rename(columns={'winner':'winner ever','follower':'follower ever','winner_key':'winner_key ever','follower_key':'follower_key ever'})
+    df_race2_all = df_race2_all.merge(df,left_on='CandID',right_on='CandID',how='outer')
     return df_race2_all
 
 def incumbent_election_v1(df_race2_all, distID):
@@ -493,6 +502,11 @@ def incumbent_election_v2(df_race2_all, distID):
     df_race2_all.loc[df_race2_all['Incumbent2'] != 1,'Incumbent2'] = (df_race2_all['Earlist'])* 2.0
     # Incumbent2 = {1:incumbent, 0:open, 2:unclear}
 
+    return df_race2_all
+
+def career_span(df_race2_all):
+    df1 = df_race2_all.groupby(['CandID'])['Term Start Year'].agg([min, max]).reset_index().rename(columns={'min':'Career Start Year','max':'Career End Year'})
+    df_race2_all = df_race2_all.merge(df1, left_on='CandID', right_on='CandID',how='outer')
     return df_race2_all
 
 def statistics_dist(df_recent, df_dist, df_periods, df_race_all, dist, dists, distID):
@@ -791,8 +805,17 @@ if __name__ == '__main__':
     # Mark the follower (2nd place runner) in the terminal election in each election period
     df_race2_all = follower_election_period(df_race2_all,dicts[2])
 
+    # Mark the key election in each election period
+    df_race2_all = key_election(df_race2_all, dicts[2])
+
+    # Mark the winner in the key election in each election period
+    df_race2_all = winner_key_election(df_race2_all, dicts[2])
+
+    # Mark the follower (2nd place runner) in the key election in each election period
+    df_race2_all = follower_key_election(df_race2_all, dicts[2])
+
     # Mark the candidates who have ever made to mayor position
-    df_race2_all = win_at_least_once(df_race2_all)
+    df_race2_all = win_follow_ever(df_race2_all)
 
     # First way of differentiating incumbent/open elections: whether name contains '(I)'
     df_race2_all = incumbent_election_v1(df_race2_all, dicts[2])
@@ -800,6 +823,8 @@ if __name__ == '__main__':
     # Second way of differentiating incumbent/open elections: whether the winner of last period appears again
     df_race2_all = incumbent_election_v2(df_race2_all, dicts[2])
 
+    # Mark the earliest and latest year of race for each candidate
+    df_race2_all = career_span(df_race2_all)
     df_race2_all.to_csv('race2_all.csv')
     # ====================================================== #
     #     Summary Statistics for Cities                      #
@@ -833,8 +858,23 @@ if __name__ == '__main__':
 
     stat_cand = statistics_candidates()
 
-
-
+    # ====================================================== #
+    #    List of Names for RA                                #
+    # ====================================================== #
+    df_name_RA = df_race2_all[['Name','City','CityID','CandID','winner ever','winner_key ever','follower ever','follower_key ever','Career Start Year','Career End Year','Term Start Year']]
+    df_name_RA = df_name_RA.groupby(['Name','City','CityID','CandID','winner ever','winner_key ever','follower ever','follower_key ever','Career Start Year','Career End Year'])['Term Start Year'].nunique().reset_index()
+    df_name_RA.loc[:, 'CityID'] = df_name_RA['CityID'].astype(float)
+    df_name_RA = df_name_RA.sort_values(['CityID', 'CandID'], ascending=True)
+    print df_name_RA['CandID'].nunique()
+    df_name_RA = df_name_RA[df_name_RA['winner ever']+df_name_RA['follower ever']+df_name_RA['winner_key ever']+df_name_RA['follower_key ever']>0]
+    print df_name_RA['CandID'].nunique()
+    df_name_RA = df_name_RA[df_name_RA['Career End Year']>1950]
+    print df_name_RA['CandID'].nunique()
+    df_name_RA.loc[:,'CityID'] = df_name_RA['CityID'].astype(float)
+    df_name_RA = df_name_RA.sort_values(['CityID','CandID'],ascending=True)
+    df_name_RA = df_name_RA[df_name_RA['CityID']<150]
+    print df_name_RA['CandID'].nunique()
+    df_name_RA.to_csv('name_RA.csv')
 
 
 
