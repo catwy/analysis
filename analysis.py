@@ -237,8 +237,6 @@ def setup_race_details(dist):
 
     df['Term Length'] = df['Term End Year'] - df['Term Start Year']
 
-    df.to_csv("test3.csv")
-
     print df.head(10)
     end = time.time()
     print("Race Details 1 is finished", end - start, 'elapsed')
@@ -271,8 +269,6 @@ def setup_race_details2():
     for key, value in dic.iteritems():
         df = df.rename(columns={key: value})
 
-    df.to_csv("test4.csv")
-
     print df.head(13)
     end = time.time()
     print ("Race Details 2 is finished", end - start, 'elapsed')
@@ -286,7 +282,6 @@ def check_shares_sum():
         df_race2['Share'] = df_race2['Share'].astype(float)
         df = df_race2.groupby(['RaceID'])['Share'].sum().reset_index()
         df['Index'] = range(df.shape[0])
-        # df.to_csv("test5.csv")
         for x in [10, 50, 90, 98, 101, 1000]:
             print "<", x, len(df[(df['Share'] < x)])
         df_race2_wrong_shares = df[df['Share'] < 50]
@@ -393,7 +388,6 @@ def race_details_recent(df_race, df_dist, distID, label):
     df_race_all = df_race.merge(df_dist, left_on = label, right_on = label, how = 'outer')
     df_race_distID = df_race_all.groupby([distID])['RaceID'].count().reset_index()
     print df_race_distID['RaceID'].describe()
-    df_race_all.to_csv('race_details_all_v0.csv')
     return df_race_all
 
 def race_details2_recent(df_non_writein, df_race_all, distID):
@@ -402,7 +396,6 @@ def race_details2_recent(df_non_writein, df_race_all, distID):
     df_race2_all = df_non_writein.merge(df_race_all, left_on = ['RaceID'], right_on = ['RaceID'], how = 'outer')
     df_race2_distID = df_race2_all.groupby([distID])['CandID'].count().reset_index()
     print df_race2_distID['CandID'].describe()
-    df_race2_all.to_csv('race_details2_all_v0.csv')
     return df_race2_all
 
 def terminal_election(df_race2_all, distID):
@@ -1005,7 +998,12 @@ if __name__ == '__main__':
     print 'sam marked:', df_name_RA['Sam'].sum()
 
     df_name_RA = df_name_RA[['Name','CandID','City','CityID','Wikipedia','Linkedin','Others1','Others2','Others3','Others4','Web']]
+    df_name_RA = df_name_RA.reset_index().drop('index',1)
     df_name_RA.to_csv('name_RA.csv')
+
+    #writer = pd.ExcelWriter('name_RA.xlsx')
+    #df_name_RA.to_excel(writer, 'Sheet1')
+    #writer.save()
 
 
 
