@@ -623,8 +623,6 @@ def sam_source(df_race2_all):
 
     df_race2_all['Wikipedia'] = df_race2_all['Linkedin'] = df_race2_all['Others1'] = df_race2_all['Others2'] = df_race2_all['Others3'] = df_race2_all['Others4'] = ""
     df_race2_all['CandIDs'] = df_race2_all['CandID'].astype(float)
-    print df_race2_all['CandIDs'].head(10)
-    raw_input("Enter")
     for key, value in dic_wiki.iteritems():
         df_race2_all.loc[df_race2_all['CandIDs']==float(key),'Wikipedia']=value
     for key, value in dic_linkedin.iteritems():
@@ -901,7 +899,7 @@ if __name__ == '__main__':
     df_unique_CandID = unique_candidates(df_race2)
 
     # Remove write-in candidates, until max number of mayoral elections per candidate is reasonable
-    df_non_writein = cand_remove(df_race2, ['22593', '191', '19359', '30530'])  # write-in & others
+    df_non_writein = cand_remove(df_race2, ['22593', '191', '19359', '30530','4666'])  # write-in & others ,'4667'
     df_non_writein_id = df_non_writein.groupby(['CandID'])['RaceID'].count().reset_index()
     df_non_writein_id = df_non_writein_id.sort_values(['RaceID'], ascending=True)
     print df_non_writein_id['RaceID'].describe()
@@ -980,10 +978,12 @@ if __name__ == '__main__':
     # ====================================================== #
     df_name_RA = df_race2_all[['Name','City','CityID','CandID','Sam','winner ever','winner_key ever',
                                'follower ever','follower_key ever','Career Start Year','Career End Year',
-                               'Term Start Year','Wikipedia','Linkedin','Others1', 'Others2', 'Others3', 'Others4']]
-    df_name_RA = df_name_RA.groupby(['Name','City','CityID','CandID','Sam','winner ever','winner_key ever',
+                               'Wikipedia','Linkedin','Others1', 'Others2', 'Others3', 'Others4']]
+
+    df_name_RA = df_name_RA.groupby(['City','CityID','CandID','Sam','winner ever','winner_key ever',
                                      'follower ever','follower_key ever','Career Start Year','Career End Year',
-                                     'Wikipedia', 'Linkedin', 'Others1', 'Others2', 'Others3', 'Others4'])['Term Start Year'].nunique().reset_index()
+                                     'Wikipedia', 'Linkedin', 'Others1', 'Others2', 'Others3', 'Others4'])['Name'].min().reset_index()
+
     df_name_RA.loc[:, 'CityID'] = df_name_RA['CityID'].astype(float)
     df_name_RA = df_name_RA.sort_values(['CityID', 'CandID'], ascending=True)
     df_name_RA['Web'] = df_name_RA['CandID'].astype(int).astype(str)
@@ -1004,6 +1004,7 @@ if __name__ == '__main__':
     print df_name_RA['CandID'].nunique()
     print 'sam marked:', df_name_RA['Sam'].sum()
 
+    df_name_RA = df_name_RA[['Name','CandID','City','CityID','Wikipedia','Linkedin','Others1','Others2','Others3','Others4','Web']]
     df_name_RA.to_csv('name_RA.csv')
 
 
