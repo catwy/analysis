@@ -9,6 +9,7 @@ from clean_data import race_details_recent, race_details2_recent,terminal_electi
                        win_follow_ever, incumbent_election_v1, incumbent_election_v2, career_span
 from stat_data import statistics_dist,statistics_election, statistics_candidates, select_districts
 from RA_data import sam, sam_source, RA_name_list
+from export import dict2tex2
 
 
 if __name__ == '__main__':
@@ -24,7 +25,7 @@ if __name__ == '__main__':
     dir5 = dir0 + '/mayors/schema'
     dir6 = dir0 + '/mayors'
     dir7 = dir0 + '/campaigns'
-
+    dir8 = dir0 + '/analysis/pdata'
 
     # create a folder for cache
     if not os.path.exists('pdata'):
@@ -33,6 +34,7 @@ if __name__ == '__main__':
         os.remove('key_race_details.csv')
     if os.path.exists('key_race_details2.csv'):
         os.remove('key_race_details2.csv')
+
 
     # Create a dictionary for governor and mayor
     dicts = ['Mayor', 'City', 'CityID','city','Cities', ['State','City']]
@@ -132,7 +134,12 @@ if __name__ == '__main__':
     # ====================================================== #
     df_name_RA = RA_name_list(df_race2_all)
 
-
-
-
+    # ====================================================== #
+    #    Export to Latex Tables                              #
+    # ====================================================== #
+    row_title=['Total Cities','Total Cities with Data','Avg Ranks','Median Ranks', 'Avg Election Periods',
+               'Avg Elections','Avg Term Lengths']
+    def f2(x):
+        return 'f2_%1.2f' % x
+    dict2tex2(stat_dist, ['Variable','Value'], row_title, 'stat_dist.tex', "%6.3f")
 

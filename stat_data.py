@@ -14,7 +14,7 @@ def statistics_dist(df_recent, df_dist, df_periods, df_race_all, dist, dists, di
     print 'Total {}'.format(dists), s
     stat_dist['Total {}'.format(dists)] = s
 
-    if dists == 'city':
+    if dist == 'City':
        s = len(df_recent[df_recent['web'].str.contains('http')])
        print 'Total {} with Data'.format(dists), s
        stat_dist['Total {} with Data'.format(dists)] = s
@@ -22,7 +22,7 @@ def statistics_dist(df_recent, df_dist, df_periods, df_race_all, dist, dists, di
     df_dist[distID] = df_dist[distID].astype(float)
     s = df_dist[distID].mean()
     print 'Avg Ranks', s
-    stat_dist['avg Ranks'] = s
+    stat_dist['Avg Ranks'] = s
 
     s = df_dist[distID].median()
     print 'Median Ranks', s
