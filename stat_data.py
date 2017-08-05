@@ -14,7 +14,7 @@ def statistics_dist(df_recent, df_dist, df_periods, df_race_all, dist, dists, di
     print 'Total {}'.format(dists), s
     stat_dist['Total {}'.format(dists)] = s
 
-    if dist == 'City':
+    if dist == 'city':
        s = len(df_recent[df_recent['web'].str.contains('http')])
        print 'Total {} with Data'.format(dists), s
        stat_dist['Total {} with Data'.format(dists)] = s
@@ -103,7 +103,7 @@ def select_districts(df_race2_all, key1, cutoff1, key2, cutoff2):
     df_non_writein_id = df_race2_all.groupby(['CandID'])['RaceID'].count().reset_index().rename(columns={'RaceID': 'RaceIDs'})
     return df_race2_all, df_non_writein_id
 
-def statistics_candidates():
+def statistics_candidates(df_race2_all, df_non_writein_id):
     def cand_inc_cha_open(df_race2_all, df_non_writein_id):
         df_race_ct = df_non_writein_id
         dic0 = {'elections': 'RaceID', 'election periods': 'Term Start Year'}
@@ -183,49 +183,49 @@ def statistics_candidates():
         s = df_late_win['Win at once (Late Fails)'].mean()
         return s
 
-        stat_cand = dict()
+    stat_cand = dict()
 
-        s = df_non_writein_id['CandID'].nunique()
-        print 'Number of Unique Candidates', s
-        stat_cand['Number of Unique Candidates'] = len(df_non_writein_id)
+    s = df_non_writein_id['CandID'].nunique()
+    print 'Number of Unique Candidates', s
+    stat_cand['Number of Unique Candidates'] = len(df_non_writein_id)
 
-        df = df_race2_all.groupby(['CandID'])['Term Start Year'].nunique().reset_index()
-        s = df['Term Start Year'].mean()
-        print 'Number of Election Periods Per Candidate', s
-        stat_cand['Number of Election Periods Per Candidate'] = s
+    df = df_race2_all.groupby(['CandID'])['Term Start Year'].nunique().reset_index()
+    s = df['Term Start Year'].mean()
+    print 'Number of Election Periods Per Candidate', s
+    stat_cand['Number of Election Periods Per Candidate'] = s
 
-        cand_inc_cha_open(df_race2_all, df_non_writein_id)
+    cand_inc_cha_open(df_race2_all, df_non_writein_id)
 
-        s1, s2, s3, s4, s5, df_winner_list, df_race2_all_winner, df_race2_all_loser, df_race2_all_winner_1st = win_lose(
-            df_race2_all)
-        print 'Number of Candidates at least winning once', s1
-        stat_cand['Number of Candidates at least winning once'] = s1
-        print 'Winners: Number of Winning Election Periods', s2
-        stat_cand['Winners: Number of Winning Election Periods'] = s2
-        print 'Winners: Number of Election Periods', s3
-        stat_cand['Winners: Number of Election Periods'] = s3
-        print 'Number of Candidates never win', s4
-        stat_cand['Number of Candidates never win'] = s4
-        print 'Losers: Number of Election Periods', s5
-        stat_cand['Losers: Number of Election Periods'] = s5
+    s1, s2, s3, s4, s5, df_winner_list, df_race2_all_winner, df_race2_all_loser, df_race2_all_winner_1st = win_lose(
+        df_race2_all)
+    print 'Number of Candidates at least winning once', s1
+    stat_cand['Number of Candidates at least winning once'] = s1
+    print 'Winners: Number of Winning Election Periods', s2
+    stat_cand['Winners: Number of Winning Election Periods'] = s2
+    print 'Winners: Number of Election Periods', s3
+    stat_cand['Winners: Number of Election Periods'] = s3
+    print 'Number of Candidates never win', s4
+    stat_cand['Number of Candidates never win'] = s4
+    print 'Losers: Number of Election Periods', s5
+    stat_cand['Losers: Number of Election Periods'] = s5
 
-        s = win_once_early_fails(df_race2_all_winner_1st, df_winner_list)
-        print 'Winners: Number of Failed Tries before First Win', s
-        stat_cand['Winners: Number of Failed Tries before First Win'] = s
+    s = win_once_early_fails(df_race2_all_winner_1st, df_winner_list)
+    print 'Winners: Number of Failed Tries before First Win', s
+    stat_cand['Winners: Number of Failed Tries before First Win'] = s
 
-        df_race_late = df_race2_all_winner_1st[
-            df_race2_all_winner_1st['Term Start Year'] > df_race2_all_winner_1st['First Win Year']]
+    df_race_late = df_race2_all_winner_1st[
+        df_race2_all_winner_1st['Term Start Year'] > df_race2_all_winner_1st['First Win Year']]
 
-        s = win_once_late_tries(df_race_late, df_winner_list)
-        print 'Winners: Number of Tries After First Win', s
-        stat_cand['Winners: Number of Tries After First Win'] = s
+    s = win_once_late_tries(df_race_late, df_winner_list)
+    print 'Winners: Number of Tries After First Win', s
+    stat_cand['Winners: Number of Tries After First Win'] = s
 
-        s = win_once_late_wins(df_race_late, df_winner_list)
-        print 'Winners: Number of Wins After First Win', s
-        stat_cand['Winners: Number of Wins After First Win'] = s
+    s = win_once_late_wins(df_race_late, df_winner_list)
+    print 'Winners: Number of Wins After First Win', s
+    stat_cand['Winners: Number of Wins After First Win'] = s
 
-        s = win_once_late_fails(df_race_late, df_winner_list)
-        print 'Winners: Number of Fails After First Win', s
-        stat_cand['Winners: Number of Fails After First Win'] = s
+    s = win_once_late_fails(df_race_late, df_winner_list)
+    print 'Winners: Number of Fails After First Win', s
+    stat_cand['Winners: Number of Fails After First Win'] = s
 
-        return stat_cand
+    return stat_cand

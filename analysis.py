@@ -26,6 +26,8 @@ if __name__ == '__main__':
     dir6 = dir0 + '/mayors'
     dir7 = dir0 + '/campaigns'
     dir8 = dir0 + '/analysis/pdata'
+    dir9 = '/Users/yuwang/Dropbox/local politicians/model/analysis_city'
+    dir10 = '/Users/yuwang/Dropbox/local politicians/model/analysis_state'
 
     # create a folder for cache
     if not os.path.exists('pdata'):
@@ -37,11 +39,11 @@ if __name__ == '__main__':
 
 
     # Create a dictionary for governor and mayor
-    dicts = ['Mayor', 'City', 'CityID','city','Cities', ['State','City']]
-    #dicts = ['Governor', 'State', 'StateID', 'State', 'States', 'State']
+    dicts = ['Mayor', 'City', 'CityID','city','Cities', ['State','City'],dir3,dir9]
+    dicts = ['Governor', 'State', 'StateID', 'State', 'States', 'State',dir2,dir10]
 
-    key_race_details(dir3, dicts[0], 'key_race_details.csv')
-    key_race_details2(dir3, dicts[0], 'key_race_details2.csv', 'Final Votes')
+    key_race_details(dicts[6], dicts[0], 'key_race_details.csv')
+    key_race_details2(dicts[6], dicts[0], 'key_race_details2.csv', 'Final Votes')
 
     df_race = setup_race_details(dicts[1])
     df_race2 = setup_race_details2()
@@ -108,10 +110,10 @@ if __name__ == '__main__':
     df_race2_all = career_span(df_race2_all)
 
     # Mark the candidate searched by Sam Gerson
-    df_race2_all = sam(df_race2_all)
-    df_race2_all = sam_source(df_race2_all)
+    #df_race2_all = sam(df_race2_all)
+    #df_race2_all = sam_source(df_race2_all)
 
-    df_race2_all.to_csv('race2_all.csv')
+    #df_race2_all.to_csv('pdata/race2_all.csv')
     # ====================================================== #
     #     Summary Statistics for Cities                      #
     # ====================================================== #
@@ -127,19 +129,32 @@ if __name__ == '__main__':
     # ====================================================== #
 
     #df_race2_all, df_non_writein_id = select_districts(df_race2_all, 'CityID', 100, 'Term Start Year', 1950)
-    stat_cand = statistics_candidates()
+    stat_cand = statistics_candidates(df_race2_all, df_non_writein_id)
 
     # ====================================================== #
     #    List of Names for RA                                #
     # ====================================================== #
-    df_name_RA = RA_name_list(df_race2_all)
+    #df_name_RA = RA_name_list(df_race2_all)
 
     # ====================================================== #
     #    Export to Latex Tables                              #
     # ====================================================== #
-    row_title=['Total Cities','Total Cities with Data','Avg Ranks','Median Ranks', 'Avg Election Periods',
-               'Avg Elections','Avg Term Lengths']
-    def f2(x):
-        return 'f2_%1.2f' % x
-    dict2tex2(stat_dist, ['Variable','Value'], row_title, 'stat_dist.tex', "%6.3f")
+    def f1(x):
+        return '%13.2f' % x
+
+    dic = {'stat_dist': ['Total {}'.format(dicts[4]), 'Total {} with Data'.format(dicts[4]), 'Avg Ranks', 'Median Ranks',
+                    'Avg Election Periods','Avg Elections', 'Avg Term Lengths'],
+           'stat_election': ['Election Covered', 'Election Periods Covered', 'Incumbent Election Periods',
+                        'Incumbent Election Candidates','Open Election Periods', 'Open Election Candidates',
+                        'Unclear Election Periods','Unclear Election Candidates'],
+           'stat_cand': ['Number of Unique Candidates', 'Number of Election Periods Per Candidate',
+                    'Number of Candidates at least winning once','Winners: Number of Winning Election Periods',
+                    'Winners: Number of Election Periods', 'Number of Candidates never win',
+                    'Losers: Number of Election Periods','Winners: Number of Failed Tries before First Win',
+                    'Winners: Number of Tries After First Win', 'Winners: Number of Wins After First Win',
+                    'Winners: Number of Fails After First Win']
+           }
+
+    #for key, value in dic.iteritems():
+    #    dict2tex2(key,['Variable','Value'], value, dicts[7]+'/{}.tex'.format(key), [None, f1])
 

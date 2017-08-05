@@ -294,14 +294,14 @@ def check_shares_sum(df_race2, df_race):
         df_wrong_shares_full = df_race2.merge(df, left_on='RaceID', right_on='RaceID', how='outer')
         df_wrong_shares_full['Share_y'] = df_wrong_shares_full['Share_y'].astype(str)
         df_wrong_shares_full = df_wrong_shares_full[df_wrong_shares_full['Share_y'].str.contains(r'\d+')]
-        df_wrong_shares_full.to_csv("wrong_shares_full.csv")
+        df_wrong_shares_full.to_csv("pdata/wrong_shares_full.csv")
         return df_wrong_shares_full
 
     # return a list of RaceIDs for incorrect races
     def shares_wrong_small(df_wrong_shares_full):
         g = df_wrong_shares_full['RaceID'].unique()
         s = pd.Series(g)
-        s.to_csv('wrong_shares_raceid.csv')
+        s.to_csv('pdata/wrong_shares_raceid.csv')
 
     df_race2_wrong_shares = add_shares(df_race2)
     df_wrong_shares_full = shares_wrong_big(df_race2_wrong_shares,df_race,df_race2)
@@ -312,7 +312,7 @@ def unique_candidates(df_race2):
     g = df_race2['CandID'].unique()
     df_unique_CandID = pd.DataFrame(pd.Series(g)).rename(columns = {0:'CandID'})
     print 'number of unique candidates=', len(df_unique_CandID)
-    df_unique_CandID.to_csv('unique_CandID.csv')
+    df_unique_CandID.to_csv('pdata/unique_CandID.csv')
     return df_unique_CandID
 
 def cand_remove(df, list):
@@ -331,7 +331,7 @@ def recent_elections_city(folder):
     dic = {0: 'web', 1: 'city', 2: "state", 3: 'partisan', 4: 'note'}
     for key, value in dic.iteritems():
         df_m = df_m.rename(columns={key: value})
-    df_m.to_csv('recent_elections_city.csv')
+    df_m.to_csv('pdata/recent_elections_city.csv')
     df_m = df_m.drop('note', 1)
     return df_m
 
@@ -345,7 +345,7 @@ def recent_elections_state(folder):
     dic = {0: 'ContainerID', 1: 'State', 2: "year", 3: 'note'}
     for key, value in dic.iteritems():
         df_m = df_m.rename(columns={key: value})
-    df_m.to_csv('recent_elections_state.csv')
+    df_m.to_csv('pdata/recent_elections_state.csv')
     df_m = df_m.drop('note', 1)
     return df_m
 
@@ -364,7 +364,7 @@ def city_name_merge(df_recent, df_race):
     df_city.loc[:,'CityID'] = df_city['CityID'].astype(str)
     df_city = df_city[df_city['CityID'].str.contains('(\d+)')]
     df_city = df_city[df_city['web'].str.contains('http')]
-    df_city.to_csv('city_name_merge.csv')
+    df_city.to_csv('pdata/city_name_merge.csv')
     return df_city
 
 def state_name_merge(df_recent, df_race):
@@ -372,7 +372,7 @@ def state_name_merge(df_recent, df_race):
     df_race.loc[:,'State'] = df_race['State'].str.lower().str.strip()
     df_state = df_recent.merge(df_race, left_on='State', right_on='State', how = 'outer')
     df_state = df_state[['State','StateID']]
-    df_state.to_csv('state_name_merge.csv')
+    df_state.to_csv('pdata/state_name_merge.csv')
     return df_state
 
 def dist_name_merge(df_recent, df_race, dist):

@@ -1,0 +1,5554 @@
+,State,StateID
+0,alaska,0.0
+1,alaska,0.0
+2,alaska,0.0
+3,alaska,0.0
+4,alaska,0.0
+5,alaska,0.0
+6,alaska,0.0
+7,alaska,0.0
+8,alaska,0.0
+9,alaska,0.0
+10,alaska,0.0
+11,alaska,0.0
+12,alaska,0.0
+13,alaska,0.0
+14,alaska,0.0
+15,alaska,0.0
+16,alaska,0.0
+17,alaska,0.0
+18,alaska,0.0
+19,alaska,0.0
+20,alaska,0.0
+21,alaska,0.0
+22,alaska,0.0
+23,alaska,0.0
+24,alaska,0.0
+25,alaska,0.0
+26,alaska,0.0
+27,alaska,0.0
+28,alaska,0.0
+29,alaska,0.0
+30,alaska,0.0
+31,alaska,0.0
+32,alaska,0.0
+33,alaska,0.0
+34,alaska,0.0
+35,alaska,0.0
+36,alaska,0.0
+37,alaska,0.0
+38,alaska,0.0
+39,alaska,0.0
+40,alaska,0.0
+41,alaska,0.0
+42,alaska,0.0
+43,alaska,0.0
+44,alaska,0.0
+45,alaska,0.0
+46,alaska,0.0
+47,alaska,0.0
+48,alaska,0.0
+49,alaska,0.0
+50,alaska,0.0
+51,alaska,0.0
+52,alaska,0.0
+53,alaska,0.0
+54,alaska,0.0
+55,alaska,0.0
+56,alaska,0.0
+57,alaska,0.0
+58,alaska,0.0
+59,alaska,0.0
+60,alaska,0.0
+61,alaska,0.0
+62,alaska,0.0
+63,alaska,0.0
+64,alaska,0.0
+65,alaska,0.0
+66,alaska,0.0
+67,alaska,0.0
+68,alaska,0.0
+69,alaska,0.0
+70,alaska,0.0
+71,alaska,0.0
+72,alaska,0.0
+73,alaska,0.0
+74,alabama,1.0
+75,alabama,1.0
+76,alabama,1.0
+77,alabama,1.0
+78,alabama,1.0
+79,alabama,1.0
+80,alabama,1.0
+81,alabama,1.0
+82,alabama,1.0
+83,alabama,1.0
+84,alabama,1.0
+85,alabama,1.0
+86,alabama,1.0
+87,alabama,1.0
+88,alabama,1.0
+89,alabama,1.0
+90,alabama,1.0
+91,alabama,1.0
+92,alabama,1.0
+93,alabama,1.0
+94,alabama,1.0
+95,alabama,1.0
+96,alabama,1.0
+97,alabama,1.0
+98,alabama,1.0
+99,alabama,1.0
+100,alabama,1.0
+101,alabama,1.0
+102,alabama,1.0
+103,alabama,1.0
+104,alabama,1.0
+105,alabama,1.0
+106,alabama,1.0
+107,alabama,1.0
+108,alabama,1.0
+109,alabama,1.0
+110,alabama,1.0
+111,alabama,1.0
+112,alabama,1.0
+113,alabama,1.0
+114,alabama,1.0
+115,alabama,1.0
+116,alabama,1.0
+117,alabama,1.0
+118,alabama,1.0
+119,alabama,1.0
+120,alabama,1.0
+121,alabama,1.0
+122,alabama,1.0
+123,alabama,1.0
+124,alabama,1.0
+125,alabama,1.0
+126,alabama,1.0
+127,alabama,1.0
+128,alabama,1.0
+129,alabama,1.0
+130,alabama,1.0
+131,alabama,1.0
+132,alabama,1.0
+133,alabama,1.0
+134,alabama,1.0
+135,alabama,1.0
+136,alabama,1.0
+137,alabama,1.0
+138,alabama,1.0
+139,alabama,1.0
+140,alabama,1.0
+141,alabama,1.0
+142,alabama,1.0
+143,alabama,1.0
+144,alabama,1.0
+145,alabama,1.0
+146,alabama,1.0
+147,alabama,1.0
+148,alabama,1.0
+149,alabama,1.0
+150,alabama,1.0
+151,alabama,1.0
+152,alabama,1.0
+153,alabama,1.0
+154,alabama,1.0
+155,alabama,1.0
+156,alabama,1.0
+157,alabama,1.0
+158,alabama,1.0
+159,alabama,1.0
+160,alabama,1.0
+161,alabama,1.0
+162,alabama,1.0
+163,alabama,1.0
+164,alabama,1.0
+165,alabama,1.0
+166,alabama,1.0
+167,alabama,1.0
+168,alabama,1.0
+169,alabama,1.0
+170,alabama,1.0
+171,alabama,1.0
+172,alabama,1.0
+173,alabama,1.0
+174,alabama,1.0
+175,alabama,1.0
+176,alabama,1.0
+177,alabama,1.0
+178,alabama,1.0
+179,alabama,1.0
+180,alabama,1.0
+181,alabama,1.0
+182,alabama,1.0
+183,alabama,1.0
+184,alabama,1.0
+185,alabama,1.0
+186,alabama,1.0
+187,alabama,1.0
+188,alabama,1.0
+189,alabama,1.0
+190,alabama,1.0
+191,alabama,1.0
+192,alabama,1.0
+193,alabama,1.0
+194,alabama,1.0
+195,alabama,1.0
+196,alabama,1.0
+197,alabama,1.0
+198,alabama,1.0
+199,alabama,1.0
+200,alabama,1.0
+201,alabama,1.0
+202,alabama,1.0
+203,arkansas,2.0
+204,arkansas,2.0
+205,arkansas,2.0
+206,arkansas,2.0
+207,arkansas,2.0
+208,arkansas,2.0
+209,arkansas,2.0
+210,arkansas,2.0
+211,arkansas,2.0
+212,arkansas,2.0
+213,arkansas,2.0
+214,arkansas,2.0
+215,arkansas,2.0
+216,arkansas,2.0
+217,arkansas,2.0
+218,arkansas,2.0
+219,arkansas,2.0
+220,arkansas,2.0
+221,arkansas,2.0
+222,arkansas,2.0
+223,arkansas,2.0
+224,arkansas,2.0
+225,arkansas,2.0
+226,arkansas,2.0
+227,arkansas,2.0
+228,arkansas,2.0
+229,arkansas,2.0
+230,arkansas,2.0
+231,arkansas,2.0
+232,arkansas,2.0
+233,arkansas,2.0
+234,arkansas,2.0
+235,arkansas,2.0
+236,arkansas,2.0
+237,arkansas,2.0
+238,arkansas,2.0
+239,arkansas,2.0
+240,arkansas,2.0
+241,arkansas,2.0
+242,arkansas,2.0
+243,arkansas,2.0
+244,arkansas,2.0
+245,arkansas,2.0
+246,arkansas,2.0
+247,arkansas,2.0
+248,arkansas,2.0
+249,arkansas,2.0
+250,arkansas,2.0
+251,arkansas,2.0
+252,arkansas,2.0
+253,arkansas,2.0
+254,arkansas,2.0
+255,arkansas,2.0
+256,arkansas,2.0
+257,arkansas,2.0
+258,arkansas,2.0
+259,arkansas,2.0
+260,arkansas,2.0
+261,arkansas,2.0
+262,arkansas,2.0
+263,arkansas,2.0
+264,arkansas,2.0
+265,arkansas,2.0
+266,arkansas,2.0
+267,arkansas,2.0
+268,arkansas,2.0
+269,arkansas,2.0
+270,arkansas,2.0
+271,arkansas,2.0
+272,arkansas,2.0
+273,arkansas,2.0
+274,arkansas,2.0
+275,arkansas,2.0
+276,arkansas,2.0
+277,arkansas,2.0
+278,arkansas,2.0
+279,arkansas,2.0
+280,arkansas,2.0
+281,arkansas,2.0
+282,arkansas,2.0
+283,arkansas,2.0
+284,arkansas,2.0
+285,arkansas,2.0
+286,arkansas,2.0
+287,arkansas,2.0
+288,arkansas,2.0
+289,arkansas,2.0
+290,arkansas,2.0
+291,arkansas,2.0
+292,arkansas,2.0
+293,arkansas,2.0
+294,arkansas,2.0
+295,arkansas,2.0
+296,arkansas,2.0
+297,arkansas,2.0
+298,arkansas,2.0
+299,arkansas,2.0
+300,arkansas,2.0
+301,arkansas,2.0
+302,arkansas,2.0
+303,arkansas,2.0
+304,arkansas,2.0
+305,arkansas,2.0
+306,arkansas,2.0
+307,arkansas,2.0
+308,arkansas,2.0
+309,arkansas,2.0
+310,arkansas,2.0
+311,arkansas,2.0
+312,arkansas,2.0
+313,arkansas,2.0
+314,arkansas,2.0
+315,arkansas,2.0
+316,arkansas,2.0
+317,arkansas,2.0
+318,arkansas,2.0
+319,arkansas,2.0
+320,arkansas,2.0
+321,arkansas,2.0
+322,arkansas,2.0
+323,arkansas,2.0
+324,arkansas,2.0
+325,arkansas,2.0
+326,arkansas,2.0
+327,arkansas,2.0
+328,arkansas,2.0
+329,arkansas,2.0
+330,arkansas,2.0
+331,arkansas,2.0
+332,arizona,3.0
+333,arizona,3.0
+334,arizona,3.0
+335,arizona,3.0
+336,arizona,3.0
+337,arizona,3.0
+338,arizona,3.0
+339,arizona,3.0
+340,arizona,3.0
+341,arizona,3.0
+342,arizona,3.0
+343,arizona,3.0
+344,arizona,3.0
+345,arizona,3.0
+346,arizona,3.0
+347,arizona,3.0
+348,arizona,3.0
+349,arizona,3.0
+350,arizona,3.0
+351,arizona,3.0
+352,arizona,3.0
+353,arizona,3.0
+354,arizona,3.0
+355,arizona,3.0
+356,arizona,3.0
+357,arizona,3.0
+358,arizona,3.0
+359,arizona,3.0
+360,arizona,3.0
+361,arizona,3.0
+362,arizona,3.0
+363,arizona,3.0
+364,arizona,3.0
+365,arizona,3.0
+366,arizona,3.0
+367,arizona,3.0
+368,arizona,3.0
+369,arizona,3.0
+370,arizona,3.0
+371,arizona,3.0
+372,arizona,3.0
+373,arizona,3.0
+374,arizona,3.0
+375,arizona,3.0
+376,arizona,3.0
+377,arizona,3.0
+378,arizona,3.0
+379,arizona,3.0
+380,arizona,3.0
+381,arizona,3.0
+382,arizona,3.0
+383,arizona,3.0
+384,arizona,3.0
+385,arizona,3.0
+386,arizona,3.0
+387,arizona,3.0
+388,arizona,3.0
+389,arizona,3.0
+390,arizona,3.0
+391,arizona,3.0
+392,arizona,3.0
+393,arizona,3.0
+394,arizona,3.0
+395,arizona,3.0
+396,arizona,3.0
+397,arizona,3.0
+398,arizona,3.0
+399,arizona,3.0
+400,arizona,3.0
+401,arizona,3.0
+402,arizona,3.0
+403,arizona,3.0
+404,arizona,3.0
+405,arizona,3.0
+406,arizona,3.0
+407,arizona,3.0
+408,arizona,3.0
+409,arizona,3.0
+410,arizona,3.0
+411,arizona,3.0
+412,arizona,3.0
+413,arizona,3.0
+414,arizona,3.0
+415,arizona,3.0
+416,arizona,3.0
+417,arizona,3.0
+418,arizona,3.0
+419,arizona,3.0
+420,arizona,3.0
+421,arizona,3.0
+422,arizona,3.0
+423,arizona,3.0
+424,arizona,3.0
+425,arizona,3.0
+426,arizona,3.0
+427,arizona,3.0
+428,arizona,3.0
+429,arizona,3.0
+430,arizona,3.0
+431,arizona,3.0
+432,arizona,3.0
+433,arizona,3.0
+434,arizona,3.0
+435,arizona,3.0
+436,arizona,3.0
+437,arizona,3.0
+438,arizona,3.0
+439,arizona,3.0
+440,arizona,3.0
+441,arizona,3.0
+442,arizona,3.0
+443,arizona,3.0
+444,arizona,3.0
+445,arizona,3.0
+446,arizona,3.0
+447,arizona,3.0
+448,arizona,3.0
+449,california,4.0
+450,california,4.0
+451,california,4.0
+452,california,4.0
+453,california,4.0
+454,california,4.0
+455,california,4.0
+456,california,4.0
+457,california,4.0
+458,california,4.0
+459,california,4.0
+460,california,4.0
+461,california,4.0
+462,california,4.0
+463,california,4.0
+464,california,4.0
+465,california,4.0
+466,california,4.0
+467,california,4.0
+468,california,4.0
+469,california,4.0
+470,california,4.0
+471,california,4.0
+472,california,4.0
+473,california,4.0
+474,california,4.0
+475,california,4.0
+476,california,4.0
+477,california,4.0
+478,california,4.0
+479,california,4.0
+480,california,4.0
+481,california,4.0
+482,california,4.0
+483,california,4.0
+484,california,4.0
+485,california,4.0
+486,california,4.0
+487,california,4.0
+488,california,4.0
+489,california,4.0
+490,california,4.0
+491,california,4.0
+492,california,4.0
+493,california,4.0
+494,california,4.0
+495,california,4.0
+496,california,4.0
+497,california,4.0
+498,california,4.0
+499,california,4.0
+500,california,4.0
+501,california,4.0
+502,california,4.0
+503,california,4.0
+504,california,4.0
+505,california,4.0
+506,california,4.0
+507,california,4.0
+508,california,4.0
+509,california,4.0
+510,california,4.0
+511,california,4.0
+512,california,4.0
+513,california,4.0
+514,california,4.0
+515,california,4.0
+516,california,4.0
+517,california,4.0
+518,california,4.0
+519,california,4.0
+520,california,4.0
+521,california,4.0
+522,california,4.0
+523,california,4.0
+524,california,4.0
+525,california,4.0
+526,california,4.0
+527,california,4.0
+528,california,4.0
+529,california,4.0
+530,california,4.0
+531,california,4.0
+532,california,4.0
+533,california,4.0
+534,california,4.0
+535,california,4.0
+536,california,4.0
+537,california,4.0
+538,california,4.0
+539,california,4.0
+540,california,4.0
+541,california,4.0
+542,california,4.0
+543,california,4.0
+544,california,4.0
+545,california,4.0
+546,california,4.0
+547,california,4.0
+548,california,4.0
+549,california,4.0
+550,california,4.0
+551,california,4.0
+552,california,4.0
+553,california,4.0
+554,california,4.0
+555,california,4.0
+556,california,4.0
+557,california,4.0
+558,california,4.0
+559,california,4.0
+560,california,4.0
+561,california,4.0
+562,california,4.0
+563,california,4.0
+564,california,4.0
+565,california,4.0
+566,california,4.0
+567,california,4.0
+568,california,4.0
+569,california,4.0
+570,california,4.0
+571,california,4.0
+572,california,4.0
+573,california,4.0
+574,california,4.0
+575,california,4.0
+576,california,4.0
+577,california,4.0
+578,california,4.0
+579,california,4.0
+580,california,4.0
+581,california,4.0
+582,california,4.0
+583,california,4.0
+584,california,4.0
+585,california,4.0
+586,california,4.0
+587,california,4.0
+588,california,4.0
+589,california,4.0
+590,california,4.0
+591,california,4.0
+592,california,4.0
+593,california,4.0
+594,california,4.0
+595,california,4.0
+596,california,4.0
+597,california,4.0
+598,california,4.0
+599,california,4.0
+600,california,4.0
+601,california,4.0
+602,california,4.0
+603,california,4.0
+604,california,4.0
+605,california,4.0
+606,california,4.0
+607,california,4.0
+608,california,4.0
+609,california,4.0
+610,california,4.0
+611,california,4.0
+612,california,4.0
+613,california,4.0
+614,california,4.0
+615,california,4.0
+616,california,4.0
+617,california,4.0
+618,california,4.0
+619,california,4.0
+620,california,4.0
+621,california,4.0
+622,california,4.0
+623,california,4.0
+624,california,4.0
+625,california,4.0
+626,california,4.0
+627,california,4.0
+628,california,4.0
+629,california,4.0
+630,california,4.0
+631,california,4.0
+632,california,4.0
+633,california,4.0
+634,california,4.0
+635,colorado,5.0
+636,colorado,5.0
+637,colorado,5.0
+638,colorado,5.0
+639,colorado,5.0
+640,colorado,5.0
+641,colorado,5.0
+642,colorado,5.0
+643,colorado,5.0
+644,colorado,5.0
+645,colorado,5.0
+646,colorado,5.0
+647,colorado,5.0
+648,colorado,5.0
+649,colorado,5.0
+650,colorado,5.0
+651,colorado,5.0
+652,colorado,5.0
+653,colorado,5.0
+654,colorado,5.0
+655,colorado,5.0
+656,colorado,5.0
+657,colorado,5.0
+658,colorado,5.0
+659,colorado,5.0
+660,colorado,5.0
+661,colorado,5.0
+662,colorado,5.0
+663,colorado,5.0
+664,colorado,5.0
+665,colorado,5.0
+666,colorado,5.0
+667,colorado,5.0
+668,colorado,5.0
+669,colorado,5.0
+670,colorado,5.0
+671,colorado,5.0
+672,colorado,5.0
+673,colorado,5.0
+674,colorado,5.0
+675,colorado,5.0
+676,colorado,5.0
+677,colorado,5.0
+678,colorado,5.0
+679,colorado,5.0
+680,colorado,5.0
+681,colorado,5.0
+682,colorado,5.0
+683,colorado,5.0
+684,colorado,5.0
+685,colorado,5.0
+686,colorado,5.0
+687,colorado,5.0
+688,colorado,5.0
+689,colorado,5.0
+690,colorado,5.0
+691,colorado,5.0
+692,colorado,5.0
+693,colorado,5.0
+694,colorado,5.0
+695,colorado,5.0
+696,colorado,5.0
+697,colorado,5.0
+698,colorado,5.0
+699,colorado,5.0
+700,colorado,5.0
+701,colorado,5.0
+702,colorado,5.0
+703,colorado,5.0
+704,colorado,5.0
+705,colorado,5.0
+706,colorado,5.0
+707,colorado,5.0
+708,colorado,5.0
+709,colorado,5.0
+710,colorado,5.0
+711,colorado,5.0
+712,colorado,5.0
+713,colorado,5.0
+714,colorado,5.0
+715,colorado,5.0
+716,colorado,5.0
+717,colorado,5.0
+718,colorado,5.0
+719,colorado,5.0
+720,colorado,5.0
+721,colorado,5.0
+722,delaware,6.0
+723,delaware,6.0
+724,delaware,6.0
+725,delaware,6.0
+726,delaware,6.0
+727,delaware,6.0
+728,delaware,6.0
+729,delaware,6.0
+730,delaware,6.0
+731,delaware,6.0
+732,delaware,6.0
+733,delaware,6.0
+734,delaware,6.0
+735,delaware,6.0
+736,delaware,6.0
+737,delaware,6.0
+738,delaware,6.0
+739,delaware,6.0
+740,delaware,6.0
+741,delaware,6.0
+742,delaware,6.0
+743,delaware,6.0
+744,delaware,6.0
+745,delaware,6.0
+746,delaware,6.0
+747,delaware,6.0
+748,delaware,6.0
+749,delaware,6.0
+750,delaware,6.0
+751,delaware,6.0
+752,delaware,6.0
+753,delaware,6.0
+754,delaware,6.0
+755,delaware,6.0
+756,delaware,6.0
+757,delaware,6.0
+758,delaware,6.0
+759,delaware,6.0
+760,delaware,6.0
+761,delaware,6.0
+762,delaware,6.0
+763,florida,7.0
+764,florida,7.0
+765,florida,7.0
+766,florida,7.0
+767,florida,7.0
+768,florida,7.0
+769,florida,7.0
+770,florida,7.0
+771,florida,7.0
+772,florida,7.0
+773,florida,7.0
+774,florida,7.0
+775,florida,7.0
+776,florida,7.0
+777,florida,7.0
+778,florida,7.0
+779,florida,7.0
+780,florida,7.0
+781,florida,7.0
+782,florida,7.0
+783,florida,7.0
+784,florida,7.0
+785,florida,7.0
+786,florida,7.0
+787,florida,7.0
+788,florida,7.0
+789,florida,7.0
+790,florida,7.0
+791,florida,7.0
+792,florida,7.0
+793,florida,7.0
+794,florida,7.0
+795,florida,7.0
+796,florida,7.0
+797,florida,7.0
+798,florida,7.0
+799,florida,7.0
+800,florida,7.0
+801,florida,7.0
+802,florida,7.0
+803,florida,7.0
+804,florida,7.0
+805,florida,7.0
+806,florida,7.0
+807,florida,7.0
+808,florida,7.0
+809,florida,7.0
+810,florida,7.0
+811,florida,7.0
+812,florida,7.0
+813,florida,7.0
+814,florida,7.0
+815,florida,7.0
+816,florida,7.0
+817,florida,7.0
+818,florida,7.0
+819,florida,7.0
+820,florida,7.0
+821,florida,7.0
+822,florida,7.0
+823,florida,7.0
+824,florida,7.0
+825,florida,7.0
+826,florida,7.0
+827,florida,7.0
+828,florida,7.0
+829,florida,7.0
+830,florida,7.0
+831,florida,7.0
+832,florida,7.0
+833,florida,7.0
+834,florida,7.0
+835,florida,7.0
+836,florida,7.0
+837,florida,7.0
+838,florida,7.0
+839,florida,7.0
+840,florida,7.0
+841,florida,7.0
+842,florida,7.0
+843,florida,7.0
+844,florida,7.0
+845,florida,7.0
+846,florida,7.0
+847,florida,7.0
+848,florida,7.0
+849,florida,7.0
+850,florida,7.0
+851,florida,7.0
+852,florida,7.0
+853,florida,7.0
+854,florida,7.0
+855,florida,7.0
+856,florida,7.0
+857,florida,7.0
+858,florida,7.0
+859,florida,7.0
+860,florida,7.0
+861,florida,7.0
+862,florida,7.0
+863,florida,7.0
+864,florida,7.0
+865,florida,7.0
+866,florida,7.0
+867,florida,7.0
+868,florida,7.0
+869,florida,7.0
+870,florida,7.0
+871,florida,7.0
+872,florida,7.0
+873,florida,7.0
+874,florida,7.0
+875,florida,7.0
+876,florida,7.0
+877,florida,7.0
+878,georgia,8.0
+879,georgia,8.0
+880,georgia,8.0
+881,georgia,8.0
+882,georgia,8.0
+883,georgia,8.0
+884,georgia,8.0
+885,georgia,8.0
+886,georgia,8.0
+887,georgia,8.0
+888,georgia,8.0
+889,georgia,8.0
+890,georgia,8.0
+891,georgia,8.0
+892,georgia,8.0
+893,georgia,8.0
+894,georgia,8.0
+895,georgia,8.0
+896,georgia,8.0
+897,georgia,8.0
+898,georgia,8.0
+899,georgia,8.0
+900,georgia,8.0
+901,georgia,8.0
+902,georgia,8.0
+903,georgia,8.0
+904,georgia,8.0
+905,georgia,8.0
+906,georgia,8.0
+907,georgia,8.0
+908,georgia,8.0
+909,georgia,8.0
+910,georgia,8.0
+911,georgia,8.0
+912,georgia,8.0
+913,georgia,8.0
+914,georgia,8.0
+915,georgia,8.0
+916,georgia,8.0
+917,georgia,8.0
+918,georgia,8.0
+919,georgia,8.0
+920,georgia,8.0
+921,georgia,8.0
+922,georgia,8.0
+923,georgia,8.0
+924,georgia,8.0
+925,georgia,8.0
+926,georgia,8.0
+927,georgia,8.0
+928,georgia,8.0
+929,georgia,8.0
+930,georgia,8.0
+931,georgia,8.0
+932,georgia,8.0
+933,georgia,8.0
+934,georgia,8.0
+935,georgia,8.0
+936,georgia,8.0
+937,georgia,8.0
+938,georgia,8.0
+939,georgia,8.0
+940,georgia,8.0
+941,georgia,8.0
+942,georgia,8.0
+943,georgia,8.0
+944,georgia,8.0
+945,georgia,8.0
+946,georgia,8.0
+947,georgia,8.0
+948,georgia,8.0
+949,georgia,8.0
+950,georgia,8.0
+951,georgia,8.0
+952,georgia,8.0
+953,georgia,8.0
+954,georgia,8.0
+955,georgia,8.0
+956,georgia,8.0
+957,georgia,8.0
+958,georgia,8.0
+959,georgia,8.0
+960,georgia,8.0
+961,georgia,8.0
+962,georgia,8.0
+963,georgia,8.0
+964,georgia,8.0
+965,georgia,8.0
+966,georgia,8.0
+967,georgia,8.0
+968,georgia,8.0
+969,georgia,8.0
+970,georgia,8.0
+971,georgia,8.0
+972,georgia,8.0
+973,georgia,8.0
+974,georgia,8.0
+975,georgia,8.0
+976,georgia,8.0
+977,georgia,8.0
+978,georgia,8.0
+979,georgia,8.0
+980,georgia,8.0
+981,georgia,8.0
+982,georgia,8.0
+983,georgia,8.0
+984,georgia,8.0
+985,georgia,8.0
+986,georgia,8.0
+987,georgia,8.0
+988,georgia,8.0
+989,georgia,8.0
+990,georgia,8.0
+991,georgia,8.0
+992,georgia,8.0
+993,georgia,8.0
+994,georgia,8.0
+995,georgia,8.0
+996,georgia,8.0
+997,georgia,8.0
+998,georgia,8.0
+999,georgia,8.0
+1000,georgia,8.0
+1001,georgia,8.0
+1002,georgia,8.0
+1003,georgia,8.0
+1004,georgia,8.0
+1005,georgia,8.0
+1006,georgia,8.0
+1007,georgia,8.0
+1008,georgia,8.0
+1009,georgia,8.0
+1010,georgia,8.0
+1011,georgia,8.0
+1012,georgia,8.0
+1013,georgia,8.0
+1014,georgia,8.0
+1015,hawaii,9.0
+1016,iowa,10.0
+1017,iowa,10.0
+1018,iowa,10.0
+1019,iowa,10.0
+1020,iowa,10.0
+1021,iowa,10.0
+1022,iowa,10.0
+1023,iowa,10.0
+1024,iowa,10.0
+1025,iowa,10.0
+1026,iowa,10.0
+1027,iowa,10.0
+1028,iowa,10.0
+1029,iowa,10.0
+1030,iowa,10.0
+1031,iowa,10.0
+1032,iowa,10.0
+1033,iowa,10.0
+1034,iowa,10.0
+1035,iowa,10.0
+1036,iowa,10.0
+1037,iowa,10.0
+1038,iowa,10.0
+1039,iowa,10.0
+1040,iowa,10.0
+1041,iowa,10.0
+1042,iowa,10.0
+1043,iowa,10.0
+1044,iowa,10.0
+1045,iowa,10.0
+1046,iowa,10.0
+1047,iowa,10.0
+1048,iowa,10.0
+1049,iowa,10.0
+1050,iowa,10.0
+1051,iowa,10.0
+1052,iowa,10.0
+1053,iowa,10.0
+1054,iowa,10.0
+1055,iowa,10.0
+1056,iowa,10.0
+1057,iowa,10.0
+1058,iowa,10.0
+1059,iowa,10.0
+1060,iowa,10.0
+1061,iowa,10.0
+1062,iowa,10.0
+1063,iowa,10.0
+1064,iowa,10.0
+1065,iowa,10.0
+1066,iowa,10.0
+1067,iowa,10.0
+1068,iowa,10.0
+1069,iowa,10.0
+1070,iowa,10.0
+1071,iowa,10.0
+1072,iowa,10.0
+1073,iowa,10.0
+1074,iowa,10.0
+1075,iowa,10.0
+1076,iowa,10.0
+1077,iowa,10.0
+1078,iowa,10.0
+1079,iowa,10.0
+1080,iowa,10.0
+1081,iowa,10.0
+1082,iowa,10.0
+1083,iowa,10.0
+1084,iowa,10.0
+1085,iowa,10.0
+1086,iowa,10.0
+1087,iowa,10.0
+1088,iowa,10.0
+1089,iowa,10.0
+1090,iowa,10.0
+1091,iowa,10.0
+1092,iowa,10.0
+1093,iowa,10.0
+1094,iowa,10.0
+1095,iowa,10.0
+1096,iowa,10.0
+1097,iowa,10.0
+1098,iowa,10.0
+1099,iowa,10.0
+1100,iowa,10.0
+1101,iowa,10.0
+1102,iowa,10.0
+1103,iowa,10.0
+1104,iowa,10.0
+1105,iowa,10.0
+1106,iowa,10.0
+1107,iowa,10.0
+1108,iowa,10.0
+1109,iowa,10.0
+1110,iowa,10.0
+1111,iowa,10.0
+1112,iowa,10.0
+1113,iowa,10.0
+1114,iowa,10.0
+1115,iowa,10.0
+1116,iowa,10.0
+1117,iowa,10.0
+1118,iowa,10.0
+1119,iowa,10.0
+1120,iowa,10.0
+1121,iowa,10.0
+1122,iowa,10.0
+1123,idaho,11.0
+1124,idaho,11.0
+1125,idaho,11.0
+1126,idaho,11.0
+1127,idaho,11.0
+1128,idaho,11.0
+1129,idaho,11.0
+1130,idaho,11.0
+1131,idaho,11.0
+1132,idaho,11.0
+1133,idaho,11.0
+1134,idaho,11.0
+1135,idaho,11.0
+1136,idaho,11.0
+1137,idaho,11.0
+1138,idaho,11.0
+1139,idaho,11.0
+1140,idaho,11.0
+1141,idaho,11.0
+1142,idaho,11.0
+1143,idaho,11.0
+1144,idaho,11.0
+1145,idaho,11.0
+1146,idaho,11.0
+1147,idaho,11.0
+1148,idaho,11.0
+1149,idaho,11.0
+1150,idaho,11.0
+1151,idaho,11.0
+1152,idaho,11.0
+1153,idaho,11.0
+1154,idaho,11.0
+1155,idaho,11.0
+1156,idaho,11.0
+1157,idaho,11.0
+1158,idaho,11.0
+1159,idaho,11.0
+1160,idaho,11.0
+1161,idaho,11.0
+1162,idaho,11.0
+1163,idaho,11.0
+1164,idaho,11.0
+1165,idaho,11.0
+1166,idaho,11.0
+1167,idaho,11.0
+1168,idaho,11.0
+1169,idaho,11.0
+1170,idaho,11.0
+1171,idaho,11.0
+1172,idaho,11.0
+1173,idaho,11.0
+1174,idaho,11.0
+1175,idaho,11.0
+1176,idaho,11.0
+1177,idaho,11.0
+1178,idaho,11.0
+1179,idaho,11.0
+1180,idaho,11.0
+1181,idaho,11.0
+1182,idaho,11.0
+1183,idaho,11.0
+1184,idaho,11.0
+1185,idaho,11.0
+1186,idaho,11.0
+1187,idaho,11.0
+1188,idaho,11.0
+1189,idaho,11.0
+1190,idaho,11.0
+1191,idaho,11.0
+1192,illinois,12.0
+1193,illinois,12.0
+1194,illinois,12.0
+1195,illinois,12.0
+1196,illinois,12.0
+1197,illinois,12.0
+1198,illinois,12.0
+1199,illinois,12.0
+1200,illinois,12.0
+1201,illinois,12.0
+1202,illinois,12.0
+1203,illinois,12.0
+1204,illinois,12.0
+1205,illinois,12.0
+1206,illinois,12.0
+1207,illinois,12.0
+1208,illinois,12.0
+1209,illinois,12.0
+1210,illinois,12.0
+1211,illinois,12.0
+1212,illinois,12.0
+1213,illinois,12.0
+1214,illinois,12.0
+1215,illinois,12.0
+1216,illinois,12.0
+1217,illinois,12.0
+1218,illinois,12.0
+1219,illinois,12.0
+1220,illinois,12.0
+1221,illinois,12.0
+1222,illinois,12.0
+1223,illinois,12.0
+1224,illinois,12.0
+1225,illinois,12.0
+1226,illinois,12.0
+1227,illinois,12.0
+1228,illinois,12.0
+1229,illinois,12.0
+1230,illinois,12.0
+1231,illinois,12.0
+1232,illinois,12.0
+1233,illinois,12.0
+1234,illinois,12.0
+1235,illinois,12.0
+1236,illinois,12.0
+1237,illinois,12.0
+1238,illinois,12.0
+1239,illinois,12.0
+1240,illinois,12.0
+1241,illinois,12.0
+1242,illinois,12.0
+1243,illinois,12.0
+1244,illinois,12.0
+1245,illinois,12.0
+1246,illinois,12.0
+1247,illinois,12.0
+1248,illinois,12.0
+1249,illinois,12.0
+1250,illinois,12.0
+1251,illinois,12.0
+1252,illinois,12.0
+1253,illinois,12.0
+1254,illinois,12.0
+1255,illinois,12.0
+1256,illinois,12.0
+1257,illinois,12.0
+1258,illinois,12.0
+1259,illinois,12.0
+1260,illinois,12.0
+1261,illinois,12.0
+1262,illinois,12.0
+1263,illinois,12.0
+1264,illinois,12.0
+1265,illinois,12.0
+1266,illinois,12.0
+1267,illinois,12.0
+1268,illinois,12.0
+1269,illinois,12.0
+1270,illinois,12.0
+1271,illinois,12.0
+1272,illinois,12.0
+1273,illinois,12.0
+1274,illinois,12.0
+1275,illinois,12.0
+1276,illinois,12.0
+1277,illinois,12.0
+1278,illinois,12.0
+1279,illinois,12.0
+1280,illinois,12.0
+1281,illinois,12.0
+1282,illinois,12.0
+1283,illinois,12.0
+1284,illinois,12.0
+1285,illinois,12.0
+1286,illinois,12.0
+1287,illinois,12.0
+1288,illinois,12.0
+1289,illinois,12.0
+1290,illinois,12.0
+1291,illinois,12.0
+1292,illinois,12.0
+1293,illinois,12.0
+1294,illinois,12.0
+1295,illinois,12.0
+1296,illinois,12.0
+1297,illinois,12.0
+1298,illinois,12.0
+1299,illinois,12.0
+1300,illinois,12.0
+1301,illinois,12.0
+1302,illinois,12.0
+1303,illinois,12.0
+1304,illinois,12.0
+1305,illinois,12.0
+1306,illinois,12.0
+1307,illinois,12.0
+1308,illinois,12.0
+1309,illinois,12.0
+1310,illinois,12.0
+1311,illinois,12.0
+1312,illinois,12.0
+1313,illinois,12.0
+1314,illinois,12.0
+1315,illinois,12.0
+1316,illinois,12.0
+1317,illinois,12.0
+1318,illinois,12.0
+1319,illinois,12.0
+1320,illinois,12.0
+1321,illinois,12.0
+1322,illinois,12.0
+1323,illinois,12.0
+1324,illinois,12.0
+1325,illinois,12.0
+1326,illinois,12.0
+1327,illinois,12.0
+1328,illinois,12.0
+1329,illinois,12.0
+1330,illinois,12.0
+1331,illinois,12.0
+1332,illinois,12.0
+1333,illinois,12.0
+1334,illinois,12.0
+1335,illinois,12.0
+1336,illinois,12.0
+1337,illinois,12.0
+1338,illinois,12.0
+1339,illinois,12.0
+1340,illinois,12.0
+1341,illinois,12.0
+1342,illinois,12.0
+1343,illinois,12.0
+1344,illinois,12.0
+1345,illinois,12.0
+1346,illinois,12.0
+1347,illinois,12.0
+1348,illinois,12.0
+1349,illinois,12.0
+1350,illinois,12.0
+1351,illinois,12.0
+1352,illinois,12.0
+1353,illinois,12.0
+1354,illinois,12.0
+1355,illinois,12.0
+1356,illinois,12.0
+1357,illinois,12.0
+1358,illinois,12.0
+1359,illinois,12.0
+1360,illinois,12.0
+1361,illinois,12.0
+1362,illinois,12.0
+1363,illinois,12.0
+1364,illinois,12.0
+1365,illinois,12.0
+1366,illinois,12.0
+1367,illinois,12.0
+1368,illinois,12.0
+1369,illinois,12.0
+1370,illinois,12.0
+1371,indiana,13.0
+1372,indiana,13.0
+1373,indiana,13.0
+1374,indiana,13.0
+1375,indiana,13.0
+1376,indiana,13.0
+1377,indiana,13.0
+1378,indiana,13.0
+1379,indiana,13.0
+1380,indiana,13.0
+1381,indiana,13.0
+1382,indiana,13.0
+1383,indiana,13.0
+1384,indiana,13.0
+1385,indiana,13.0
+1386,indiana,13.0
+1387,indiana,13.0
+1388,indiana,13.0
+1389,indiana,13.0
+1390,indiana,13.0
+1391,indiana,13.0
+1392,indiana,13.0
+1393,indiana,13.0
+1394,indiana,13.0
+1395,indiana,13.0
+1396,indiana,13.0
+1397,indiana,13.0
+1398,indiana,13.0
+1399,indiana,13.0
+1400,indiana,13.0
+1401,indiana,13.0
+1402,indiana,13.0
+1403,indiana,13.0
+1404,indiana,13.0
+1405,indiana,13.0
+1406,indiana,13.0
+1407,indiana,13.0
+1408,indiana,13.0
+1409,indiana,13.0
+1410,indiana,13.0
+1411,indiana,13.0
+1412,indiana,13.0
+1413,indiana,13.0
+1414,indiana,13.0
+1415,indiana,13.0
+1416,indiana,13.0
+1417,indiana,13.0
+1418,indiana,13.0
+1419,indiana,13.0
+1420,indiana,13.0
+1421,indiana,13.0
+1422,indiana,13.0
+1423,indiana,13.0
+1424,indiana,13.0
+1425,indiana,13.0
+1426,indiana,13.0
+1427,indiana,13.0
+1428,indiana,13.0
+1429,indiana,13.0
+1430,indiana,13.0
+1431,indiana,13.0
+1432,indiana,13.0
+1433,kansas,14.0
+1434,kansas,14.0
+1435,kansas,14.0
+1436,kansas,14.0
+1437,kansas,14.0
+1438,kansas,14.0
+1439,kansas,14.0
+1440,kansas,14.0
+1441,kansas,14.0
+1442,kansas,14.0
+1443,kansas,14.0
+1444,kansas,14.0
+1445,kansas,14.0
+1446,kansas,14.0
+1447,kansas,14.0
+1448,kansas,14.0
+1449,kansas,14.0
+1450,kansas,14.0
+1451,kansas,14.0
+1452,kansas,14.0
+1453,kansas,14.0
+1454,kansas,14.0
+1455,kansas,14.0
+1456,kansas,14.0
+1457,kansas,14.0
+1458,kansas,14.0
+1459,kansas,14.0
+1460,kansas,14.0
+1461,kansas,14.0
+1462,kansas,14.0
+1463,kansas,14.0
+1464,kansas,14.0
+1465,kansas,14.0
+1466,kansas,14.0
+1467,kansas,14.0
+1468,kansas,14.0
+1469,kansas,14.0
+1470,kansas,14.0
+1471,kansas,14.0
+1472,kansas,14.0
+1473,kansas,14.0
+1474,kansas,14.0
+1475,kansas,14.0
+1476,kansas,14.0
+1477,kansas,14.0
+1478,kansas,14.0
+1479,kansas,14.0
+1480,kansas,14.0
+1481,kansas,14.0
+1482,kansas,14.0
+1483,kansas,14.0
+1484,kansas,14.0
+1485,kansas,14.0
+1486,kansas,14.0
+1487,kansas,14.0
+1488,kansas,14.0
+1489,kansas,14.0
+1490,kansas,14.0
+1491,kansas,14.0
+1492,kansas,14.0
+1493,kansas,14.0
+1494,kansas,14.0
+1495,kansas,14.0
+1496,kansas,14.0
+1497,kansas,14.0
+1498,kansas,14.0
+1499,kansas,14.0
+1500,kansas,14.0
+1501,kansas,14.0
+1502,kansas,14.0
+1503,kansas,14.0
+1504,kansas,14.0
+1505,kansas,14.0
+1506,kansas,14.0
+1507,kansas,14.0
+1508,kansas,14.0
+1509,kansas,14.0
+1510,kansas,14.0
+1511,kansas,14.0
+1512,kansas,14.0
+1513,kansas,14.0
+1514,kansas,14.0
+1515,kansas,14.0
+1516,kansas,14.0
+1517,kansas,14.0
+1518,kansas,14.0
+1519,kansas,14.0
+1520,kansas,14.0
+1521,kansas,14.0
+1522,kansas,14.0
+1523,kansas,14.0
+1524,kansas,14.0
+1525,kansas,14.0
+1526,kansas,14.0
+1527,kansas,14.0
+1528,kansas,14.0
+1529,kansas,14.0
+1530,kansas,14.0
+1531,kansas,14.0
+1532,kansas,14.0
+1533,kansas,14.0
+1534,kansas,14.0
+1535,kansas,14.0
+1536,kansas,14.0
+1537,kansas,14.0
+1538,kansas,14.0
+1539,kansas,14.0
+1540,kansas,14.0
+1541,kansas,14.0
+1542,kansas,14.0
+1543,kansas,14.0
+1544,kansas,14.0
+1545,kansas,14.0
+1546,kansas,14.0
+1547,kansas,14.0
+1548,kansas,14.0
+1549,kansas,14.0
+1550,kansas,14.0
+1551,kansas,14.0
+1552,kentucky,15.0
+1553,kentucky,15.0
+1554,kentucky,15.0
+1555,kentucky,15.0
+1556,kentucky,15.0
+1557,kentucky,15.0
+1558,kentucky,15.0
+1559,kentucky,15.0
+1560,kentucky,15.0
+1561,kentucky,15.0
+1562,kentucky,15.0
+1563,kentucky,15.0
+1564,kentucky,15.0
+1565,kentucky,15.0
+1566,kentucky,15.0
+1567,kentucky,15.0
+1568,kentucky,15.0
+1569,kentucky,15.0
+1570,kentucky,15.0
+1571,kentucky,15.0
+1572,kentucky,15.0
+1573,kentucky,15.0
+1574,kentucky,15.0
+1575,kentucky,15.0
+1576,kentucky,15.0
+1577,kentucky,15.0
+1578,kentucky,15.0
+1579,kentucky,15.0
+1580,kentucky,15.0
+1581,kentucky,15.0
+1582,kentucky,15.0
+1583,kentucky,15.0
+1584,kentucky,15.0
+1585,kentucky,15.0
+1586,kentucky,15.0
+1587,kentucky,15.0
+1588,kentucky,15.0
+1589,kentucky,15.0
+1590,kentucky,15.0
+1591,kentucky,15.0
+1592,kentucky,15.0
+1593,kentucky,15.0
+1594,kentucky,15.0
+1595,kentucky,15.0
+1596,kentucky,15.0
+1597,kentucky,15.0
+1598,kentucky,15.0
+1599,kentucky,15.0
+1600,kentucky,15.0
+1601,kentucky,15.0
+1602,kentucky,15.0
+1603,kentucky,15.0
+1604,kentucky,15.0
+1605,kentucky,15.0
+1606,kentucky,15.0
+1607,kentucky,15.0
+1608,kentucky,15.0
+1609,kentucky,15.0
+1610,kentucky,15.0
+1611,kentucky,15.0
+1612,kentucky,15.0
+1613,kentucky,15.0
+1614,kentucky,15.0
+1615,kentucky,15.0
+1616,kentucky,15.0
+1617,kentucky,15.0
+1618,kentucky,15.0
+1619,kentucky,15.0
+1620,kentucky,15.0
+1621,kentucky,15.0
+1622,kentucky,15.0
+1623,kentucky,15.0
+1624,kentucky,15.0
+1625,kentucky,15.0
+1626,kentucky,15.0
+1627,kentucky,15.0
+1628,kentucky,15.0
+1629,kentucky,15.0
+1630,kentucky,15.0
+1631,kentucky,15.0
+1632,kentucky,15.0
+1633,kentucky,15.0
+1634,kentucky,15.0
+1635,kentucky,15.0
+1636,kentucky,15.0
+1637,kentucky,15.0
+1638,kentucky,15.0
+1639,kentucky,15.0
+1640,kentucky,15.0
+1641,kentucky,15.0
+1642,kentucky,15.0
+1643,kentucky,15.0
+1644,kentucky,15.0
+1645,kentucky,15.0
+1646,kentucky,15.0
+1647,kentucky,15.0
+1648,kentucky,15.0
+1649,kentucky,15.0
+1650,kentucky,15.0
+1651,kentucky,15.0
+1652,kentucky,15.0
+1653,louisiana,16.0
+1654,louisiana,16.0
+1655,louisiana,16.0
+1656,louisiana,16.0
+1657,louisiana,16.0
+1658,louisiana,16.0
+1659,louisiana,16.0
+1660,louisiana,16.0
+1661,louisiana,16.0
+1662,louisiana,16.0
+1663,louisiana,16.0
+1664,louisiana,16.0
+1665,louisiana,16.0
+1666,louisiana,16.0
+1667,louisiana,16.0
+1668,louisiana,16.0
+1669,louisiana,16.0
+1670,louisiana,16.0
+1671,louisiana,16.0
+1672,louisiana,16.0
+1673,louisiana,16.0
+1674,louisiana,16.0
+1675,louisiana,16.0
+1676,louisiana,16.0
+1677,louisiana,16.0
+1678,louisiana,16.0
+1679,louisiana,16.0
+1680,louisiana,16.0
+1681,louisiana,16.0
+1682,louisiana,16.0
+1683,louisiana,16.0
+1684,louisiana,16.0
+1685,louisiana,16.0
+1686,louisiana,16.0
+1687,louisiana,16.0
+1688,louisiana,16.0
+1689,louisiana,16.0
+1690,louisiana,16.0
+1691,louisiana,16.0
+1692,louisiana,16.0
+1693,louisiana,16.0
+1694,louisiana,16.0
+1695,louisiana,16.0
+1696,louisiana,16.0
+1697,louisiana,16.0
+1698,louisiana,16.0
+1699,louisiana,16.0
+1700,louisiana,16.0
+1701,louisiana,16.0
+1702,louisiana,16.0
+1703,louisiana,16.0
+1704,louisiana,16.0
+1705,louisiana,16.0
+1706,louisiana,16.0
+1707,louisiana,16.0
+1708,louisiana,16.0
+1709,louisiana,16.0
+1710,louisiana,16.0
+1711,louisiana,16.0
+1712,louisiana,16.0
+1713,louisiana,16.0
+1714,louisiana,16.0
+1715,louisiana,16.0
+1716,louisiana,16.0
+1717,louisiana,16.0
+1718,louisiana,16.0
+1719,louisiana,16.0
+1720,louisiana,16.0
+1721,louisiana,16.0
+1722,louisiana,16.0
+1723,louisiana,16.0
+1724,louisiana,16.0
+1725,louisiana,16.0
+1726,louisiana,16.0
+1727,louisiana,16.0
+1728,louisiana,16.0
+1729,louisiana,16.0
+1730,louisiana,16.0
+1731,louisiana,16.0
+1732,louisiana,16.0
+1733,louisiana,16.0
+1734,louisiana,16.0
+1735,louisiana,16.0
+1736,louisiana,16.0
+1737,louisiana,16.0
+1738,louisiana,16.0
+1739,louisiana,16.0
+1740,louisiana,16.0
+1741,louisiana,16.0
+1742,louisiana,16.0
+1743,louisiana,16.0
+1744,louisiana,16.0
+1745,massachusetts,17.0
+1746,massachusetts,17.0
+1747,massachusetts,17.0
+1748,massachusetts,17.0
+1749,massachusetts,17.0
+1750,massachusetts,17.0
+1751,massachusetts,17.0
+1752,massachusetts,17.0
+1753,massachusetts,17.0
+1754,massachusetts,17.0
+1755,massachusetts,17.0
+1756,massachusetts,17.0
+1757,massachusetts,17.0
+1758,massachusetts,17.0
+1759,massachusetts,17.0
+1760,massachusetts,17.0
+1761,massachusetts,17.0
+1762,massachusetts,17.0
+1763,massachusetts,17.0
+1764,massachusetts,17.0
+1765,massachusetts,17.0
+1766,massachusetts,17.0
+1767,massachusetts,17.0
+1768,massachusetts,17.0
+1769,massachusetts,17.0
+1770,massachusetts,17.0
+1771,massachusetts,17.0
+1772,massachusetts,17.0
+1773,massachusetts,17.0
+1774,massachusetts,17.0
+1775,massachusetts,17.0
+1776,massachusetts,17.0
+1777,massachusetts,17.0
+1778,massachusetts,17.0
+1779,massachusetts,17.0
+1780,massachusetts,17.0
+1781,massachusetts,17.0
+1782,massachusetts,17.0
+1783,massachusetts,17.0
+1784,massachusetts,17.0
+1785,massachusetts,17.0
+1786,massachusetts,17.0
+1787,massachusetts,17.0
+1788,massachusetts,17.0
+1789,massachusetts,17.0
+1790,massachusetts,17.0
+1791,massachusetts,17.0
+1792,massachusetts,17.0
+1793,massachusetts,17.0
+1794,massachusetts,17.0
+1795,massachusetts,17.0
+1796,massachusetts,17.0
+1797,massachusetts,17.0
+1798,massachusetts,17.0
+1799,massachusetts,17.0
+1800,massachusetts,17.0
+1801,massachusetts,17.0
+1802,massachusetts,17.0
+1803,massachusetts,17.0
+1804,massachusetts,17.0
+1805,massachusetts,17.0
+1806,massachusetts,17.0
+1807,massachusetts,17.0
+1808,massachusetts,17.0
+1809,massachusetts,17.0
+1810,massachusetts,17.0
+1811,massachusetts,17.0
+1812,massachusetts,17.0
+1813,massachusetts,17.0
+1814,massachusetts,17.0
+1815,massachusetts,17.0
+1816,massachusetts,17.0
+1817,massachusetts,17.0
+1818,massachusetts,17.0
+1819,massachusetts,17.0
+1820,massachusetts,17.0
+1821,massachusetts,17.0
+1822,massachusetts,17.0
+1823,massachusetts,17.0
+1824,massachusetts,17.0
+1825,massachusetts,17.0
+1826,massachusetts,17.0
+1827,massachusetts,17.0
+1828,massachusetts,17.0
+1829,massachusetts,17.0
+1830,massachusetts,17.0
+1831,massachusetts,17.0
+1832,massachusetts,17.0
+1833,massachusetts,17.0
+1834,massachusetts,17.0
+1835,massachusetts,17.0
+1836,massachusetts,17.0
+1837,massachusetts,17.0
+1838,massachusetts,17.0
+1839,massachusetts,17.0
+1840,massachusetts,17.0
+1841,massachusetts,17.0
+1842,massachusetts,17.0
+1843,massachusetts,17.0
+1844,massachusetts,17.0
+1845,massachusetts,17.0
+1846,massachusetts,17.0
+1847,massachusetts,17.0
+1848,massachusetts,17.0
+1849,massachusetts,17.0
+1850,massachusetts,17.0
+1851,massachusetts,17.0
+1852,massachusetts,17.0
+1853,massachusetts,17.0
+1854,massachusetts,17.0
+1855,massachusetts,17.0
+1856,massachusetts,17.0
+1857,massachusetts,17.0
+1858,massachusetts,17.0
+1859,massachusetts,17.0
+1860,massachusetts,17.0
+1861,massachusetts,17.0
+1862,massachusetts,17.0
+1863,massachusetts,17.0
+1864,massachusetts,17.0
+1865,massachusetts,17.0
+1866,massachusetts,17.0
+1867,massachusetts,17.0
+1868,massachusetts,17.0
+1869,massachusetts,17.0
+1870,massachusetts,17.0
+1871,massachusetts,17.0
+1872,massachusetts,17.0
+1873,massachusetts,17.0
+1874,massachusetts,17.0
+1875,massachusetts,17.0
+1876,massachusetts,17.0
+1877,massachusetts,17.0
+1878,massachusetts,17.0
+1879,massachusetts,17.0
+1880,massachusetts,17.0
+1881,massachusetts,17.0
+1882,massachusetts,17.0
+1883,massachusetts,17.0
+1884,massachusetts,17.0
+1885,massachusetts,17.0
+1886,massachusetts,17.0
+1887,massachusetts,17.0
+1888,massachusetts,17.0
+1889,massachusetts,17.0
+1890,massachusetts,17.0
+1891,massachusetts,17.0
+1892,massachusetts,17.0
+1893,massachusetts,17.0
+1894,massachusetts,17.0
+1895,massachusetts,17.0
+1896,massachusetts,17.0
+1897,massachusetts,17.0
+1898,massachusetts,17.0
+1899,massachusetts,17.0
+1900,massachusetts,17.0
+1901,massachusetts,17.0
+1902,massachusetts,17.0
+1903,maryland,18.0
+1904,maryland,18.0
+1905,maryland,18.0
+1906,maryland,18.0
+1907,maryland,18.0
+1908,maryland,18.0
+1909,maryland,18.0
+1910,maryland,18.0
+1911,maryland,18.0
+1912,maryland,18.0
+1913,maryland,18.0
+1914,maryland,18.0
+1915,maryland,18.0
+1916,maryland,18.0
+1917,maryland,18.0
+1918,maryland,18.0
+1919,maryland,18.0
+1920,maryland,18.0
+1921,maryland,18.0
+1922,maryland,18.0
+1923,maryland,18.0
+1924,maryland,18.0
+1925,maryland,18.0
+1926,maryland,18.0
+1927,maryland,18.0
+1928,maryland,18.0
+1929,maryland,18.0
+1930,maryland,18.0
+1931,maryland,18.0
+1932,maryland,18.0
+1933,maryland,18.0
+1934,maryland,18.0
+1935,maryland,18.0
+1936,maryland,18.0
+1937,maryland,18.0
+1938,maryland,18.0
+1939,maryland,18.0
+1940,maryland,18.0
+1941,maryland,18.0
+1942,maryland,18.0
+1943,maryland,18.0
+1944,maryland,18.0
+1945,maryland,18.0
+1946,maryland,18.0
+1947,maryland,18.0
+1948,maryland,18.0
+1949,maryland,18.0
+1950,maryland,18.0
+1951,maryland,18.0
+1952,maryland,18.0
+1953,maryland,18.0
+1954,maryland,18.0
+1955,maryland,18.0
+1956,maryland,18.0
+1957,maryland,18.0
+1958,maryland,18.0
+1959,maryland,18.0
+1960,maryland,18.0
+1961,maryland,18.0
+1962,maryland,18.0
+1963,maryland,18.0
+1964,maryland,18.0
+1965,maryland,18.0
+1966,maryland,18.0
+1967,maryland,18.0
+1968,maryland,18.0
+1969,maryland,18.0
+1970,maryland,18.0
+1971,maryland,18.0
+1972,maryland,18.0
+1973,maryland,18.0
+1974,maryland,18.0
+1975,maryland,18.0
+1976,maryland,18.0
+1977,maryland,18.0
+1978,maryland,18.0
+1979,maryland,18.0
+1980,maryland,18.0
+1981,maryland,18.0
+1982,maryland,18.0
+1983,maryland,18.0
+1984,maryland,18.0
+1985,maryland,18.0
+1986,maryland,18.0
+1987,maryland,18.0
+1988,maryland,18.0
+1989,maryland,18.0
+1990,maryland,18.0
+1991,maryland,18.0
+1992,maryland,18.0
+1993,maryland,18.0
+1994,maryland,18.0
+1995,maryland,18.0
+1996,maryland,18.0
+1997,maryland,18.0
+1998,maryland,18.0
+1999,maryland,18.0
+2000,maryland,18.0
+2001,maryland,18.0
+2002,maryland,18.0
+2003,maryland,18.0
+2004,maine,19.0
+2005,maine,19.0
+2006,maine,19.0
+2007,maine,19.0
+2008,maine,19.0
+2009,maine,19.0
+2010,maine,19.0
+2011,maine,19.0
+2012,maine,19.0
+2013,maine,19.0
+2014,maine,19.0
+2015,maine,19.0
+2016,maine,19.0
+2017,maine,19.0
+2018,maine,19.0
+2019,maine,19.0
+2020,maine,19.0
+2021,maine,19.0
+2022,maine,19.0
+2023,maine,19.0
+2024,maine,19.0
+2025,maine,19.0
+2026,maine,19.0
+2027,maine,19.0
+2028,maine,19.0
+2029,maine,19.0
+2030,maine,19.0
+2031,maine,19.0
+2032,maine,19.0
+2033,maine,19.0
+2034,maine,19.0
+2035,maine,19.0
+2036,maine,19.0
+2037,maine,19.0
+2038,maine,19.0
+2039,maine,19.0
+2040,maine,19.0
+2041,maine,19.0
+2042,maine,19.0
+2043,maine,19.0
+2044,maine,19.0
+2045,maine,19.0
+2046,maine,19.0
+2047,maine,19.0
+2048,maine,19.0
+2049,maine,19.0
+2050,maine,19.0
+2051,maine,19.0
+2052,maine,19.0
+2053,maine,19.0
+2054,maine,19.0
+2055,maine,19.0
+2056,maine,19.0
+2057,maine,19.0
+2058,maine,19.0
+2059,maine,19.0
+2060,maine,19.0
+2061,maine,19.0
+2062,michigan,20.0
+2063,michigan,20.0
+2064,michigan,20.0
+2065,michigan,20.0
+2066,michigan,20.0
+2067,michigan,20.0
+2068,michigan,20.0
+2069,michigan,20.0
+2070,michigan,20.0
+2071,michigan,20.0
+2072,michigan,20.0
+2073,michigan,20.0
+2074,michigan,20.0
+2075,michigan,20.0
+2076,michigan,20.0
+2077,michigan,20.0
+2078,michigan,20.0
+2079,michigan,20.0
+2080,michigan,20.0
+2081,michigan,20.0
+2082,michigan,20.0
+2083,michigan,20.0
+2084,michigan,20.0
+2085,michigan,20.0
+2086,michigan,20.0
+2087,michigan,20.0
+2088,michigan,20.0
+2089,michigan,20.0
+2090,michigan,20.0
+2091,michigan,20.0
+2092,michigan,20.0
+2093,michigan,20.0
+2094,michigan,20.0
+2095,michigan,20.0
+2096,michigan,20.0
+2097,michigan,20.0
+2098,michigan,20.0
+2099,michigan,20.0
+2100,michigan,20.0
+2101,michigan,20.0
+2102,michigan,20.0
+2103,michigan,20.0
+2104,michigan,20.0
+2105,michigan,20.0
+2106,michigan,20.0
+2107,michigan,20.0
+2108,michigan,20.0
+2109,michigan,20.0
+2110,michigan,20.0
+2111,michigan,20.0
+2112,michigan,20.0
+2113,michigan,20.0
+2114,michigan,20.0
+2115,michigan,20.0
+2116,michigan,20.0
+2117,michigan,20.0
+2118,michigan,20.0
+2119,michigan,20.0
+2120,michigan,20.0
+2121,michigan,20.0
+2122,michigan,20.0
+2123,michigan,20.0
+2124,michigan,20.0
+2125,michigan,20.0
+2126,michigan,20.0
+2127,michigan,20.0
+2128,michigan,20.0
+2129,michigan,20.0
+2130,michigan,20.0
+2131,michigan,20.0
+2132,michigan,20.0
+2133,michigan,20.0
+2134,michigan,20.0
+2135,michigan,20.0
+2136,michigan,20.0
+2137,michigan,20.0
+2138,michigan,20.0
+2139,michigan,20.0
+2140,michigan,20.0
+2141,michigan,20.0
+2142,michigan,20.0
+2143,michigan,20.0
+2144,michigan,20.0
+2145,michigan,20.0
+2146,michigan,20.0
+2147,michigan,20.0
+2148,michigan,20.0
+2149,michigan,20.0
+2150,michigan,20.0
+2151,michigan,20.0
+2152,michigan,20.0
+2153,michigan,20.0
+2154,michigan,20.0
+2155,michigan,20.0
+2156,michigan,20.0
+2157,michigan,20.0
+2158,michigan,20.0
+2159,michigan,20.0
+2160,michigan,20.0
+2161,michigan,20.0
+2162,michigan,20.0
+2163,michigan,20.0
+2164,michigan,20.0
+2165,michigan,20.0
+2166,michigan,20.0
+2167,michigan,20.0
+2168,michigan,20.0
+2169,michigan,20.0
+2170,michigan,20.0
+2171,minnesota,21.0
+2172,minnesota,21.0
+2173,minnesota,21.0
+2174,minnesota,21.0
+2175,minnesota,21.0
+2176,minnesota,21.0
+2177,minnesota,21.0
+2178,minnesota,21.0
+2179,minnesota,21.0
+2180,minnesota,21.0
+2181,minnesota,21.0
+2182,minnesota,21.0
+2183,minnesota,21.0
+2184,minnesota,21.0
+2185,minnesota,21.0
+2186,minnesota,21.0
+2187,minnesota,21.0
+2188,minnesota,21.0
+2189,minnesota,21.0
+2190,minnesota,21.0
+2191,minnesota,21.0
+2192,minnesota,21.0
+2193,minnesota,21.0
+2194,minnesota,21.0
+2195,minnesota,21.0
+2196,minnesota,21.0
+2197,minnesota,21.0
+2198,minnesota,21.0
+2199,minnesota,21.0
+2200,minnesota,21.0
+2201,minnesota,21.0
+2202,minnesota,21.0
+2203,minnesota,21.0
+2204,minnesota,21.0
+2205,minnesota,21.0
+2206,minnesota,21.0
+2207,minnesota,21.0
+2208,minnesota,21.0
+2209,minnesota,21.0
+2210,minnesota,21.0
+2211,minnesota,21.0
+2212,minnesota,21.0
+2213,minnesota,21.0
+2214,minnesota,21.0
+2215,minnesota,21.0
+2216,minnesota,21.0
+2217,minnesota,21.0
+2218,minnesota,21.0
+2219,minnesota,21.0
+2220,minnesota,21.0
+2221,minnesota,21.0
+2222,minnesota,21.0
+2223,minnesota,21.0
+2224,minnesota,21.0
+2225,minnesota,21.0
+2226,minnesota,21.0
+2227,minnesota,21.0
+2228,minnesota,21.0
+2229,minnesota,21.0
+2230,minnesota,21.0
+2231,minnesota,21.0
+2232,minnesota,21.0
+2233,minnesota,21.0
+2234,minnesota,21.0
+2235,minnesota,21.0
+2236,minnesota,21.0
+2237,minnesota,21.0
+2238,minnesota,21.0
+2239,minnesota,21.0
+2240,minnesota,21.0
+2241,minnesota,21.0
+2242,minnesota,21.0
+2243,minnesota,21.0
+2244,minnesota,21.0
+2245,minnesota,21.0
+2246,minnesota,21.0
+2247,minnesota,21.0
+2248,minnesota,21.0
+2249,minnesota,21.0
+2250,minnesota,21.0
+2251,minnesota,21.0
+2252,minnesota,21.0
+2253,minnesota,21.0
+2254,minnesota,21.0
+2255,minnesota,21.0
+2256,minnesota,21.0
+2257,minnesota,21.0
+2258,minnesota,21.0
+2259,minnesota,21.0
+2260,minnesota,21.0
+2261,minnesota,21.0
+2262,minnesota,21.0
+2263,minnesota,21.0
+2264,minnesota,21.0
+2265,minnesota,21.0
+2266,minnesota,21.0
+2267,minnesota,21.0
+2268,minnesota,21.0
+2269,minnesota,21.0
+2270,minnesota,21.0
+2271,minnesota,21.0
+2272,minnesota,21.0
+2273,minnesota,21.0
+2274,minnesota,21.0
+2275,minnesota,21.0
+2276,minnesota,21.0
+2277,minnesota,21.0
+2278,minnesota,21.0
+2279,minnesota,21.0
+2280,minnesota,21.0
+2281,minnesota,21.0
+2282,minnesota,21.0
+2283,minnesota,21.0
+2284,minnesota,21.0
+2285,minnesota,21.0
+2286,minnesota,21.0
+2287,minnesota,21.0
+2288,minnesota,21.0
+2289,minnesota,21.0
+2290,minnesota,21.0
+2291,minnesota,21.0
+2292,minnesota,21.0
+2293,minnesota,21.0
+2294,minnesota,21.0
+2295,minnesota,21.0
+2296,minnesota,21.0
+2297,minnesota,21.0
+2298,minnesota,21.0
+2299,minnesota,21.0
+2300,minnesota,21.0
+2301,minnesota,21.0
+2302,minnesota,21.0
+2303,minnesota,21.0
+2304,minnesota,21.0
+2305,minnesota,21.0
+2306,minnesota,21.0
+2307,minnesota,21.0
+2308,minnesota,21.0
+2309,minnesota,21.0
+2310,minnesota,21.0
+2311,minnesota,21.0
+2312,minnesota,21.0
+2313,minnesota,21.0
+2314,minnesota,21.0
+2315,minnesota,21.0
+2316,minnesota,21.0
+2317,minnesota,21.0
+2318,minnesota,21.0
+2319,minnesota,21.0
+2320,minnesota,21.0
+2321,minnesota,21.0
+2322,minnesota,21.0
+2323,minnesota,21.0
+2324,minnesota,21.0
+2325,minnesota,21.0
+2326,minnesota,21.0
+2327,minnesota,21.0
+2328,minnesota,21.0
+2329,minnesota,21.0
+2330,minnesota,21.0
+2331,minnesota,21.0
+2332,minnesota,21.0
+2333,minnesota,21.0
+2334,minnesota,21.0
+2335,missouri,22.0
+2336,missouri,22.0
+2337,missouri,22.0
+2338,missouri,22.0
+2339,missouri,22.0
+2340,missouri,22.0
+2341,missouri,22.0
+2342,missouri,22.0
+2343,missouri,22.0
+2344,missouri,22.0
+2345,missouri,22.0
+2346,missouri,22.0
+2347,missouri,22.0
+2348,missouri,22.0
+2349,missouri,22.0
+2350,missouri,22.0
+2351,missouri,22.0
+2352,missouri,22.0
+2353,missouri,22.0
+2354,missouri,22.0
+2355,missouri,22.0
+2356,missouri,22.0
+2357,missouri,22.0
+2358,missouri,22.0
+2359,missouri,22.0
+2360,missouri,22.0
+2361,missouri,22.0
+2362,missouri,22.0
+2363,missouri,22.0
+2364,missouri,22.0
+2365,missouri,22.0
+2366,missouri,22.0
+2367,missouri,22.0
+2368,missouri,22.0
+2369,missouri,22.0
+2370,missouri,22.0
+2371,missouri,22.0
+2372,missouri,22.0
+2373,missouri,22.0
+2374,missouri,22.0
+2375,missouri,22.0
+2376,missouri,22.0
+2377,missouri,22.0
+2378,missouri,22.0
+2379,missouri,22.0
+2380,missouri,22.0
+2381,missouri,22.0
+2382,missouri,22.0
+2383,missouri,22.0
+2384,missouri,22.0
+2385,missouri,22.0
+2386,missouri,22.0
+2387,missouri,22.0
+2388,missouri,22.0
+2389,missouri,22.0
+2390,missouri,22.0
+2391,missouri,22.0
+2392,missouri,22.0
+2393,missouri,22.0
+2394,missouri,22.0
+2395,missouri,22.0
+2396,missouri,22.0
+2397,missouri,22.0
+2398,missouri,22.0
+2399,missouri,22.0
+2400,missouri,22.0
+2401,missouri,22.0
+2402,missouri,22.0
+2403,missouri,22.0
+2404,missouri,22.0
+2405,missouri,22.0
+2406,missouri,22.0
+2407,missouri,22.0
+2408,missouri,22.0
+2409,missouri,22.0
+2410,missouri,22.0
+2411,missouri,22.0
+2412,missouri,22.0
+2413,missouri,22.0
+2414,missouri,22.0
+2415,missouri,22.0
+2416,missouri,22.0
+2417,missouri,22.0
+2418,missouri,22.0
+2419,missouri,22.0
+2420,missouri,22.0
+2421,missouri,22.0
+2422,missouri,22.0
+2423,missouri,22.0
+2424,missouri,22.0
+2425,missouri,22.0
+2426,missouri,22.0
+2427,missouri,22.0
+2428,missouri,22.0
+2429,missouri,22.0
+2430,missouri,22.0
+2431,missouri,22.0
+2432,missouri,22.0
+2433,missouri,22.0
+2434,missouri,22.0
+2435,missouri,22.0
+2436,missouri,22.0
+2437,missouri,22.0
+2438,missouri,22.0
+2439,missouri,22.0
+2440,missouri,22.0
+2441,missouri,22.0
+2442,missouri,22.0
+2443,missouri,22.0
+2444,missouri,22.0
+2445,missouri,22.0
+2446,missouri,22.0
+2447,missouri,22.0
+2448,missouri,22.0
+2449,missouri,22.0
+2450,missouri,22.0
+2451,missouri,22.0
+2452,missouri,22.0
+2453,missouri,22.0
+2454,missouri,22.0
+2455,missouri,22.0
+2456,missouri,22.0
+2457,missouri,22.0
+2458,missouri,22.0
+2459,missouri,22.0
+2460,missouri,22.0
+2461,missouri,22.0
+2462,missouri,22.0
+2463,missouri,22.0
+2464,missouri,22.0
+2465,missouri,22.0
+2466,missouri,22.0
+2467,missouri,22.0
+2468,missouri,22.0
+2469,missouri,22.0
+2470,missouri,22.0
+2471,missouri,22.0
+2472,missouri,22.0
+2473,missouri,22.0
+2474,missouri,22.0
+2475,missouri,22.0
+2476,missouri,22.0
+2477,missouri,22.0
+2478,missouri,22.0
+2479,missouri,22.0
+2480,missouri,22.0
+2481,missouri,22.0
+2482,missouri,22.0
+2483,missouri,22.0
+2484,missouri,22.0
+2485,missouri,22.0
+2486,missouri,22.0
+2487,missouri,22.0
+2488,missouri,22.0
+2489,missouri,22.0
+2490,missouri,22.0
+2491,missouri,22.0
+2492,mississippi,23.0
+2493,mississippi,23.0
+2494,mississippi,23.0
+2495,mississippi,23.0
+2496,mississippi,23.0
+2497,mississippi,23.0
+2498,mississippi,23.0
+2499,mississippi,23.0
+2500,mississippi,23.0
+2501,mississippi,23.0
+2502,mississippi,23.0
+2503,mississippi,23.0
+2504,mississippi,23.0
+2505,mississippi,23.0
+2506,mississippi,23.0
+2507,mississippi,23.0
+2508,mississippi,23.0
+2509,mississippi,23.0
+2510,mississippi,23.0
+2511,mississippi,23.0
+2512,mississippi,23.0
+2513,mississippi,23.0
+2514,mississippi,23.0
+2515,mississippi,23.0
+2516,mississippi,23.0
+2517,mississippi,23.0
+2518,mississippi,23.0
+2519,mississippi,23.0
+2520,mississippi,23.0
+2521,mississippi,23.0
+2522,mississippi,23.0
+2523,mississippi,23.0
+2524,mississippi,23.0
+2525,mississippi,23.0
+2526,mississippi,23.0
+2527,mississippi,23.0
+2528,mississippi,23.0
+2529,mississippi,23.0
+2530,mississippi,23.0
+2531,mississippi,23.0
+2532,mississippi,23.0
+2533,mississippi,23.0
+2534,mississippi,23.0
+2535,mississippi,23.0
+2536,mississippi,23.0
+2537,mississippi,23.0
+2538,mississippi,23.0
+2539,mississippi,23.0
+2540,mississippi,23.0
+2541,mississippi,23.0
+2542,mississippi,23.0
+2543,mississippi,23.0
+2544,mississippi,23.0
+2545,mississippi,23.0
+2546,mississippi,23.0
+2547,mississippi,23.0
+2548,mississippi,23.0
+2549,mississippi,23.0
+2550,mississippi,23.0
+2551,mississippi,23.0
+2552,mississippi,23.0
+2553,mississippi,23.0
+2554,mississippi,23.0
+2555,mississippi,23.0
+2556,mississippi,23.0
+2557,mississippi,23.0
+2558,mississippi,23.0
+2559,mississippi,23.0
+2560,mississippi,23.0
+2561,mississippi,23.0
+2562,mississippi,23.0
+2563,mississippi,23.0
+2564,mississippi,23.0
+2565,mississippi,23.0
+2566,mississippi,23.0
+2567,mississippi,23.0
+2568,mississippi,23.0
+2569,mississippi,23.0
+2570,mississippi,23.0
+2571,mississippi,23.0
+2572,mississippi,23.0
+2573,mississippi,23.0
+2574,mississippi,23.0
+2575,mississippi,23.0
+2576,mississippi,23.0
+2577,mississippi,23.0
+2578,mississippi,23.0
+2579,mississippi,23.0
+2580,mississippi,23.0
+2581,mississippi,23.0
+2582,mississippi,23.0
+2583,mississippi,23.0
+2584,mississippi,23.0
+2585,mississippi,23.0
+2586,mississippi,23.0
+2587,mississippi,23.0
+2588,mississippi,23.0
+2589,mississippi,23.0
+2590,mississippi,23.0
+2591,mississippi,23.0
+2592,mississippi,23.0
+2593,mississippi,23.0
+2594,mississippi,23.0
+2595,mississippi,23.0
+2596,mississippi,23.0
+2597,montana,24.0
+2598,montana,24.0
+2599,montana,24.0
+2600,montana,24.0
+2601,montana,24.0
+2602,montana,24.0
+2603,montana,24.0
+2604,montana,24.0
+2605,montana,24.0
+2606,montana,24.0
+2607,montana,24.0
+2608,montana,24.0
+2609,montana,24.0
+2610,montana,24.0
+2611,montana,24.0
+2612,montana,24.0
+2613,montana,24.0
+2614,montana,24.0
+2615,montana,24.0
+2616,montana,24.0
+2617,montana,24.0
+2618,montana,24.0
+2619,montana,24.0
+2620,montana,24.0
+2621,montana,24.0
+2622,montana,24.0
+2623,montana,24.0
+2624,montana,24.0
+2625,montana,24.0
+2626,montana,24.0
+2627,montana,24.0
+2628,montana,24.0
+2629,montana,24.0
+2630,montana,24.0
+2631,montana,24.0
+2632,montana,24.0
+2633,montana,24.0
+2634,montana,24.0
+2635,montana,24.0
+2636,montana,24.0
+2637,montana,24.0
+2638,montana,24.0
+2639,montana,24.0
+2640,montana,24.0
+2641,montana,24.0
+2642,montana,24.0
+2643,montana,24.0
+2644,montana,24.0
+2645,montana,24.0
+2646,montana,24.0
+2647,montana,24.0
+2648,montana,24.0
+2649,montana,24.0
+2650,montana,24.0
+2651,montana,24.0
+2652,montana,24.0
+2653,montana,24.0
+2654,montana,24.0
+2655,montana,24.0
+2656,montana,24.0
+2657,montana,24.0
+2658,montana,24.0
+2659,montana,24.0
+2660,montana,24.0
+2661,montana,24.0
+2662,montana,24.0
+2663,montana,24.0
+2664,montana,24.0
+2665,montana,24.0
+2666,montana,24.0
+2667,montana,24.0
+2668,montana,24.0
+2669,montana,24.0
+2670,montana,24.0
+2671,montana,24.0
+2672,montana,24.0
+2673,montana,24.0
+2674,montana,24.0
+2675,montana,24.0
+2676,montana,24.0
+2677,montana,24.0
+2678,montana,24.0
+2679,montana,24.0
+2680,montana,24.0
+2681,montana,24.0
+2682,montana,24.0
+2683,montana,24.0
+2684,montana,24.0
+2685,montana,24.0
+2686,montana,24.0
+2687,montana,24.0
+2688,montana,24.0
+2689,montana,24.0
+2690,montana,24.0
+2691,north_carolina,25.0
+2692,north_dakota,26.0
+2693,nebraska,27.0
+2694,nebraska,27.0
+2695,nebraska,27.0
+2696,nebraska,27.0
+2697,nebraska,27.0
+2698,nebraska,27.0
+2699,nebraska,27.0
+2700,nebraska,27.0
+2701,nebraska,27.0
+2702,nebraska,27.0
+2703,nebraska,27.0
+2704,nebraska,27.0
+2705,nebraska,27.0
+2706,nebraska,27.0
+2707,nebraska,27.0
+2708,nebraska,27.0
+2709,nebraska,27.0
+2710,nebraska,27.0
+2711,nebraska,27.0
+2712,nebraska,27.0
+2713,nebraska,27.0
+2714,nebraska,27.0
+2715,nebraska,27.0
+2716,nebraska,27.0
+2717,nebraska,27.0
+2718,nebraska,27.0
+2719,nebraska,27.0
+2720,nebraska,27.0
+2721,nebraska,27.0
+2722,nebraska,27.0
+2723,nebraska,27.0
+2724,nebraska,27.0
+2725,nebraska,27.0
+2726,nebraska,27.0
+2727,nebraska,27.0
+2728,nebraska,27.0
+2729,nebraska,27.0
+2730,nebraska,27.0
+2731,nebraska,27.0
+2732,nebraska,27.0
+2733,nebraska,27.0
+2734,nebraska,27.0
+2735,nebraska,27.0
+2736,nebraska,27.0
+2737,nebraska,27.0
+2738,nebraska,27.0
+2739,nebraska,27.0
+2740,nebraska,27.0
+2741,nebraska,27.0
+2742,nebraska,27.0
+2743,nebraska,27.0
+2744,nebraska,27.0
+2745,nebraska,27.0
+2746,nebraska,27.0
+2747,nebraska,27.0
+2748,nebraska,27.0
+2749,nebraska,27.0
+2750,nebraska,27.0
+2751,nebraska,27.0
+2752,nebraska,27.0
+2753,nebraska,27.0
+2754,nebraska,27.0
+2755,nebraska,27.0
+2756,nebraska,27.0
+2757,nebraska,27.0
+2758,nebraska,27.0
+2759,nebraska,27.0
+2760,nebraska,27.0
+2761,nebraska,27.0
+2762,nebraska,27.0
+2763,nebraska,27.0
+2764,nebraska,27.0
+2765,nebraska,27.0
+2766,nebraska,27.0
+2767,nebraska,27.0
+2768,nebraska,27.0
+2769,nebraska,27.0
+2770,nebraska,27.0
+2771,nebraska,27.0
+2772,nebraska,27.0
+2773,nebraska,27.0
+2774,nebraska,27.0
+2775,nebraska,27.0
+2776,nebraska,27.0
+2777,nebraska,27.0
+2778,nebraska,27.0
+2779,nebraska,27.0
+2780,nebraska,27.0
+2781,nebraska,27.0
+2782,nebraska,27.0
+2783,nebraska,27.0
+2784,nebraska,27.0
+2785,nebraska,27.0
+2786,nebraska,27.0
+2787,nebraska,27.0
+2788,nebraska,27.0
+2789,nebraska,27.0
+2790,nebraska,27.0
+2791,nebraska,27.0
+2792,nebraska,27.0
+2793,nebraska,27.0
+2794,nebraska,27.0
+2795,nebraska,27.0
+2796,nebraska,27.0
+2797,nebraska,27.0
+2798,nebraska,27.0
+2799,nebraska,27.0
+2800,nebraska,27.0
+2801,nebraska,27.0
+2802,nebraska,27.0
+2803,nebraska,27.0
+2804,nebraska,27.0
+2805,nebraska,27.0
+2806,nebraska,27.0
+2807,nebraska,27.0
+2808,nebraska,27.0
+2809,nebraska,27.0
+2810,nebraska,27.0
+2811,nebraska,27.0
+2812,nebraska,27.0
+2813,nebraska,27.0
+2814,nebraska,27.0
+2815,nebraska,27.0
+2816,nebraska,27.0
+2817,nebraska,27.0
+2818,nebraska,27.0
+2819,nebraska,27.0
+2820,nebraska,27.0
+2821,nebraska,27.0
+2822,nebraska,27.0
+2823,nebraska,27.0
+2824,nebraska,27.0
+2825,nebraska,27.0
+2826,nebraska,27.0
+2827,nebraska,27.0
+2828,new_hampshire,28.0
+2829,new_jersey,29.0
+2830,new_mexico,30.0
+2831,nevada,31.0
+2832,nevada,31.0
+2833,nevada,31.0
+2834,nevada,31.0
+2835,nevada,31.0
+2836,nevada,31.0
+2837,nevada,31.0
+2838,nevada,31.0
+2839,nevada,31.0
+2840,nevada,31.0
+2841,nevada,31.0
+2842,nevada,31.0
+2843,nevada,31.0
+2844,nevada,31.0
+2845,nevada,31.0
+2846,nevada,31.0
+2847,nevada,31.0
+2848,nevada,31.0
+2849,nevada,31.0
+2850,nevada,31.0
+2851,nevada,31.0
+2852,nevada,31.0
+2853,nevada,31.0
+2854,nevada,31.0
+2855,nevada,31.0
+2856,nevada,31.0
+2857,nevada,31.0
+2858,nevada,31.0
+2859,nevada,31.0
+2860,nevada,31.0
+2861,nevada,31.0
+2862,nevada,31.0
+2863,nevada,31.0
+2864,nevada,31.0
+2865,nevada,31.0
+2866,nevada,31.0
+2867,nevada,31.0
+2868,nevada,31.0
+2869,nevada,31.0
+2870,nevada,31.0
+2871,nevada,31.0
+2872,nevada,31.0
+2873,nevada,31.0
+2874,nevada,31.0
+2875,nevada,31.0
+2876,nevada,31.0
+2877,nevada,31.0
+2878,nevada,31.0
+2879,nevada,31.0
+2880,nevada,31.0
+2881,nevada,31.0
+2882,nevada,31.0
+2883,nevada,31.0
+2884,nevada,31.0
+2885,nevada,31.0
+2886,nevada,31.0
+2887,nevada,31.0
+2888,nevada,31.0
+2889,nevada,31.0
+2890,nevada,31.0
+2891,nevada,31.0
+2892,nevada,31.0
+2893,nevada,31.0
+2894,nevada,31.0
+2895,nevada,31.0
+2896,nevada,31.0
+2897,nevada,31.0
+2898,nevada,31.0
+2899,nevada,31.0
+2900,nevada,31.0
+2901,nevada,31.0
+2902,nevada,31.0
+2903,nevada,31.0
+2904,nevada,31.0
+2905,nevada,31.0
+2906,nevada,31.0
+2907,nevada,31.0
+2908,nevada,31.0
+2909,nevada,31.0
+2910,nevada,31.0
+2911,nevada,31.0
+2912,nevada,31.0
+2913,nevada,31.0
+2914,nevada,31.0
+2915,nevada,31.0
+2916,nevada,31.0
+2917,nevada,31.0
+2918,nevada,31.0
+2919,nevada,31.0
+2920,nevada,31.0
+2921,nevada,31.0
+2922,nevada,31.0
+2923,nevada,31.0
+2924,nevada,31.0
+2925,nevada,31.0
+2926,nevada,31.0
+2927,nevada,31.0
+2928,nevada,31.0
+2929,nevada,31.0
+2930,nevada,31.0
+2931,nevada,31.0
+2932,nevada,31.0
+2933,nevada,31.0
+2934,nevada,31.0
+2935,nevada,31.0
+2936,nevada,31.0
+2937,nevada,31.0
+2938,nevada,31.0
+2939,nevada,31.0
+2940,nevada,31.0
+2941,nevada,31.0
+2942,nevada,31.0
+2943,nevada,31.0
+2944,nevada,31.0
+2945,nevada,31.0
+2946,nevada,31.0
+2947,nevada,31.0
+2948,nevada,31.0
+2949,nevada,31.0
+2950,nevada,31.0
+2951,ohio,32.0
+2952,ohio,32.0
+2953,ohio,32.0
+2954,ohio,32.0
+2955,ohio,32.0
+2956,ohio,32.0
+2957,ohio,32.0
+2958,ohio,32.0
+2959,ohio,32.0
+2960,ohio,32.0
+2961,ohio,32.0
+2962,ohio,32.0
+2963,ohio,32.0
+2964,ohio,32.0
+2965,ohio,32.0
+2966,ohio,32.0
+2967,ohio,32.0
+2968,ohio,32.0
+2969,ohio,32.0
+2970,ohio,32.0
+2971,ohio,32.0
+2972,ohio,32.0
+2973,ohio,32.0
+2974,ohio,32.0
+2975,ohio,32.0
+2976,ohio,32.0
+2977,ohio,32.0
+2978,ohio,32.0
+2979,ohio,32.0
+2980,ohio,32.0
+2981,ohio,32.0
+2982,ohio,32.0
+2983,ohio,32.0
+2984,ohio,32.0
+2985,ohio,32.0
+2986,ohio,32.0
+2987,ohio,32.0
+2988,ohio,32.0
+2989,ohio,32.0
+2990,ohio,32.0
+2991,ohio,32.0
+2992,ohio,32.0
+2993,ohio,32.0
+2994,ohio,32.0
+2995,ohio,32.0
+2996,ohio,32.0
+2997,ohio,32.0
+2998,ohio,32.0
+2999,ohio,32.0
+3000,ohio,32.0
+3001,ohio,32.0
+3002,ohio,32.0
+3003,ohio,32.0
+3004,ohio,32.0
+3005,ohio,32.0
+3006,ohio,32.0
+3007,ohio,32.0
+3008,ohio,32.0
+3009,ohio,32.0
+3010,ohio,32.0
+3011,ohio,32.0
+3012,ohio,32.0
+3013,ohio,32.0
+3014,ohio,32.0
+3015,ohio,32.0
+3016,ohio,32.0
+3017,ohio,32.0
+3018,ohio,32.0
+3019,ohio,32.0
+3020,ohio,32.0
+3021,ohio,32.0
+3022,ohio,32.0
+3023,ohio,32.0
+3024,ohio,32.0
+3025,ohio,32.0
+3026,ohio,32.0
+3027,ohio,32.0
+3028,ohio,32.0
+3029,ohio,32.0
+3030,ohio,32.0
+3031,ohio,32.0
+3032,ohio,32.0
+3033,ohio,32.0
+3034,ohio,32.0
+3035,ohio,32.0
+3036,ohio,32.0
+3037,ohio,32.0
+3038,ohio,32.0
+3039,ohio,32.0
+3040,ohio,32.0
+3041,ohio,32.0
+3042,ohio,32.0
+3043,ohio,32.0
+3044,ohio,32.0
+3045,ohio,32.0
+3046,ohio,32.0
+3047,ohio,32.0
+3048,ohio,32.0
+3049,ohio,32.0
+3050,ohio,32.0
+3051,ohio,32.0
+3052,ohio,32.0
+3053,ohio,32.0
+3054,ohio,32.0
+3055,ohio,32.0
+3056,ohio,32.0
+3057,ohio,32.0
+3058,ohio,32.0
+3059,ohio,32.0
+3060,ohio,32.0
+3061,ohio,32.0
+3062,ohio,32.0
+3063,ohio,32.0
+3064,ohio,32.0
+3065,ohio,32.0
+3066,ohio,32.0
+3067,ohio,32.0
+3068,ohio,32.0
+3069,ohio,32.0
+3070,ohio,32.0
+3071,ohio,32.0
+3072,ohio,32.0
+3073,ohio,32.0
+3074,ohio,32.0
+3075,ohio,32.0
+3076,ohio,32.0
+3077,ohio,32.0
+3078,ohio,32.0
+3079,ohio,32.0
+3080,ohio,32.0
+3081,ohio,32.0
+3082,ohio,32.0
+3083,ohio,32.0
+3084,ohio,32.0
+3085,ohio,32.0
+3086,ohio,32.0
+3087,ohio,32.0
+3088,ohio,32.0
+3089,ohio,32.0
+3090,ohio,32.0
+3091,ohio,32.0
+3092,ohio,32.0
+3093,ohio,32.0
+3094,ohio,32.0
+3095,ohio,32.0
+3096,ohio,32.0
+3097,ohio,32.0
+3098,ohio,32.0
+3099,ohio,32.0
+3100,ohio,32.0
+3101,ohio,32.0
+3102,ohio,32.0
+3103,ohio,32.0
+3104,ohio,32.0
+3105,ohio,32.0
+3106,ohio,32.0
+3107,ohio,32.0
+3108,ohio,32.0
+3109,ohio,32.0
+3110,ohio,32.0
+3111,ohio,32.0
+3112,ohio,32.0
+3113,ohio,32.0
+3114,ohio,32.0
+3115,ohio,32.0
+3116,ohio,32.0
+3117,ohio,32.0
+3118,ohio,32.0
+3119,oklahoma,33.0
+3120,oklahoma,33.0
+3121,oklahoma,33.0
+3122,oklahoma,33.0
+3123,oklahoma,33.0
+3124,oklahoma,33.0
+3125,oklahoma,33.0
+3126,oklahoma,33.0
+3127,oklahoma,33.0
+3128,oklahoma,33.0
+3129,oklahoma,33.0
+3130,oklahoma,33.0
+3131,oklahoma,33.0
+3132,oklahoma,33.0
+3133,oklahoma,33.0
+3134,oklahoma,33.0
+3135,oklahoma,33.0
+3136,oklahoma,33.0
+3137,oklahoma,33.0
+3138,oklahoma,33.0
+3139,oklahoma,33.0
+3140,oklahoma,33.0
+3141,oklahoma,33.0
+3142,oklahoma,33.0
+3143,oklahoma,33.0
+3144,oklahoma,33.0
+3145,oklahoma,33.0
+3146,oklahoma,33.0
+3147,oklahoma,33.0
+3148,oklahoma,33.0
+3149,oklahoma,33.0
+3150,oklahoma,33.0
+3151,oklahoma,33.0
+3152,oklahoma,33.0
+3153,oklahoma,33.0
+3154,oklahoma,33.0
+3155,oklahoma,33.0
+3156,oklahoma,33.0
+3157,oklahoma,33.0
+3158,oklahoma,33.0
+3159,oklahoma,33.0
+3160,oklahoma,33.0
+3161,oklahoma,33.0
+3162,oklahoma,33.0
+3163,oklahoma,33.0
+3164,oklahoma,33.0
+3165,oklahoma,33.0
+3166,oklahoma,33.0
+3167,oklahoma,33.0
+3168,oklahoma,33.0
+3169,oklahoma,33.0
+3170,oklahoma,33.0
+3171,oklahoma,33.0
+3172,oklahoma,33.0
+3173,oklahoma,33.0
+3174,oklahoma,33.0
+3175,oklahoma,33.0
+3176,oklahoma,33.0
+3177,oklahoma,33.0
+3178,oklahoma,33.0
+3179,oklahoma,33.0
+3180,oklahoma,33.0
+3181,oklahoma,33.0
+3182,oklahoma,33.0
+3183,oklahoma,33.0
+3184,oklahoma,33.0
+3185,oklahoma,33.0
+3186,oklahoma,33.0
+3187,oklahoma,33.0
+3188,oklahoma,33.0
+3189,oklahoma,33.0
+3190,oklahoma,33.0
+3191,oklahoma,33.0
+3192,oklahoma,33.0
+3193,oklahoma,33.0
+3194,oklahoma,33.0
+3195,oklahoma,33.0
+3196,oklahoma,33.0
+3197,oklahoma,33.0
+3198,oklahoma,33.0
+3199,oklahoma,33.0
+3200,oklahoma,33.0
+3201,oklahoma,33.0
+3202,oklahoma,33.0
+3203,oklahoma,33.0
+3204,oklahoma,33.0
+3205,oklahoma,33.0
+3206,oklahoma,33.0
+3207,oklahoma,33.0
+3208,oklahoma,33.0
+3209,oklahoma,33.0
+3210,oklahoma,33.0
+3211,oklahoma,33.0
+3212,oklahoma,33.0
+3213,oklahoma,33.0
+3214,oklahoma,33.0
+3215,oklahoma,33.0
+3216,oklahoma,33.0
+3217,oklahoma,33.0
+3218,oklahoma,33.0
+3219,oklahoma,33.0
+3220,oklahoma,33.0
+3221,oklahoma,33.0
+3222,oklahoma,33.0
+3223,oklahoma,33.0
+3224,oklahoma,33.0
+3225,oklahoma,33.0
+3226,oklahoma,33.0
+3227,oklahoma,33.0
+3228,oklahoma,33.0
+3229,oklahoma,33.0
+3230,oklahoma,33.0
+3231,oklahoma,33.0
+3232,oklahoma,33.0
+3233,oklahoma,33.0
+3234,oklahoma,33.0
+3235,oklahoma,33.0
+3236,oklahoma,33.0
+3237,oklahoma,33.0
+3238,oklahoma,33.0
+3239,oklahoma,33.0
+3240,oklahoma,33.0
+3241,oklahoma,33.0
+3242,oklahoma,33.0
+3243,oklahoma,33.0
+3244,oklahoma,33.0
+3245,oklahoma,33.0
+3246,oklahoma,33.0
+3247,oklahoma,33.0
+3248,oklahoma,33.0
+3249,oklahoma,33.0
+3250,oklahoma,33.0
+3251,oklahoma,33.0
+3252,oklahoma,33.0
+3253,oklahoma,33.0
+3254,oklahoma,33.0
+3255,oklahoma,33.0
+3256,oklahoma,33.0
+3257,oklahoma,33.0
+3258,oklahoma,33.0
+3259,oklahoma,33.0
+3260,oklahoma,33.0
+3261,oklahoma,33.0
+3262,oklahoma,33.0
+3263,oklahoma,33.0
+3264,oklahoma,33.0
+3265,oklahoma,33.0
+3266,oklahoma,33.0
+3267,oklahoma,33.0
+3268,oregon,34.0
+3269,oregon,34.0
+3270,oregon,34.0
+3271,oregon,34.0
+3272,oregon,34.0
+3273,oregon,34.0
+3274,oregon,34.0
+3275,oregon,34.0
+3276,oregon,34.0
+3277,oregon,34.0
+3278,oregon,34.0
+3279,oregon,34.0
+3280,oregon,34.0
+3281,oregon,34.0
+3282,oregon,34.0
+3283,oregon,34.0
+3284,oregon,34.0
+3285,oregon,34.0
+3286,oregon,34.0
+3287,oregon,34.0
+3288,oregon,34.0
+3289,oregon,34.0
+3290,oregon,34.0
+3291,oregon,34.0
+3292,oregon,34.0
+3293,oregon,34.0
+3294,oregon,34.0
+3295,oregon,34.0
+3296,oregon,34.0
+3297,oregon,34.0
+3298,oregon,34.0
+3299,oregon,34.0
+3300,oregon,34.0
+3301,oregon,34.0
+3302,oregon,34.0
+3303,oregon,34.0
+3304,oregon,34.0
+3305,oregon,34.0
+3306,oregon,34.0
+3307,oregon,34.0
+3308,oregon,34.0
+3309,oregon,34.0
+3310,oregon,34.0
+3311,oregon,34.0
+3312,oregon,34.0
+3313,oregon,34.0
+3314,oregon,34.0
+3315,oregon,34.0
+3316,oregon,34.0
+3317,oregon,34.0
+3318,oregon,34.0
+3319,oregon,34.0
+3320,oregon,34.0
+3321,oregon,34.0
+3322,oregon,34.0
+3323,oregon,34.0
+3324,oregon,34.0
+3325,oregon,34.0
+3326,oregon,34.0
+3327,oregon,34.0
+3328,oregon,34.0
+3329,oregon,34.0
+3330,oregon,34.0
+3331,oregon,34.0
+3332,oregon,34.0
+3333,oregon,34.0
+3334,oregon,34.0
+3335,oregon,34.0
+3336,oregon,34.0
+3337,oregon,34.0
+3338,oregon,34.0
+3339,oregon,34.0
+3340,oregon,34.0
+3341,pennsylvania,35.0
+3342,pennsylvania,35.0
+3343,pennsylvania,35.0
+3344,pennsylvania,35.0
+3345,pennsylvania,35.0
+3346,pennsylvania,35.0
+3347,pennsylvania,35.0
+3348,pennsylvania,35.0
+3349,pennsylvania,35.0
+3350,pennsylvania,35.0
+3351,pennsylvania,35.0
+3352,pennsylvania,35.0
+3353,pennsylvania,35.0
+3354,pennsylvania,35.0
+3355,pennsylvania,35.0
+3356,pennsylvania,35.0
+3357,pennsylvania,35.0
+3358,pennsylvania,35.0
+3359,pennsylvania,35.0
+3360,pennsylvania,35.0
+3361,pennsylvania,35.0
+3362,pennsylvania,35.0
+3363,pennsylvania,35.0
+3364,pennsylvania,35.0
+3365,pennsylvania,35.0
+3366,pennsylvania,35.0
+3367,pennsylvania,35.0
+3368,pennsylvania,35.0
+3369,pennsylvania,35.0
+3370,pennsylvania,35.0
+3371,pennsylvania,35.0
+3372,pennsylvania,35.0
+3373,pennsylvania,35.0
+3374,pennsylvania,35.0
+3375,pennsylvania,35.0
+3376,pennsylvania,35.0
+3377,pennsylvania,35.0
+3378,pennsylvania,35.0
+3379,pennsylvania,35.0
+3380,pennsylvania,35.0
+3381,pennsylvania,35.0
+3382,pennsylvania,35.0
+3383,pennsylvania,35.0
+3384,pennsylvania,35.0
+3385,pennsylvania,35.0
+3386,pennsylvania,35.0
+3387,pennsylvania,35.0
+3388,pennsylvania,35.0
+3389,pennsylvania,35.0
+3390,pennsylvania,35.0
+3391,pennsylvania,35.0
+3392,pennsylvania,35.0
+3393,pennsylvania,35.0
+3394,pennsylvania,35.0
+3395,pennsylvania,35.0
+3396,pennsylvania,35.0
+3397,pennsylvania,35.0
+3398,pennsylvania,35.0
+3399,pennsylvania,35.0
+3400,pennsylvania,35.0
+3401,pennsylvania,35.0
+3402,pennsylvania,35.0
+3403,pennsylvania,35.0
+3404,pennsylvania,35.0
+3405,pennsylvania,35.0
+3406,pennsylvania,35.0
+3407,pennsylvania,35.0
+3408,pennsylvania,35.0
+3409,pennsylvania,35.0
+3410,pennsylvania,35.0
+3411,pennsylvania,35.0
+3412,pennsylvania,35.0
+3413,pennsylvania,35.0
+3414,pennsylvania,35.0
+3415,pennsylvania,35.0
+3416,pennsylvania,35.0
+3417,pennsylvania,35.0
+3418,pennsylvania,35.0
+3419,pennsylvania,35.0
+3420,pennsylvania,35.0
+3421,pennsylvania,35.0
+3422,pennsylvania,35.0
+3423,pennsylvania,35.0
+3424,pennsylvania,35.0
+3425,pennsylvania,35.0
+3426,pennsylvania,35.0
+3427,pennsylvania,35.0
+3428,pennsylvania,35.0
+3429,pennsylvania,35.0
+3430,pennsylvania,35.0
+3431,pennsylvania,35.0
+3432,pennsylvania,35.0
+3433,pennsylvania,35.0
+3434,pennsylvania,35.0
+3435,pennsylvania,35.0
+3436,pennsylvania,35.0
+3437,pennsylvania,35.0
+3438,pennsylvania,35.0
+3439,pennsylvania,35.0
+3440,pennsylvania,35.0
+3441,pennsylvania,35.0
+3442,pennsylvania,35.0
+3443,pennsylvania,35.0
+3444,pennsylvania,35.0
+3445,pennsylvania,35.0
+3446,pennsylvania,35.0
+3447,pennsylvania,35.0
+3448,pennsylvania,35.0
+3449,pennsylvania,35.0
+3450,pennsylvania,35.0
+3451,pennsylvania,35.0
+3452,pennsylvania,35.0
+3453,pennsylvania,35.0
+3454,pennsylvania,35.0
+3455,pennsylvania,35.0
+3456,pennsylvania,35.0
+3457,pennsylvania,35.0
+3458,pennsylvania,35.0
+3459,pennsylvania,35.0
+3460,pennsylvania,35.0
+3461,pennsylvania,35.0
+3462,pennsylvania,35.0
+3463,pennsylvania,35.0
+3464,pennsylvania,35.0
+3465,pennsylvania,35.0
+3466,pennsylvania,35.0
+3467,pennsylvania,35.0
+3468,pennsylvania,35.0
+3469,pennsylvania,35.0
+3470,pennsylvania,35.0
+3471,pennsylvania,35.0
+3472,pennsylvania,35.0
+3473,pennsylvania,35.0
+3474,pennsylvania,35.0
+3475,pennsylvania,35.0
+3476,pennsylvania,35.0
+3477,pennsylvania,35.0
+3478,pennsylvania,35.0
+3479,pennsylvania,35.0
+3480,pennsylvania,35.0
+3481,pennsylvania,35.0
+3482,pennsylvania,35.0
+3483,pennsylvania,35.0
+3484,pennsylvania,35.0
+3485,pennsylvania,35.0
+3486,rhode_island,36.0
+3487,south_dakota,37.0
+3488,tennessee,38.0
+3489,tennessee,38.0
+3490,tennessee,38.0
+3491,tennessee,38.0
+3492,tennessee,38.0
+3493,tennessee,38.0
+3494,tennessee,38.0
+3495,tennessee,38.0
+3496,tennessee,38.0
+3497,tennessee,38.0
+3498,tennessee,38.0
+3499,tennessee,38.0
+3500,tennessee,38.0
+3501,tennessee,38.0
+3502,tennessee,38.0
+3503,tennessee,38.0
+3504,tennessee,38.0
+3505,tennessee,38.0
+3506,tennessee,38.0
+3507,tennessee,38.0
+3508,tennessee,38.0
+3509,tennessee,38.0
+3510,tennessee,38.0
+3511,tennessee,38.0
+3512,tennessee,38.0
+3513,tennessee,38.0
+3514,tennessee,38.0
+3515,tennessee,38.0
+3516,tennessee,38.0
+3517,tennessee,38.0
+3518,tennessee,38.0
+3519,tennessee,38.0
+3520,tennessee,38.0
+3521,tennessee,38.0
+3522,tennessee,38.0
+3523,tennessee,38.0
+3524,tennessee,38.0
+3525,tennessee,38.0
+3526,tennessee,38.0
+3527,tennessee,38.0
+3528,tennessee,38.0
+3529,tennessee,38.0
+3530,tennessee,38.0
+3531,tennessee,38.0
+3532,tennessee,38.0
+3533,tennessee,38.0
+3534,tennessee,38.0
+3535,tennessee,38.0
+3536,tennessee,38.0
+3537,tennessee,38.0
+3538,tennessee,38.0
+3539,tennessee,38.0
+3540,tennessee,38.0
+3541,tennessee,38.0
+3542,tennessee,38.0
+3543,tennessee,38.0
+3544,tennessee,38.0
+3545,tennessee,38.0
+3546,tennessee,38.0
+3547,tennessee,38.0
+3548,tennessee,38.0
+3549,tennessee,38.0
+3550,tennessee,38.0
+3551,tennessee,38.0
+3552,tennessee,38.0
+3553,tennessee,38.0
+3554,tennessee,38.0
+3555,tennessee,38.0
+3556,tennessee,38.0
+3557,tennessee,38.0
+3558,tennessee,38.0
+3559,tennessee,38.0
+3560,tennessee,38.0
+3561,tennessee,38.0
+3562,tennessee,38.0
+3563,tennessee,38.0
+3564,tennessee,38.0
+3565,tennessee,38.0
+3566,tennessee,38.0
+3567,tennessee,38.0
+3568,tennessee,38.0
+3569,tennessee,38.0
+3570,tennessee,38.0
+3571,tennessee,38.0
+3572,tennessee,38.0
+3573,tennessee,38.0
+3574,tennessee,38.0
+3575,tennessee,38.0
+3576,tennessee,38.0
+3577,tennessee,38.0
+3578,tennessee,38.0
+3579,tennessee,38.0
+3580,texas,39.0
+3581,texas,39.0
+3582,texas,39.0
+3583,texas,39.0
+3584,texas,39.0
+3585,texas,39.0
+3586,texas,39.0
+3587,texas,39.0
+3588,texas,39.0
+3589,texas,39.0
+3590,texas,39.0
+3591,texas,39.0
+3592,texas,39.0
+3593,texas,39.0
+3594,texas,39.0
+3595,texas,39.0
+3596,texas,39.0
+3597,texas,39.0
+3598,texas,39.0
+3599,texas,39.0
+3600,texas,39.0
+3601,texas,39.0
+3602,texas,39.0
+3603,texas,39.0
+3604,texas,39.0
+3605,texas,39.0
+3606,texas,39.0
+3607,texas,39.0
+3608,texas,39.0
+3609,texas,39.0
+3610,texas,39.0
+3611,texas,39.0
+3612,texas,39.0
+3613,texas,39.0
+3614,texas,39.0
+3615,texas,39.0
+3616,texas,39.0
+3617,texas,39.0
+3618,texas,39.0
+3619,texas,39.0
+3620,texas,39.0
+3621,texas,39.0
+3622,texas,39.0
+3623,texas,39.0
+3624,texas,39.0
+3625,texas,39.0
+3626,texas,39.0
+3627,texas,39.0
+3628,texas,39.0
+3629,texas,39.0
+3630,texas,39.0
+3631,texas,39.0
+3632,texas,39.0
+3633,texas,39.0
+3634,texas,39.0
+3635,texas,39.0
+3636,texas,39.0
+3637,texas,39.0
+3638,texas,39.0
+3639,texas,39.0
+3640,texas,39.0
+3641,texas,39.0
+3642,texas,39.0
+3643,texas,39.0
+3644,texas,39.0
+3645,texas,39.0
+3646,texas,39.0
+3647,texas,39.0
+3648,texas,39.0
+3649,texas,39.0
+3650,texas,39.0
+3651,texas,39.0
+3652,texas,39.0
+3653,texas,39.0
+3654,texas,39.0
+3655,texas,39.0
+3656,texas,39.0
+3657,texas,39.0
+3658,texas,39.0
+3659,texas,39.0
+3660,texas,39.0
+3661,texas,39.0
+3662,texas,39.0
+3663,texas,39.0
+3664,texas,39.0
+3665,texas,39.0
+3666,texas,39.0
+3667,texas,39.0
+3668,texas,39.0
+3669,texas,39.0
+3670,texas,39.0
+3671,texas,39.0
+3672,texas,39.0
+3673,texas,39.0
+3674,texas,39.0
+3675,texas,39.0
+3676,texas,39.0
+3677,texas,39.0
+3678,texas,39.0
+3679,texas,39.0
+3680,texas,39.0
+3681,texas,39.0
+3682,texas,39.0
+3683,texas,39.0
+3684,texas,39.0
+3685,texas,39.0
+3686,texas,39.0
+3687,texas,39.0
+3688,texas,39.0
+3689,texas,39.0
+3690,texas,39.0
+3691,texas,39.0
+3692,texas,39.0
+3693,texas,39.0
+3694,texas,39.0
+3695,texas,39.0
+3696,texas,39.0
+3697,texas,39.0
+3698,texas,39.0
+3699,texas,39.0
+3700,texas,39.0
+3701,texas,39.0
+3702,texas,39.0
+3703,texas,39.0
+3704,texas,39.0
+3705,texas,39.0
+3706,texas,39.0
+3707,texas,39.0
+3708,texas,39.0
+3709,texas,39.0
+3710,texas,39.0
+3711,texas,39.0
+3712,texas,39.0
+3713,texas,39.0
+3714,texas,39.0
+3715,texas,39.0
+3716,texas,39.0
+3717,texas,39.0
+3718,texas,39.0
+3719,texas,39.0
+3720,texas,39.0
+3721,texas,39.0
+3722,texas,39.0
+3723,texas,39.0
+3724,texas,39.0
+3725,texas,39.0
+3726,texas,39.0
+3727,texas,39.0
+3728,texas,39.0
+3729,texas,39.0
+3730,texas,39.0
+3731,texas,39.0
+3732,texas,39.0
+3733,texas,39.0
+3734,texas,39.0
+3735,texas,39.0
+3736,texas,39.0
+3737,texas,39.0
+3738,texas,39.0
+3739,texas,39.0
+3740,texas,39.0
+3741,texas,39.0
+3742,texas,39.0
+3743,texas,39.0
+3744,texas,39.0
+3745,texas,39.0
+3746,texas,39.0
+3747,texas,39.0
+3748,texas,39.0
+3749,utah,40.0
+3750,utah,40.0
+3751,utah,40.0
+3752,utah,40.0
+3753,utah,40.0
+3754,utah,40.0
+3755,utah,40.0
+3756,utah,40.0
+3757,utah,40.0
+3758,utah,40.0
+3759,utah,40.0
+3760,utah,40.0
+3761,utah,40.0
+3762,utah,40.0
+3763,utah,40.0
+3764,utah,40.0
+3765,utah,40.0
+3766,utah,40.0
+3767,utah,40.0
+3768,utah,40.0
+3769,utah,40.0
+3770,utah,40.0
+3771,utah,40.0
+3772,utah,40.0
+3773,utah,40.0
+3774,utah,40.0
+3775,utah,40.0
+3776,utah,40.0
+3777,utah,40.0
+3778,utah,40.0
+3779,utah,40.0
+3780,utah,40.0
+3781,utah,40.0
+3782,utah,40.0
+3783,utah,40.0
+3784,utah,40.0
+3785,utah,40.0
+3786,utah,40.0
+3787,utah,40.0
+3788,utah,40.0
+3789,utah,40.0
+3790,utah,40.0
+3791,utah,40.0
+3792,utah,40.0
+3793,utah,40.0
+3794,utah,40.0
+3795,utah,40.0
+3796,utah,40.0
+3797,utah,40.0
+3798,utah,40.0
+3799,utah,40.0
+3800,utah,40.0
+3801,utah,40.0
+3802,utah,40.0
+3803,utah,40.0
+3804,utah,40.0
+3805,utah,40.0
+3806,utah,40.0
+3807,utah,40.0
+3808,utah,40.0
+3809,utah,40.0
+3810,utah,40.0
+3811,utah,40.0
+3812,utah,40.0
+3813,utah,40.0
+3814,utah,40.0
+3815,utah,40.0
+3816,utah,40.0
+3817,utah,40.0
+3818,utah,40.0
+3819,utah,40.0
+3820,virginia,41.0
+3821,virginia,41.0
+3822,virginia,41.0
+3823,virginia,41.0
+3824,virginia,41.0
+3825,virginia,41.0
+3826,virginia,41.0
+3827,virginia,41.0
+3828,virginia,41.0
+3829,virginia,41.0
+3830,virginia,41.0
+3831,virginia,41.0
+3832,virginia,41.0
+3833,virginia,41.0
+3834,virginia,41.0
+3835,virginia,41.0
+3836,virginia,41.0
+3837,virginia,41.0
+3838,virginia,41.0
+3839,virginia,41.0
+3840,virginia,41.0
+3841,virginia,41.0
+3842,virginia,41.0
+3843,virginia,41.0
+3844,virginia,41.0
+3845,virginia,41.0
+3846,virginia,41.0
+3847,virginia,41.0
+3848,virginia,41.0
+3849,virginia,41.0
+3850,virginia,41.0
+3851,virginia,41.0
+3852,virginia,41.0
+3853,virginia,41.0
+3854,virginia,41.0
+3855,virginia,41.0
+3856,virginia,41.0
+3857,virginia,41.0
+3858,virginia,41.0
+3859,virginia,41.0
+3860,virginia,41.0
+3861,virginia,41.0
+3862,virginia,41.0
+3863,virginia,41.0
+3864,virginia,41.0
+3865,virginia,41.0
+3866,virginia,41.0
+3867,virginia,41.0
+3868,virginia,41.0
+3869,virginia,41.0
+3870,virginia,41.0
+3871,virginia,41.0
+3872,virginia,41.0
+3873,virginia,41.0
+3874,virginia,41.0
+3875,virginia,41.0
+3876,virginia,41.0
+3877,virginia,41.0
+3878,virginia,41.0
+3879,virginia,41.0
+3880,virginia,41.0
+3881,virginia,41.0
+3882,virginia,41.0
+3883,virginia,41.0
+3884,virginia,41.0
+3885,virginia,41.0
+3886,virginia,41.0
+3887,vermont,42.0
+3888,vermont,42.0
+3889,vermont,42.0
+3890,vermont,42.0
+3891,vermont,42.0
+3892,vermont,42.0
+3893,vermont,42.0
+3894,vermont,42.0
+3895,vermont,42.0
+3896,vermont,42.0
+3897,vermont,42.0
+3898,vermont,42.0
+3899,vermont,42.0
+3900,vermont,42.0
+3901,vermont,42.0
+3902,vermont,42.0
+3903,vermont,42.0
+3904,vermont,42.0
+3905,vermont,42.0
+3906,vermont,42.0
+3907,vermont,42.0
+3908,vermont,42.0
+3909,vermont,42.0
+3910,vermont,42.0
+3911,vermont,42.0
+3912,vermont,42.0
+3913,vermont,42.0
+3914,vermont,42.0
+3915,vermont,42.0
+3916,vermont,42.0
+3917,vermont,42.0
+3918,vermont,42.0
+3919,vermont,42.0
+3920,vermont,42.0
+3921,vermont,42.0
+3922,vermont,42.0
+3923,vermont,42.0
+3924,vermont,42.0
+3925,vermont,42.0
+3926,vermont,42.0
+3927,vermont,42.0
+3928,vermont,42.0
+3929,vermont,42.0
+3930,vermont,42.0
+3931,vermont,42.0
+3932,vermont,42.0
+3933,vermont,42.0
+3934,vermont,42.0
+3935,vermont,42.0
+3936,vermont,42.0
+3937,vermont,42.0
+3938,vermont,42.0
+3939,vermont,42.0
+3940,vermont,42.0
+3941,vermont,42.0
+3942,vermont,42.0
+3943,vermont,42.0
+3944,vermont,42.0
+3945,vermont,42.0
+3946,vermont,42.0
+3947,vermont,42.0
+3948,vermont,42.0
+3949,vermont,42.0
+3950,vermont,42.0
+3951,vermont,42.0
+3952,vermont,42.0
+3953,vermont,42.0
+3954,vermont,42.0
+3955,vermont,42.0
+3956,vermont,42.0
+3957,vermont,42.0
+3958,vermont,42.0
+3959,vermont,42.0
+3960,vermont,42.0
+3961,vermont,42.0
+3962,vermont,42.0
+3963,vermont,42.0
+3964,vermont,42.0
+3965,vermont,42.0
+3966,vermont,42.0
+3967,vermont,42.0
+3968,vermont,42.0
+3969,vermont,42.0
+3970,vermont,42.0
+3971,vermont,42.0
+3972,vermont,42.0
+3973,vermont,42.0
+3974,vermont,42.0
+3975,vermont,42.0
+3976,vermont,42.0
+3977,vermont,42.0
+3978,vermont,42.0
+3979,vermont,42.0
+3980,vermont,42.0
+3981,vermont,42.0
+3982,vermont,42.0
+3983,vermont,42.0
+3984,vermont,42.0
+3985,vermont,42.0
+3986,vermont,42.0
+3987,vermont,42.0
+3988,vermont,42.0
+3989,vermont,42.0
+3990,vermont,42.0
+3991,vermont,42.0
+3992,vermont,42.0
+3993,vermont,42.0
+3994,vermont,42.0
+3995,vermont,42.0
+3996,vermont,42.0
+3997,vermont,42.0
+3998,vermont,42.0
+3999,vermont,42.0
+4000,vermont,42.0
+4001,vermont,42.0
+4002,vermont,42.0
+4003,vermont,42.0
+4004,vermont,42.0
+4005,vermont,42.0
+4006,vermont,42.0
+4007,vermont,42.0
+4008,vermont,42.0
+4009,vermont,42.0
+4010,vermont,42.0
+4011,vermont,42.0
+4012,vermont,42.0
+4013,vermont,42.0
+4014,vermont,42.0
+4015,vermont,42.0
+4016,vermont,42.0
+4017,vermont,42.0
+4018,vermont,42.0
+4019,vermont,42.0
+4020,vermont,42.0
+4021,vermont,42.0
+4022,vermont,42.0
+4023,vermont,42.0
+4024,vermont,42.0
+4025,vermont,42.0
+4026,vermont,42.0
+4027,vermont,42.0
+4028,vermont,42.0
+4029,vermont,42.0
+4030,vermont,42.0
+4031,vermont,42.0
+4032,vermont,42.0
+4033,vermont,42.0
+4034,vermont,42.0
+4035,vermont,42.0
+4036,vermont,42.0
+4037,vermont,42.0
+4038,vermont,42.0
+4039,vermont,42.0
+4040,vermont,42.0
+4041,vermont,42.0
+4042,vermont,42.0
+4043,vermont,42.0
+4044,vermont,42.0
+4045,vermont,42.0
+4046,vermont,42.0
+4047,vermont,42.0
+4048,vermont,42.0
+4049,vermont,42.0
+4050,vermont,42.0
+4051,vermont,42.0
+4052,vermont,42.0
+4053,vermont,42.0
+4054,vermont,42.0
+4055,vermont,42.0
+4056,vermont,42.0
+4057,vermont,42.0
+4058,washington,43.0
+4059,washington,43.0
+4060,washington,43.0
+4061,washington,43.0
+4062,washington,43.0
+4063,washington,43.0
+4064,washington,43.0
+4065,washington,43.0
+4066,washington,43.0
+4067,washington,43.0
+4068,washington,43.0
+4069,washington,43.0
+4070,washington,43.0
+4071,washington,43.0
+4072,washington,43.0
+4073,washington,43.0
+4074,washington,43.0
+4075,washington,43.0
+4076,washington,43.0
+4077,washington,43.0
+4078,washington,43.0
+4079,washington,43.0
+4080,washington,43.0
+4081,washington,43.0
+4082,washington,43.0
+4083,washington,43.0
+4084,washington,43.0
+4085,washington,43.0
+4086,washington,43.0
+4087,washington,43.0
+4088,washington,43.0
+4089,washington,43.0
+4090,washington,43.0
+4091,washington,43.0
+4092,washington,43.0
+4093,washington,43.0
+4094,washington,43.0
+4095,washington,43.0
+4096,washington,43.0
+4097,washington,43.0
+4098,washington,43.0
+4099,washington,43.0
+4100,washington,43.0
+4101,washington,43.0
+4102,washington,43.0
+4103,washington,43.0
+4104,washington,43.0
+4105,washington,43.0
+4106,washington,43.0
+4107,washington,43.0
+4108,washington,43.0
+4109,washington,43.0
+4110,washington,43.0
+4111,washington,43.0
+4112,washington,43.0
+4113,washington,43.0
+4114,washington,43.0
+4115,washington,43.0
+4116,washington,43.0
+4117,washington,43.0
+4118,washington,43.0
+4119,washington,43.0
+4120,washington,43.0
+4121,washington,43.0
+4122,washington,43.0
+4123,washington,43.0
+4124,washington,43.0
+4125,washington,43.0
+4126,washington,43.0
+4127,washington,43.0
+4128,washington,43.0
+4129,washington,43.0
+4130,washington,43.0
+4131,washington,43.0
+4132,washington,43.0
+4133,washington,43.0
+4134,washington,43.0
+4135,washington,43.0
+4136,washington,43.0
+4137,washington,43.0
+4138,washington,43.0
+4139,washington,43.0
+4140,washington,43.0
+4141,washington,43.0
+4142,washington,43.0
+4143,washington,43.0
+4144,washington,43.0
+4145,washington,43.0
+4146,washington,43.0
+4147,washington,43.0
+4148,washington,43.0
+4149,washington,43.0
+4150,washington,43.0
+4151,washington,43.0
+4152,washington,43.0
+4153,wisconsin,44.0
+4154,wisconsin,44.0
+4155,wisconsin,44.0
+4156,wisconsin,44.0
+4157,wisconsin,44.0
+4158,wisconsin,44.0
+4159,wisconsin,44.0
+4160,wisconsin,44.0
+4161,wisconsin,44.0
+4162,wisconsin,44.0
+4163,wisconsin,44.0
+4164,wisconsin,44.0
+4165,wisconsin,44.0
+4166,wisconsin,44.0
+4167,wisconsin,44.0
+4168,wisconsin,44.0
+4169,wisconsin,44.0
+4170,wisconsin,44.0
+4171,wisconsin,44.0
+4172,wisconsin,44.0
+4173,wisconsin,44.0
+4174,wisconsin,44.0
+4175,wisconsin,44.0
+4176,wisconsin,44.0
+4177,wisconsin,44.0
+4178,wisconsin,44.0
+4179,wisconsin,44.0
+4180,wisconsin,44.0
+4181,wisconsin,44.0
+4182,wisconsin,44.0
+4183,wisconsin,44.0
+4184,wisconsin,44.0
+4185,wisconsin,44.0
+4186,wisconsin,44.0
+4187,wisconsin,44.0
+4188,wisconsin,44.0
+4189,wisconsin,44.0
+4190,wisconsin,44.0
+4191,wisconsin,44.0
+4192,wisconsin,44.0
+4193,wisconsin,44.0
+4194,wisconsin,44.0
+4195,wisconsin,44.0
+4196,wisconsin,44.0
+4197,wisconsin,44.0
+4198,wisconsin,44.0
+4199,wisconsin,44.0
+4200,wisconsin,44.0
+4201,wisconsin,44.0
+4202,wisconsin,44.0
+4203,wisconsin,44.0
+4204,wisconsin,44.0
+4205,wisconsin,44.0
+4206,wisconsin,44.0
+4207,wisconsin,44.0
+4208,wisconsin,44.0
+4209,wisconsin,44.0
+4210,wisconsin,44.0
+4211,wisconsin,44.0
+4212,wisconsin,44.0
+4213,wisconsin,44.0
+4214,wisconsin,44.0
+4215,wisconsin,44.0
+4216,wisconsin,44.0
+4217,wisconsin,44.0
+4218,wisconsin,44.0
+4219,wisconsin,44.0
+4220,wisconsin,44.0
+4221,wisconsin,44.0
+4222,wisconsin,44.0
+4223,wisconsin,44.0
+4224,wisconsin,44.0
+4225,wisconsin,44.0
+4226,wisconsin,44.0
+4227,wisconsin,44.0
+4228,wisconsin,44.0
+4229,wisconsin,44.0
+4230,wisconsin,44.0
+4231,wisconsin,44.0
+4232,wisconsin,44.0
+4233,wisconsin,44.0
+4234,wisconsin,44.0
+4235,wisconsin,44.0
+4236,wisconsin,44.0
+4237,wisconsin,44.0
+4238,wisconsin,44.0
+4239,wisconsin,44.0
+4240,wisconsin,44.0
+4241,wisconsin,44.0
+4242,wisconsin,44.0
+4243,wisconsin,44.0
+4244,wisconsin,44.0
+4245,wisconsin,44.0
+4246,wisconsin,44.0
+4247,wisconsin,44.0
+4248,wisconsin,44.0
+4249,wisconsin,44.0
+4250,wisconsin,44.0
+4251,wisconsin,44.0
+4252,wisconsin,44.0
+4253,wisconsin,44.0
+4254,wisconsin,44.0
+4255,wisconsin,44.0
+4256,wisconsin,44.0
+4257,wisconsin,44.0
+4258,wisconsin,44.0
+4259,wisconsin,44.0
+4260,wisconsin,44.0
+4261,wisconsin,44.0
+4262,wisconsin,44.0
+4263,wisconsin,44.0
+4264,wisconsin,44.0
+4265,wisconsin,44.0
+4266,wisconsin,44.0
+4267,wisconsin,44.0
+4268,wisconsin,44.0
+4269,wisconsin,44.0
+4270,wisconsin,44.0
+4271,wisconsin,44.0
+4272,wisconsin,44.0
+4273,wisconsin,44.0
+4274,wisconsin,44.0
+4275,wisconsin,44.0
+4276,wisconsin,44.0
+4277,wisconsin,44.0
+4278,wisconsin,44.0
+4279,wisconsin,44.0
+4280,wisconsin,44.0
+4281,wisconsin,44.0
+4282,wisconsin,44.0
+4283,wisconsin,44.0
+4284,wisconsin,44.0
+4285,wisconsin,44.0
+4286,wisconsin,44.0
+4287,wisconsin,44.0
+4288,wisconsin,44.0
+4289,wisconsin,44.0
+4290,wisconsin,44.0
+4291,wisconsin,44.0
+4292,wisconsin,44.0
+4293,wisconsin,44.0
+4294,wisconsin,44.0
+4295,wisconsin,44.0
+4296,wisconsin,44.0
+4297,wisconsin,44.0
+4298,wisconsin,44.0
+4299,wisconsin,44.0
+4300,wisconsin,44.0
+4301,wisconsin,44.0
+4302,wisconsin,44.0
+4303,wisconsin,44.0
+4304,wisconsin,44.0
+4305,wisconsin,44.0
+4306,wisconsin,44.0
+4307,wisconsin,44.0
+4308,wisconsin,44.0
+4309,wisconsin,44.0
+4310,wisconsin,44.0
+4311,wisconsin,44.0
+4312,wisconsin,44.0
+4313,wisconsin,44.0
+4314,wisconsin,44.0
+4315,wisconsin,44.0
+4316,wisconsin,44.0
+4317,wisconsin,44.0
+4318,wisconsin,44.0
+4319,wisconsin,44.0
+4320,wisconsin,44.0
+4321,wisconsin,44.0
+4322,wisconsin,44.0
+4323,wisconsin,44.0
+4324,wisconsin,44.0
+4325,wisconsin,44.0
+4326,wisconsin,44.0
+4327,wisconsin,44.0
+4328,wisconsin,44.0
+4329,wisconsin,44.0
+4330,wisconsin,44.0
+4331,wisconsin,44.0
+4332,wisconsin,44.0
+4333,wisconsin,44.0
+4334,wisconsin,44.0
+4335,wisconsin,44.0
+4336,wisconsin,44.0
+4337,wisconsin,44.0
+4338,wisconsin,44.0
+4339,wisconsin,44.0
+4340,wisconsin,44.0
+4341,west_virginia,45.0
+4342,wyoming,46.0
+4343,wyoming,46.0
+4344,wyoming,46.0
+4345,wyoming,46.0
+4346,wyoming,46.0
+4347,wyoming,46.0
+4348,wyoming,46.0
+4349,wyoming,46.0
+4350,wyoming,46.0
+4351,wyoming,46.0
+4352,wyoming,46.0
+4353,wyoming,46.0
+4354,wyoming,46.0
+4355,wyoming,46.0
+4356,wyoming,46.0
+4357,wyoming,46.0
+4358,wyoming,46.0
+4359,wyoming,46.0
+4360,wyoming,46.0
+4361,wyoming,46.0
+4362,wyoming,46.0
+4363,wyoming,46.0
+4364,wyoming,46.0
+4365,wyoming,46.0
+4366,wyoming,46.0
+4367,wyoming,46.0
+4368,wyoming,46.0
+4369,wyoming,46.0
+4370,wyoming,46.0
+4371,wyoming,46.0
+4372,wyoming,46.0
+4373,wyoming,46.0
+4374,wyoming,46.0
+4375,wyoming,46.0
+4376,wyoming,46.0
+4377,wyoming,46.0
+4378,wyoming,46.0
+4379,wyoming,46.0
+4380,wyoming,46.0
+4381,wyoming,46.0
+4382,wyoming,46.0
+4383,wyoming,46.0
+4384,wyoming,46.0
+4385,wyoming,46.0
+4386,wyoming,46.0
+4387,wyoming,46.0
+4388,wyoming,46.0
+4389,connecticut,47.0
+4390,connecticut,47.0
+4391,connecticut,47.0
+4392,connecticut,47.0
+4393,connecticut,47.0
+4394,connecticut,47.0
+4395,connecticut,47.0
+4396,connecticut,47.0
+4397,connecticut,47.0
+4398,connecticut,47.0
+4399,connecticut,47.0
+4400,connecticut,47.0
+4401,connecticut,47.0
+4402,connecticut,47.0
+4403,connecticut,47.0
+4404,connecticut,47.0
+4405,connecticut,47.0
+4406,connecticut,47.0
+4407,connecticut,47.0
+4408,connecticut,47.0
+4409,connecticut,47.0
+4410,connecticut,47.0
+4411,connecticut,47.0
+4412,connecticut,47.0
+4413,connecticut,47.0
+4414,connecticut,47.0
+4415,connecticut,47.0
+4416,connecticut,47.0
+4417,connecticut,47.0
+4418,connecticut,47.0
+4419,connecticut,47.0
+4420,connecticut,47.0
+4421,connecticut,47.0
+4422,connecticut,47.0
+4423,connecticut,47.0
+4424,connecticut,47.0
+4425,connecticut,47.0
+4426,connecticut,47.0
+4427,connecticut,47.0
+4428,connecticut,47.0
+4429,connecticut,47.0
+4430,connecticut,47.0
+4431,connecticut,47.0
+4432,connecticut,47.0
+4433,connecticut,47.0
+4434,connecticut,47.0
+4435,connecticut,47.0
+4436,connecticut,47.0
+4437,connecticut,47.0
+4438,connecticut,47.0
+4439,connecticut,47.0
+4440,connecticut,47.0
+4441,connecticut,47.0
+4442,connecticut,47.0
+4443,connecticut,47.0
+4444,connecticut,47.0
+4445,connecticut,47.0
+4446,connecticut,47.0
+4447,connecticut,47.0
+4448,connecticut,47.0
+4449,connecticut,47.0
+4450,connecticut,47.0
+4451,connecticut,47.0
+4452,connecticut,47.0
+4453,connecticut,47.0
+4454,new_york,48.0
+4455,south_carolina,49.0
+4456,american samoa,
+4457,american samoa,
+4458,new jersey,
+4459,new jersey,
+4460,new jersey,
+4461,new jersey,
+4462,new jersey,
+4463,new jersey,
+4464,new jersey,
+4465,new jersey,
+4466,new jersey,
+4467,new jersey,
+4468,new jersey,
+4469,new jersey,
+4470,new jersey,
+4471,new jersey,
+4472,new jersey,
+4473,new jersey,
+4474,new jersey,
+4475,new jersey,
+4476,new jersey,
+4477,new jersey,
+4478,new jersey,
+4479,new jersey,
+4480,new jersey,
+4481,new jersey,
+4482,new jersey,
+4483,new jersey,
+4484,new jersey,
+4485,new jersey,
+4486,new jersey,
+4487,new jersey,
+4488,new jersey,
+4489,new jersey,
+4490,new jersey,
+4491,new jersey,
+4492,new jersey,
+4493,new jersey,
+4494,new jersey,
+4495,new jersey,
+4496,new jersey,
+4497,new jersey,
+4498,new jersey,
+4499,new jersey,
+4500,new jersey,
+4501,new jersey,
+4502,new jersey,
+4503,new jersey,
+4504,new jersey,
+4505,new jersey,
+4506,new jersey,
+4507,new jersey,
+4508,new jersey,
+4509,new jersey,
+4510,new jersey,
+4511,new jersey,
+4512,new jersey,
+4513,new jersey,
+4514,new jersey,
+4515,new jersey,
+4516,new jersey,
+4517,new jersey,
+4518,new jersey,
+4519,new jersey,
+4520,new jersey,
+4521,new jersey,
+4522,new jersey,
+4523,new jersey,
+4524,new jersey,
+4525,new jersey,
+4526,new jersey,
+4527,new jersey,
+4528,new jersey,
+4529,new jersey,
+4530,new jersey,
+4531,new jersey,
+4532,new jersey,
+4533,new jersey,
+4534,new jersey,
+4535,new jersey,
+4536,new jersey,
+4537,new jersey,
+4538,new jersey,
+4539,new jersey,
+4540,new jersey,
+4541,hawai'i,
+4542,hawai'i,
+4543,hawai'i,
+4544,hawai'i,
+4545,hawai'i,
+4546,hawai'i,
+4547,hawai'i,
+4548,hawai'i,
+4549,hawai'i,
+4550,hawai'i,
+4551,hawai'i,
+4552,hawai'i,
+4553,hawai'i,
+4554,hawai'i,
+4555,hawai'i,
+4556,hawai'i,
+4557,hawai'i,
+4558,hawai'i,
+4559,hawai'i,
+4560,hawai'i,
+4561,hawai'i,
+4562,hawai'i,
+4563,hawai'i,
+4564,hawai'i,
+4565,hawai'i,
+4566,hawai'i,
+4567,hawai'i,
+4568,hawai'i,
+4569,hawai'i,
+4570,hawai'i,
+4571,hawai'i,
+4572,hawai'i,
+4573,hawai'i,
+4574,hawai'i,
+4575,hawai'i,
+4576,hawai'i,
+4577,hawai'i,
+4578,hawai'i,
+4579,hawai'i,
+4580,hawai'i,
+4581,hawai'i,
+4582,hawai'i,
+4583,hawai'i,
+4584,hawai'i,
+4585,hawai'i,
+4586,hawai'i,
+4587,hawai'i,
+4588,hawai'i,
+4589,hawai'i,
+4590,hawai'i,
+4591,hawai'i,
+4592,hawai'i,
+4593,hawai'i,
+4594,hawai'i,
+4595,hawai'i,
+4596,hawai'i,
+4597,hawai'i,
+4598,hawai'i,
+4599,hawai'i,
+4600,hawai'i,
+4601,hawai'i,
+4602,hawai'i,
+4603,hawai'i,
+4604,hawai'i,
+4605,hawai'i,
+4606,hawai'i,
+4607,hawai'i,
+4608,hawai'i,
+4609,hawai'i,
+4610,hawai'i,
+4611,hawai'i,
+4612,hawai'i,
+4613,hawai'i,
+4614,hawai'i,
+4615,hawai'i,
+4616,hawai'i,
+4617,hawai'i,
+4618,hawai'i,
+4619,hawai'i,
+4620,hawai'i,
+4621,hawai'i,
+4622,hawai'i,
+4623,hawai'i,
+4624,hawai'i,
+4625,hawai'i,
+4626,hawai'i,
+4627,hawai'i,
+4628,hawai'i,
+4629,hawai'i,
+4630,new hampshire,
+4631,new hampshire,
+4632,new hampshire,
+4633,new hampshire,
+4634,new hampshire,
+4635,new hampshire,
+4636,new hampshire,
+4637,new hampshire,
+4638,new hampshire,
+4639,new hampshire,
+4640,new hampshire,
+4641,new hampshire,
+4642,new hampshire,
+4643,new hampshire,
+4644,new hampshire,
+4645,new hampshire,
+4646,new hampshire,
+4647,new hampshire,
+4648,new hampshire,
+4649,new hampshire,
+4650,new hampshire,
+4651,new hampshire,
+4652,new hampshire,
+4653,new hampshire,
+4654,new hampshire,
+4655,new hampshire,
+4656,new hampshire,
+4657,new hampshire,
+4658,new hampshire,
+4659,new hampshire,
+4660,new hampshire,
+4661,new hampshire,
+4662,new hampshire,
+4663,new hampshire,
+4664,new hampshire,
+4665,new hampshire,
+4666,new hampshire,
+4667,new hampshire,
+4668,new hampshire,
+4669,new hampshire,
+4670,new hampshire,
+4671,new hampshire,
+4672,new hampshire,
+4673,new hampshire,
+4674,new hampshire,
+4675,new hampshire,
+4676,new hampshire,
+4677,new hampshire,
+4678,new hampshire,
+4679,new hampshire,
+4680,new hampshire,
+4681,new hampshire,
+4682,new hampshire,
+4683,new hampshire,
+4684,new hampshire,
+4685,new hampshire,
+4686,new hampshire,
+4687,new hampshire,
+4688,new hampshire,
+4689,new hampshire,
+4690,new hampshire,
+4691,new hampshire,
+4692,new hampshire,
+4693,new hampshire,
+4694,new hampshire,
+4695,new hampshire,
+4696,new hampshire,
+4697,new hampshire,
+4698,new hampshire,
+4699,new hampshire,
+4700,new hampshire,
+4701,new hampshire,
+4702,new hampshire,
+4703,new hampshire,
+4704,new hampshire,
+4705,new hampshire,
+4706,new hampshire,
+4707,new hampshire,
+4708,new hampshire,
+4709,new hampshire,
+4710,new hampshire,
+4711,new hampshire,
+4712,new hampshire,
+4713,new hampshire,
+4714,new hampshire,
+4715,new hampshire,
+4716,new hampshire,
+4717,new hampshire,
+4718,new hampshire,
+4719,new hampshire,
+4720,new hampshire,
+4721,new hampshire,
+4722,new hampshire,
+4723,new hampshire,
+4724,new hampshire,
+4725,new hampshire,
+4726,new hampshire,
+4727,new hampshire,
+4728,new hampshire,
+4729,new hampshire,
+4730,new hampshire,
+4731,new hampshire,
+4732,new hampshire,
+4733,new mexico,
+4734,new mexico,
+4735,new mexico,
+4736,new mexico,
+4737,new mexico,
+4738,new mexico,
+4739,new mexico,
+4740,new mexico,
+4741,new mexico,
+4742,new mexico,
+4743,new mexico,
+4744,new mexico,
+4745,new mexico,
+4746,new mexico,
+4747,new mexico,
+4748,new mexico,
+4749,new mexico,
+4750,new mexico,
+4751,new mexico,
+4752,new mexico,
+4753,new mexico,
+4754,new mexico,
+4755,new mexico,
+4756,new mexico,
+4757,new mexico,
+4758,new mexico,
+4759,new mexico,
+4760,new mexico,
+4761,new mexico,
+4762,new mexico,
+4763,new mexico,
+4764,new mexico,
+4765,new mexico,
+4766,new mexico,
+4767,new mexico,
+4768,new mexico,
+4769,new mexico,
+4770,new mexico,
+4771,new mexico,
+4772,new mexico,
+4773,new mexico,
+4774,new mexico,
+4775,new mexico,
+4776,new mexico,
+4777,new mexico,
+4778,new mexico,
+4779,new mexico,
+4780,new mexico,
+4781,new mexico,
+4782,new mexico,
+4783,new mexico,
+4784,new mexico,
+4785,new mexico,
+4786,new mexico,
+4787,new mexico,
+4788,new mexico,
+4789,new mexico,
+4790,new mexico,
+4791,new mexico,
+4792,new mexico,
+4793,new mexico,
+4794,new mexico,
+4795,new mexico,
+4796,new mexico,
+4797,new mexico,
+4798,new mexico,
+4799,new mexico,
+4800,new mexico,
+4801,new mexico,
+4802,new mexico,
+4803,new mexico,
+4804,new mexico,
+4805,new mexico,
+4806,new mexico,
+4807,new mexico,
+4808,new mexico,
+4809,new mexico,
+4810,new mexico,
+4811,new mexico,
+4812,new mexico,
+4813,new mexico,
+4814,new mexico,
+4815,new york,
+4816,new york,
+4817,new york,
+4818,new york,
+4819,new york,
+4820,new york,
+4821,new york,
+4822,new york,
+4823,new york,
+4824,new york,
+4825,new york,
+4826,new york,
+4827,new york,
+4828,new york,
+4829,new york,
+4830,new york,
+4831,new york,
+4832,new york,
+4833,new york,
+4834,new york,
+4835,new york,
+4836,new york,
+4837,new york,
+4838,new york,
+4839,new york,
+4840,new york,
+4841,new york,
+4842,new york,
+4843,new york,
+4844,new york,
+4845,new york,
+4846,new york,
+4847,new york,
+4848,new york,
+4849,new york,
+4850,new york,
+4851,new york,
+4852,new york,
+4853,new york,
+4854,new york,
+4855,new york,
+4856,new york,
+4857,new york,
+4858,new york,
+4859,new york,
+4860,new york,
+4861,new york,
+4862,new york,
+4863,new york,
+4864,new york,
+4865,new york,
+4866,new york,
+4867,new york,
+4868,new york,
+4869,new york,
+4870,new york,
+4871,new york,
+4872,new york,
+4873,new york,
+4874,new york,
+4875,new york,
+4876,new york,
+4877,new york,
+4878,new york,
+4879,new york,
+4880,new york,
+4881,new york,
+4882,new york,
+4883,new york,
+4884,new york,
+4885,new york,
+4886,new york,
+4887,new york,
+4888,new york,
+4889,new york,
+4890,new york,
+4891,new york,
+4892,new york,
+4893,new york,
+4894,new york,
+4895,new york,
+4896,new york,
+4897,new york,
+4898,new york,
+4899,new york,
+4900,new york,
+4901,new york,
+4902,new york,
+4903,new york,
+4904,new york,
+4905,new york,
+4906,new york,
+4907,new york,
+4908,new york,
+4909,new york,
+4910,new york,
+4911,new york,
+4912,new york,
+4913,new york,
+4914,new york,
+4915,new york,
+4916,new york,
+4917,new york,
+4918,new york,
+4919,new york,
+4920,new york,
+4921,new york,
+4922,new york,
+4923,new york,
+4924,new york,
+4925,new york,
+4926,new york,
+4927,new york,
+4928,new york,
+4929,new york,
+4930,new york,
+4931,new york,
+4932,new york,
+4933,new york,
+4934,new york,
+4935,new york,
+4936,new york,
+4937,new york,
+4938,new york,
+4939,new york,
+4940,new york,
+4941,new york,
+4942,new york,
+4943,new york,
+4944,new york,
+4945,new york,
+4946,new york,
+4947,new york,
+4948,new york,
+4949,new york,
+4950,new york,
+4951,new york,
+4952,new york,
+4953,new york,
+4954,new york,
+4955,new york,
+4956,new york,
+4957,new york,
+4958,new york,
+4959,new york,
+4960,new york,
+4961,new york,
+4962,new york,
+4963,new york,
+4964,new york,
+4965,new york,
+4966,new york,
+4967,new york,
+4968,new york,
+4969,new york,
+4970,new york,
+4971,new york,
+4972,new york,
+4973,new york,
+4974,new york,
+4975,new york,
+4976,new york,
+4977,new york,
+4978,new york,
+4979,new york,
+4980,new york,
+4981,new york,
+4982,new york,
+4983,new york,
+4984,new york,
+4985,new york,
+4986,new york,
+4987,new york,
+4988,new york,
+4989,new york,
+4990,new york,
+4991,north dakota,
+4992,north dakota,
+4993,north dakota,
+4994,north dakota,
+4995,north dakota,
+4996,north dakota,
+4997,north dakota,
+4998,north dakota,
+4999,north dakota,
+5000,north dakota,
+5001,north dakota,
+5002,north dakota,
+5003,north dakota,
+5004,north dakota,
+5005,north dakota,
+5006,north dakota,
+5007,north dakota,
+5008,north dakota,
+5009,north dakota,
+5010,north dakota,
+5011,north dakota,
+5012,north dakota,
+5013,north dakota,
+5014,north dakota,
+5015,north dakota,
+5016,north dakota,
+5017,north dakota,
+5018,north dakota,
+5019,north dakota,
+5020,north dakota,
+5021,north dakota,
+5022,north dakota,
+5023,north dakota,
+5024,north dakota,
+5025,north dakota,
+5026,north dakota,
+5027,north dakota,
+5028,north dakota,
+5029,north dakota,
+5030,north dakota,
+5031,north dakota,
+5032,north dakota,
+5033,north dakota,
+5034,north dakota,
+5035,north dakota,
+5036,north dakota,
+5037,north dakota,
+5038,north dakota,
+5039,north dakota,
+5040,north dakota,
+5041,north dakota,
+5042,north dakota,
+5043,north dakota,
+5044,north dakota,
+5045,north dakota,
+5046,north dakota,
+5047,north dakota,
+5048,north dakota,
+5049,north dakota,
+5050,north dakota,
+5051,north dakota,
+5052,north dakota,
+5053,north dakota,
+5054,north dakota,
+5055,north dakota,
+5056,north dakota,
+5057,north dakota,
+5058,north dakota,
+5059,north dakota,
+5060,north dakota,
+5061,north dakota,
+5062,north dakota,
+5063,north dakota,
+5064,north dakota,
+5065,north dakota,
+5066,north dakota,
+5067,north dakota,
+5068,north dakota,
+5069,north dakota,
+5070,north dakota,
+5071,north dakota,
+5072,north dakota,
+5073,north dakota,
+5074,north dakota,
+5075,north dakota,
+5076,north dakota,
+5077,north dakota,
+5078,north dakota,
+5079,north dakota,
+5080,north dakota,
+5081,north dakota,
+5082,north dakota,
+5083,north dakota,
+5084,north dakota,
+5085,north dakota,
+5086,north dakota,
+5087,north dakota,
+5088,north dakota,
+5089,north dakota,
+5090,north dakota,
+5091,north dakota,
+5092,north dakota,
+5093,north dakota,
+5094,north dakota,
+5095,north dakota,
+5096,north dakota,
+5097,north dakota,
+5098,north dakota,
+5099,north dakota,
+5100,north dakota,
+5101,north dakota,
+5102,north dakota,
+5103,north dakota,
+5104,north dakota,
+5105,north dakota,
+5106,north dakota,
+5107,north dakota,
+5108,north dakota,
+5109,north dakota,
+5110,north dakota,
+5111,north dakota,
+5112,north dakota,
+5113,north dakota,
+5114,philippines,
+5115,philippines,
+5116,philippines,
+5117,philippines,
+5118,philippines,
+5119,philippines,
+5120,philippines,
+5121,philippines,
+5122,puerto rico,
+5123,rhode island,
+5124,rhode island,
+5125,rhode island,
+5126,rhode island,
+5127,rhode island,
+5128,rhode island,
+5129,rhode island,
+5130,rhode island,
+5131,rhode island,
+5132,rhode island,
+5133,rhode island,
+5134,rhode island,
+5135,rhode island,
+5136,rhode island,
+5137,rhode island,
+5138,rhode island,
+5139,rhode island,
+5140,rhode island,
+5141,rhode island,
+5142,rhode island,
+5143,rhode island,
+5144,rhode island,
+5145,rhode island,
+5146,rhode island,
+5147,rhode island,
+5148,rhode island,
+5149,rhode island,
+5150,rhode island,
+5151,rhode island,
+5152,rhode island,
+5153,rhode island,
+5154,rhode island,
+5155,rhode island,
+5156,rhode island,
+5157,rhode island,
+5158,rhode island,
+5159,rhode island,
+5160,rhode island,
+5161,rhode island,
+5162,rhode island,
+5163,rhode island,
+5164,rhode island,
+5165,rhode island,
+5166,rhode island,
+5167,rhode island,
+5168,rhode island,
+5169,rhode island,
+5170,rhode island,
+5171,rhode island,
+5172,rhode island,
+5173,rhode island,
+5174,rhode island,
+5175,rhode island,
+5176,rhode island,
+5177,rhode island,
+5178,rhode island,
+5179,rhode island,
+5180,rhode island,
+5181,rhode island,
+5182,rhode island,
+5183,rhode island,
+5184,rhode island,
+5185,rhode island,
+5186,rhode island,
+5187,rhode island,
+5188,rhode island,
+5189,rhode island,
+5190,rhode island,
+5191,rhode island,
+5192,rhode island,
+5193,rhode island,
+5194,rhode island,
+5195,rhode island,
+5196,rhode island,
+5197,rhode island,
+5198,rhode island,
+5199,rhode island,
+5200,rhode island,
+5201,rhode island,
+5202,rhode island,
+5203,rhode island,
+5204,rhode island,
+5205,rhode island,
+5206,rhode island,
+5207,rhode island,
+5208,rhode island,
+5209,rhode island,
+5210,rhode island,
+5211,rhode island,
+5212,rhode island,
+5213,rhode island,
+5214,rhode island,
+5215,rhode island,
+5216,rhode island,
+5217,rhode island,
+5218,rhode island,
+5219,rhode island,
+5220,rhode island,
+5221,rhode island,
+5222,rhode island,
+5223,rhode island,
+5224,rhode island,
+5225,rhode island,
+5226,rhode island,
+5227,rhode island,
+5228,rhode island,
+5229,rhode island,
+5230,rhode island,
+5231,rhode island,
+5232,rhode island,
+5233,rhode island,
+5234,rhode island,
+5235,rhode island,
+5236,rhode island,
+5237,rhode island,
+5238,rhode island,
+5239,rhode island,
+5240,rhode island,
+5241,rhode island,
+5242,rhode island,
+5243,south carolina,
+5244,south carolina,
+5245,south carolina,
+5246,south carolina,
+5247,south carolina,
+5248,south carolina,
+5249,south carolina,
+5250,south carolina,
+5251,south carolina,
+5252,south carolina,
+5253,south carolina,
+5254,south carolina,
+5255,south carolina,
+5256,south carolina,
+5257,south carolina,
+5258,south carolina,
+5259,south carolina,
+5260,south carolina,
+5261,south carolina,
+5262,south carolina,
+5263,south carolina,
+5264,south carolina,
+5265,south carolina,
+5266,south carolina,
+5267,south carolina,
+5268,south carolina,
+5269,south carolina,
+5270,south carolina,
+5271,south carolina,
+5272,south carolina,
+5273,south carolina,
+5274,south carolina,
+5275,south carolina,
+5276,south carolina,
+5277,south carolina,
+5278,south carolina,
+5279,south carolina,
+5280,south carolina,
+5281,south carolina,
+5282,south carolina,
+5283,south carolina,
+5284,south carolina,
+5285,south carolina,
+5286,south carolina,
+5287,south carolina,
+5288,south carolina,
+5289,south carolina,
+5290,south carolina,
+5291,south carolina,
+5292,south carolina,
+5293,south carolina,
+5294,south carolina,
+5295,south carolina,
+5296,south carolina,
+5297,south carolina,
+5298,south carolina,
+5299,south carolina,
+5300,south carolina,
+5301,south carolina,
+5302,south carolina,
+5303,south carolina,
+5304,south carolina,
+5305,south carolina,
+5306,south carolina,
+5307,south carolina,
+5308,south carolina,
+5309,south carolina,
+5310,south carolina,
+5311,south carolina,
+5312,south carolina,
+5313,south carolina,
+5314,south carolina,
+5315,south carolina,
+5316,south carolina,
+5317,south carolina,
+5318,south carolina,
+5319,south carolina,
+5320,south carolina,
+5321,south carolina,
+5322,south carolina,
+5323,south carolina,
+5324,south carolina,
+5325,south carolina,
+5326,south carolina,
+5327,south carolina,
+5328,south carolina,
+5329,south carolina,
+5330,south carolina,
+5331,south carolina,
+5332,south carolina,
+5333,south carolina,
+5334,south carolina,
+5335,south carolina,
+5336,south carolina,
+5337,south carolina,
+5338,south carolina,
+5339,south carolina,
+5340,south carolina,
+5341,south carolina,
+5342,south carolina,
+5343,south carolina,
+5344,south carolina,
+5345,south carolina,
+5346,south carolina,
+5347,south carolina,
+5348,south carolina,
+5349,south carolina,
+5350,south carolina,
+5351,south carolina,
+5352,south carolina,
+5353,south carolina,
+5354,south carolina,
+5355,south carolina,
+5356,south carolina,
+5357,south carolina,
+5358,south carolina,
+5359,south carolina,
+5360,south carolina,
+5361,south carolina,
+5362,south carolina,
+5363,south carolina,
+5364,south carolina,
+5365,south carolina,
+5366,south carolina,
+5367,south carolina,
+5368,south carolina,
+5369,south carolina,
+5370,south carolina,
+5371,south carolina,
+5372,south dakota,
+5373,south dakota,
+5374,south dakota,
+5375,south dakota,
+5376,south dakota,
+5377,south dakota,
+5378,south dakota,
+5379,south dakota,
+5380,south dakota,
+5381,south dakota,
+5382,south dakota,
+5383,south dakota,
+5384,south dakota,
+5385,south dakota,
+5386,south dakota,
+5387,south dakota,
+5388,south dakota,
+5389,south dakota,
+5390,south dakota,
+5391,south dakota,
+5392,south dakota,
+5393,south dakota,
+5394,south dakota,
+5395,south dakota,
+5396,south dakota,
+5397,south dakota,
+5398,south dakota,
+5399,south dakota,
+5400,south dakota,
+5401,south dakota,
+5402,south dakota,
+5403,south dakota,
+5404,south dakota,
+5405,south dakota,
+5406,south dakota,
+5407,south dakota,
+5408,south dakota,
+5409,south dakota,
+5410,south dakota,
+5411,south dakota,
+5412,south dakota,
+5413,south dakota,
+5414,south dakota,
+5415,south dakota,
+5416,south dakota,
+5417,south dakota,
+5418,south dakota,
+5419,south dakota,
+5420,south dakota,
+5421,south dakota,
+5422,south dakota,
+5423,south dakota,
+5424,territory of alaska,
+5425,territory of alaska,
+5426,territory of alaska,
+5427,territory of alaska,
+5428,territory of alaska,
+5429,territory of alaska,
+5430,territory of alaska,
+5431,territory of alaska,
+5432,territory of alaska,
+5433,territory of alaska,
+5434,territory of alaska,
+5435,territory of alaska,
+5436,territory of hawai'i,
+5437,territory of hawai'i,
+5438,territory of hawai'i,
+5439,territory of hawai'i,
+5440,territory of hawai'i,
+5441,territory of hawai'i,
+5442,territory of hawai'i,
+5443,territory of oklahoma,
+5444,u.s. governors,
+5445,u.s. governors,
+5446,u.s. governors,
+5447,u.s. governors,
+5448,u.s. governors,
+5449,u.s. governors,
+5450,u.s. governors,
+5451,u.s. governors,
+5452,u.s. governors,
+5453,u.s. governors,
+5454,u.s. governors,
+5455,u.s. governors,
+5456,u.s. governors,
+5457,u.s. governors,
+5458,u.s. governors,
+5459,u.s. governors,
+5460,u.s. governors,
+5461,u.s. governors,
+5462,u.s. governors,
+5463,u.s. governors,
+5464,u.s. governors,
+5465,u.s. governors,
+5466,u.s. governors,
+5467,u.s. governors,
+5468,u.s. governors,
+5469,u.s. governors,
+5470,u.s. governors,
+5471,u.s. governors,
+5472,u.s. governors,
+5473,u.s. governors,
+5474,u.s. governors,
+5475,u.s. governors,
+5476,u.s. governors,
+5477,u.s. governors,
+5478,u.s. governors,
+5479,u.s. governors,
+5480,u.s. governors,
+5481,u.s. governors,
+5482,u.s. governors,
+5483,u.s. governors,
+5484,u.s. governors,
+5485,u.s. governors,
+5486,u.s. governors,
+5487,west virginia,
+5488,west virginia,
+5489,west virginia,
+5490,west virginia,
+5491,west virginia,
+5492,west virginia,
+5493,west virginia,
+5494,west virginia,
+5495,west virginia,
+5496,west virginia,
+5497,west virginia,
+5498,west virginia,
+5499,west virginia,
+5500,west virginia,
+5501,west virginia,
+5502,west virginia,
+5503,west virginia,
+5504,west virginia,
+5505,west virginia,
+5506,west virginia,
+5507,west virginia,
+5508,west virginia,
+5509,west virginia,
+5510,west virginia,
+5511,west virginia,
+5512,west virginia,
+5513,west virginia,
+5514,west virginia,
+5515,west virginia,
+5516,west virginia,
+5517,west virginia,
+5518,west virginia,
+5519,west virginia,
+5520,west virginia,
+5521,west virginia,
+5522,west virginia,
+5523,west virginia,
+5524,west virginia,
+5525,west virginia,
+5526,west virginia,
+5527,west virginia,
+5528,west virginia,
+5529,west virginia,
+5530,west virginia,
+5531,west virginia,
+5532,west virginia,
+5533,west virginia,
+5534,west virginia,
+5535,west virginia,
+5536,west virginia,
+5537,west virginia,
+5538,west virginia,
+5539,west virginia,
+5540,west virginia,
+5541,west virginia,
+5542,west virginia,
+5543,west virginia,
+5544,west virginia,
+5545,west virginia,
+5546,west virginia,
+5547,west virginia,
+5548,west virginia,
+5549,west virginia,
+5550,west virginia,
+5551,west virginia,
+5552,west virginia,

@@ -165,6 +165,6 @@ def RA_name_list(df_race2_all):
 
     df_name_RA = df_name_RA[['Name','CandID','City','CityID','Wikipedia','Linkedin','Others1','Others2','Others3','Others4','Web']]
     df_name_RA = df_name_RA.reset_index().drop('index',1)
-    df_name_RA.to_csv('name_RA.csv')
+    df_name_RA.to_csv('pdata/name_RA.csv')
 
     return df_name_RA
